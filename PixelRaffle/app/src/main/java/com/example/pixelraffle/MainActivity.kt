@@ -11,7 +11,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.lifecycle.ViewModelProvider
-import androidx.navigation.NavController
+//import androidx.navigation.NavController
 import com.example.pixelraffle.ui.navigation.NavScreens
 import com.example.pixelraffle.ui.screens.adama.RegisterPage
 import com.example.pixelraffle.ui.screens.peter.DrawScreen
