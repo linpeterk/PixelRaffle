@@ -6,25 +6,29 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.rememberScrollState
+import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import com.example.pixelraffle.viewmodel.UserViewModel
 import com.example.pixelraffle.R
+import com.example.pixelraffle.ui.theme.graySurface
 
 
-
-//New User Register Page
+//New User Register Page//
+//fun RegisterPage(navController: NavController, userViewModel: UserViewModel)
 @Composable
-fun RegisterPage(navController: NavController, userViewModel: UserViewModel){
+fun RegisterPage(){
     val context = LocalContext.current
 
     //User First Name variable
@@ -78,14 +82,18 @@ fun RegisterPage(navController: NavController, userViewModel: UserViewModel){
                         )
                 )
         }
+        Column(modifier = Modifier
+            .height(20.dp)
+            .fillMaxWidth()
+            .background(color = Color.White),
+            horizontalAlignment = Alignment.CenterHorizontally,
+            verticalArrangement = Arrangement.Center) {
+            Text(text="Pixel Raffle", color = graySurface, fontSize = 18.sp)
+        }
+
     }
 
 
-
-}
-@Preview
-@Composable
-fun RegisterPagePreview(){
 
 }
 

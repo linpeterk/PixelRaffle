@@ -10,8 +10,14 @@ import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.NavController
+import com.example.pixelraffle.ui.navigation.NavScreens
+import com.example.pixelraffle.ui.screens.adama.RegisterPage
 import com.example.pixelraffle.ui.screens.peter.DrawScreen
 import com.example.pixelraffle.ui.theme.PixelRaffleTheme
+import com.example.pixelraffle.viewmodel.TheViewModel
+import com.example.pixelraffle.viewmodel.UserViewModel
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -23,7 +29,8 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colors.background
                 ) {
-                    DrawScreen()
+                    //DrawScreen()
+                    RegisterPage()
                 }
             }
         }
