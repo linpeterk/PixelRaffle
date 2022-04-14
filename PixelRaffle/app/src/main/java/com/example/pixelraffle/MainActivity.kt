@@ -10,6 +10,8 @@ import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
+import com.example.pixelraffle.ui.screens.lyle.MainMenuScreen
+import com.example.pixelraffle.ui.screens.lyle.MainOverallScreen
 import com.example.pixelraffle.ui.theme.PixelRaffleTheme
 
 class MainActivity : ComponentActivity() {
@@ -22,7 +24,9 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colors.background
                 ) {
-                    Greeting("Android")
+                    //Greeting("Android")
+                    MainOverallScreen()
+                    //MainMenuScreen()
                 }
             }
         }
