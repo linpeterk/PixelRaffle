@@ -72,7 +72,7 @@ fun RegisterPage(){
             .fillMaxSize()
             .background(colorResource(id = R.color.white))
             .wrapContentSize(Alignment.Center)
-            .padding(bottom = 150.dp)
+            .padding(bottom = 50.dp)
     ) {
         Row(horizontalArrangement = Arrangement.Center,
                     modifier = Modifier
@@ -100,7 +100,7 @@ fun RegisterPage(){
         Row(horizontalArrangement = Arrangement.Center,
             modifier = Modifier
                 .fillMaxWidth()
-                .padding(start = 2.dp, top = 40.dp, end = 2.dp, bottom = 10.dp)
+                .padding(start = 2.dp, top = 40.dp, end = 2.dp, bottom = 5.dp)
         ){
             Text(
                 text = buildAnnotatedString {
