@@ -77,7 +77,7 @@ fun RegisterPage(){
         Row(horizontalArrangement = Arrangement.Center,
                     modifier = Modifier
                         .fillMaxWidth()
-                        .padding(start = 2.dp, top = 10.dp, end = 2.dp, bottom = 0.dp)
+                        .padding(start = 2.dp, top = 0.dp, end = 2.dp, bottom = 0.dp)
             ){
                 Image( 
                     painterResource(id = R.drawable.pixel_logoa_02),
@@ -394,7 +394,6 @@ fun RegisterPage(){
                         )
                     },
                     fontSize = 10.sp,
-                   // modifier=Modifier.padding(start = 90.dp, top = 10.dp)
                 )
             }
         }
