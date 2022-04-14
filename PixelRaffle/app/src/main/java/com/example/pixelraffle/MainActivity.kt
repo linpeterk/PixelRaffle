@@ -20,6 +20,7 @@ import com.example.pixelraffle.ui.navigation.NavScreens
 import com.example.pixelraffle.ui.screens.adama.RegisterPage
 import com.example.pixelraffle.ui.screens.peter.DrawScreen
 
+import com.example.pixelraffle.ui.screens.peter.ProfileScreen
 import com.example.pixelraffle.ui.theme.PixelRaffleTheme
 import com.example.pixelraffle.viewmodel.TheViewModel
 import com.example.pixelraffle.viewmodel.UserViewModel
@@ -34,6 +35,14 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colors.background
                 ) {
+                  //DrawScreen()
+                   // RegisterPage()
+
+                    ProfileScreen()
+
+
+
+
 
                 }
             }
