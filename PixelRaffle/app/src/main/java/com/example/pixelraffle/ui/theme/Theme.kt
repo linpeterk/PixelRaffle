@@ -16,11 +16,12 @@ private val DarkColorPalette = darkColors(
 private val LightColorPalette = lightColors(
     primary = orange_2,
     primaryVariant = orange_red,
-    secondary = blue_3,
+    secondary = blue_1,
 
 
-//    background = Color.White,
-//    surface = blue_2,
+
+    background = blue_3,
+//    surface = blue_3,
 //    onPrimary = Color.White,
 //    onSecondary = Color.Black,
 //    onBackground = Color.Black,
@@ -38,7 +39,7 @@ fun PixelRaffleTheme(darkTheme: Boolean = isSystemInDarkTheme(), content: @Compo
 
     MaterialTheme(
         colors = colors,
-        typography = CustomTypography,
+        typography = Typography,
         shapes = Shapes,
         content = content
     )

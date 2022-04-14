@@ -18,6 +18,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.pixelraffle.ui.components.Logo
 import com.example.pixelraffle.ui.theme.PixelRaffleTheme
+import com.example.pixelraffle.ui.theme.PressStart
 
 
 @Preview
@@ -41,7 +42,7 @@ fun MainOverallScreen (/*navController: NavController*/){
 
     Surface(modifier = Modifier.fillMaxSize()/*,color= Color.White*/) {
 
-        Image(painter = painterResource(id = com.example.pixelraffle.R.drawable.mnbase_02), contentDescription = "",alpha = .18f,contentScale = ContentScale.FillBounds)
+        Image(painter = painterResource(id = com.example.pixelraffle.R.drawable.mnbase_02), contentDescription = "",alpha = .25f,contentScale = ContentScale.FillBounds)
 
 
         Logo()
@@ -53,7 +54,7 @@ fun MainOverallScreen (/*navController: NavController*/){
 
             Text(text = "ADDING THAT LITTLE EXTRA TO YOUR EVENT!",textAlign = TextAlign.Center, modifier = Modifier
                 .padding(2.dp)
-                .width(220.dp),color= Color.Black/*,fontFamily = Cormorantgaramond*/,fontWeight = FontWeight.Bold,fontSize = 18.sp )
+                .width(220.dp),color= Color.Black,fontFamily = PressStart,fontSize = 18.sp )
 
             Button(onClick = { /*navController.navigate(DrawerScreens.MainUser.route)*/ },modifier= Modifier
                 .padding(4.dp)
