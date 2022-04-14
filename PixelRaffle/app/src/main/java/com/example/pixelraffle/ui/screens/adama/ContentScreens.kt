@@ -1,5 +1,6 @@
 package com.example.pixelraffle.ui.screens.adama
 
+import android.provider.ContactsContract
 import android.widget.Toast
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
@@ -277,11 +278,11 @@ fun RegisterPage(){
         Row(horizontalArrangement = Arrangement.Center,
             modifier = Modifier
                 .fillMaxWidth()
-                .padding(start = 2.dp, top = 0.dp, end = 2.dp, bottom = 0.dp)
+                .padding(start = 2.dp, top = 0.dp, end = 2.dp, bottom = 10.dp)
         ) {
             Button( modifier= Modifier
                 .fillMaxWidth()
-                .padding(start = 40.dp, top=0.dp, end = 40.dp, bottom = 0.dp)
+                .padding(start = 40.dp, top = 0.dp, end = 40.dp, bottom = 0.dp)
                 .shadow(
                     elevation = 15.dp,
                     shape = CircleShape,
@@ -291,7 +292,22 @@ fun RegisterPage(){
                     backgroundColor = Color.White,
                     contentColor = Color.Black),
 
-                onClick = { /*TODO*/ }) {
+                onClick = {
+                    if(firstName.value.isNullOrEmpty()||
+                        lastName.value.isNullOrEmpty()||
+                        email.value.isNullOrEmpty()||
+                        Password.value.isNullOrEmpty()
+                    ) {
+                        Toast.makeText(context, "All field might be filed", Toast.LENGTH_LONG).show()
+                    }else if(email.value.length <10){
+                        Toast.makeText(context, "User Email should be at least 10 characters", Toast.LENGTH_LONG).show()
+                    }else if(Password.value.length < 5){
+                        Toast.makeText(context, "Password should be at least 5 characters", Toast.LENGTH_LONG).show()
+                    }else{
+                        Toast.makeText(context, "Welcome On Board!", Toast.LENGTH_LONG).show()
+                    }
+
+                }) {
                     Text(
                         text = buildAnnotatedString {
                             append("CREATE ACCOUNT")
@@ -314,7 +330,72 @@ fun RegisterPage(){
                         },
                         fontSize = 15.sp,
                     )
+            }
+        }
+        Spacer(modifier=Modifier.padding(0.dp))
+        Row(horizontalArrangement = Arrangement.Center,
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(start = 2.dp, top = 20.dp, end = 2.dp, bottom = 0.dp)
+        ){
+            Text(
+                text = buildAnnotatedString {
+                    append("Already have an account?")
+                    addStyle(
+                        style = SpanStyle(
+                            color = Color.Red,
+                        ),
+                        start = 0,
+                        end = 12
+                    )
+                    addStyle(
+                        style = SpanStyle(
+                            color = Color.Black,
+                        ),
+                        start = 12,
+                        end = 23
+                    )
+                },
+                fontSize = 13.sp,
+                modifier=Modifier.padding(start = 100.dp, top = 0.dp)
+                )
+            Button( modifier= Modifier
+                .fillMaxWidth()
+                .padding(start = 30.dp, top = 10.dp, end = 40.dp, bottom = 0.dp)
+                .shadow(
+                    elevation = 15.dp,
+                    shape = CircleShape,
+                    clip = true
+                ),
+                colors = ButtonDefaults.buttonColors(
+                    backgroundColor = Color.White,
+                    contentColor = Color.Black),
 
+                onClick = {
+
+                }) {
+                Text(
+                    text = buildAnnotatedString {
+                        append("Login")
+                        addStyle(
+                            style = SpanStyle(
+                                color = Color.Red,
+                                fontWeight = FontWeight.Bold,
+                            ),
+                            start = 0,
+                            end = 2
+                        )
+                        addStyle(
+                            style = SpanStyle(
+                                color = Color.Black,
+                                fontWeight = FontWeight.Bold
+                            ),
+                            start = 2,
+                            end = 4
+                        )
+                    },
+                    fontSize = 10.sp,
+                )
             }
         }
     }
