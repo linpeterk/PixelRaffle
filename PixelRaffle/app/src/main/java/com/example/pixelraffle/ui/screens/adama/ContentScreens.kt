@@ -77,7 +77,7 @@ fun RegisterPage(){
         Row(horizontalArrangement = Arrangement.Center,
                     modifier = Modifier
                         .fillMaxWidth()
-                        .padding(start = 2.dp, top = 0.dp, end = 2.dp, bottom = 0.dp)
+                        .padding(start = 2.dp, top = 10.dp, end = 2.dp, bottom = 0.dp)
             ){
                 Image( 
                     painterResource(id = R.drawable.pixel_logoa_02),
@@ -341,7 +341,8 @@ fun RegisterPage(){
                     append("Already have an account?")
                     addStyle(
                         style = SpanStyle(
-                            color = Color.Red,
+                           color = Color.Red,
+                            //color = MaterialTheme.colors.primaryVariant
                         ),
                         start = 0,
                         end = 12
