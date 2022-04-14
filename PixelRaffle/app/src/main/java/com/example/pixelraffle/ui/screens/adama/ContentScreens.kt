@@ -39,7 +39,7 @@ import com.example.pixelraffle.ui.theme.PressStart
 import com.example.pixelraffle.ui.theme.graySurface
 
 
-@Preview
+//@Preview
 //New User Register Page//
 //fun RegisterPage(navController: NavController, userViewModel: UserViewModel)
 @Composable
@@ -64,7 +64,7 @@ fun RegisterPage(){
     //User User ZipCode variable
     val ZipCode = rememberSaveable{ mutableStateOf("")}
 
-    //User Password
+    //User Password Visibility
     val passwordVisibilty = rememberSaveable{ mutableStateOf(false) }
     val confirmationOfPasswordVisibilty = rememberSaveable{ mutableStateOf(false) }
 
@@ -74,7 +74,6 @@ fun RegisterPage(){
         Column(
             modifier = Modifier
                 .fillMaxSize()
-                //.background(colorResource(id = R.color.white))
                 .wrapContentSize(Alignment.Center)
                 .padding(bottom = 0.dp)
         ) {
@@ -214,7 +213,7 @@ fun RegisterPage(){
                     .fillMaxWidth()
                     .padding(start = 2.dp, top = 0.dp, end = 2.dp, bottom = 0.dp)
             ){
-                //Password Addres textfield field
+                //User Password textfield field
                 OutlinedTextField(value = Password.value, onValueChange = {Password.value=it},
                     label = {Text(
                         text = buildAnnotatedString {
@@ -388,9 +387,186 @@ fun RegisterPage(){
 }
 
 //User Login Page
+@Preview
 @Composable
-fun LoginPage(){
+fun LoginPage() {
+    val context = LocalContext.current
 
+    //User Email Address variable
+    val email = rememberSaveable { mutableStateOf("") }
+
+    //User Password variable
+    val Password = rememberSaveable { mutableStateOf("") }
+
+    //User Password Visibility
+    val passwordVisibilty = rememberSaveable{ mutableStateOf(false) }
+    val confirmationOfPasswordVisibilty = rememberSaveable{ mutableStateOf(false) }
+
+    Surface(modifier = Modifier.fillMaxSize()) {
+        LogoA()
+        Column(
+            modifier = Modifier
+                .fillMaxSize()
+                .wrapContentSize(Alignment.Center)
+                .padding(bottom = 0.dp)
+        ) {
+            Row(horizontalArrangement = Arrangement.Center,
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(start = 2.dp, top = 100.dp, end = 2.dp, bottom = 5.dp)
+            ){
+                Text(
+                    text = buildAnnotatedString {
+                        append("LOGIN PAGE")
+                        addStyle(
+                            style = SpanStyle(
+                                color = Color.Red,
+                                fontWeight = FontWeight.Bold,
+                            ),
+                            start = 0,
+                            end = 5
+                        )
+                        addStyle(
+                            style = SpanStyle(
+                                color = Color.Black,
+                                fontWeight = FontWeight.Bold
+                            ),
+                            start = 5,
+                            end = 9
+                        )
+                    },
+                    fontSize = 24.sp,
+                )
+            }
+
+            Row(horizontalArrangement = Arrangement.Center,
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(start = 2.dp, top = 0.dp, end = 2.dp, bottom = 0.dp)
+            ){
+                //Email Addres textfield field
+                OutlinedTextField(value = email.value, onValueChange = {email.value=it},
+                    label = {Text(
+                        text = buildAnnotatedString {
+                            append("Email Address")
+                            addStyle(
+                                style = SpanStyle(
+                                    color = Color.Red,
+                                ),
+                                start = 0,
+                                end = 6
+                            )
+                            addStyle(
+                                style = SpanStyle(
+                                    color = Color.Black,
+                                ),
+                                start = 6,
+                                end = 13
+                            )
+                        },
+                        fontSize = 13.sp,
+                    )},
+
+                    singleLine = true,
+                    modifier = Modifier.fillMaxWidth(0.9f)
+                )
+            }
+            Spacer(modifier=Modifier.padding(0.dp))
+            Row(horizontalArrangement = Arrangement.Center,
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(start = 2.dp, top = 0.dp, end = 2.dp, bottom = 0.dp)
+            ){
+                //User Password textfield field
+                OutlinedTextField(value = Password.value, onValueChange = {Password.value=it},
+                    label = {Text(
+                        text = buildAnnotatedString {
+                            append("Enter Password")
+                            addStyle(
+                                style = SpanStyle(
+                                    color = Color.Red,
+                                ),
+                                start = 0,
+                                end = 6
+                            )
+                            addStyle(
+                                style = SpanStyle(
+                                    color = Color.Black,
+                                ),
+                                start = 6,
+                                end = 14
+                            )
+                        },
+                        fontSize = 13.sp,
+
+                        )},
+
+                    singleLine = true,
+                    modifier = Modifier.fillMaxWidth(0.9f),
+                    trailingIcon = {
+                        IconButton(
+                            modifier=Modifier,
+                            onClick = { /*TODO*/
+                                passwordVisibilty.value= !passwordVisibilty.value
+                            }) {
+
+                            Image(painterResource(id = R.drawable.password_eye), contentDescription = null)
+                            if(passwordVisibilty.value) Color.Red else Color.Gray
+                        }
+                    },
+                    visualTransformation = if(passwordVisibilty.value) VisualTransformation.None
+                    else PasswordVisualTransformation()
+                )
+            }
+            Spacer(modifier = Modifier.padding(10.dp))
+            Button( modifier= Modifier
+                .fillMaxWidth()
+                .padding(start = 40.dp, top = 0.dp, end = 40.dp, bottom = 0.dp)
+                .shadow(
+                    elevation = 15.dp,
+                    shape = CircleShape,
+                    clip = true
+                ),
+                colors = ButtonDefaults.buttonColors(
+                    backgroundColor = Color.White,
+                    contentColor = Color.Black),
+
+                onClick = {
+                    if(email.value.isNullOrEmpty()){
+                        Toast.makeText(context, "Email cannot be blank", Toast.LENGTH_LONG).show()
+                    }else if (Password.value.isNullOrEmpty()){
+                        Toast.makeText(context, "Password cannot be blank", Toast.LENGTH_LONG).show()
+                    }else{
+                        Toast.makeText(context, "Welcome on Board!", Toast.LENGTH_LONG).show()
+                    }
+
+                }) {
+                Text(
+                    text = buildAnnotatedString {
+                        append("LOGIN")
+                        addStyle(
+                            style = SpanStyle(
+                                color = Color.Red,
+                                fontWeight = FontWeight.Bold,
+                            ),
+                            start = 0,
+                            end = 3
+                        )
+                        addStyle(
+                            style = SpanStyle(
+                                color = Color.Black,
+                                fontWeight = FontWeight.Bold
+                            ),
+                            start = 3,
+                            end = 5
+                        )
+                    },
+                    fontSize = 15.sp,
+                )
+            }
+            Spacer(modifier = Modifier.padding(0.dp))
+        }
+    }
 }
 
 //User's old activities page
