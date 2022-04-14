@@ -17,8 +17,10 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.pixelraffle.ui.components.Logo
+import com.example.pixelraffle.ui.components.LogoA
 import com.example.pixelraffle.ui.theme.PixelRaffleTheme
 import com.example.pixelraffle.ui.theme.PressStart
+import com.example.pixelraffle.ui.theme.blue_2
 
 
 @Preview

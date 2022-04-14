@@ -31,7 +31,7 @@ val Typography = Typography(
 
 val PressStart =FontFamily(
 
-    Font(R.font.pressstart_regular,weight = FontWeight.Normal)
+    Font(R.font.pressstart_regular)
 
 )
 

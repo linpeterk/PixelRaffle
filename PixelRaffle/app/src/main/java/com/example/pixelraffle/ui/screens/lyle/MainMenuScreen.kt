@@ -8,6 +8,7 @@ import androidx.compose.material.*
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.scale
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
@@ -18,8 +19,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.pixelraffle.R
-import com.example.pixelraffle.ui.theme.PixelRaffleTheme
-import com.example.pixelraffle.ui.theme.PressStart
+import com.example.pixelraffle.ui.theme.*
 
 
 @Preview
@@ -44,7 +44,7 @@ fun MainMenuScreen(){
             Row(modifier = Modifier
                 .fillMaxWidth()
                 .offset(y = 80.dp),horizontalArrangement = Arrangement.Center) {
-                Text(text = "WELCOME:   .",textAlign = TextAlign.Center,fontSize = 25.sp,fontWeight = FontWeight.Bold)
+                Text(text = "WELCOME:   .",textAlign = TextAlign.Center,fontFamily = PressStart,fontSize = 22.sp,fontWeight = FontWeight.Bold)
             }
             
             Row(modifier = Modifier
@@ -52,11 +52,12 @@ fun MainMenuScreen(){
                 .offset(y = -150.dp),verticalAlignment = Alignment.CenterVertically,horizontalArrangement = Arrangement.SpaceEvenly) {
                 
                 FloatingActionButton(onClick = { /*TODO*/ },Modifier.size(120.dp,120.dp),shape = MaterialTheme.shapes.medium,backgroundColor = MaterialTheme.colors.primary) {
+                    Text(text = "Create Room",color = Color.White)
                     
                 }
 
                 FloatingActionButton(onClick = { /*TODO*/ },Modifier.size(120.dp,120.dp),shape = MaterialTheme.shapes.medium,backgroundColor = MaterialTheme.colors.primary) {
-
+                    Text(text = "Join Room",color = Color.White)
                 }
                 
             }
@@ -66,9 +67,9 @@ fun MainMenuScreen(){
                 .offset(y = 70.dp), verticalAlignment = Alignment.CenterVertically) {
                 Column(modifier = Modifier.fillMaxWidth(),horizontalAlignment = Alignment.CenterHorizontally) {
                     Text(text = "Create Raffles to help raise funds for your event.",
-                        modifier = Modifier.width(325.dp),textAlign = TextAlign.Justify,fontFamily = FontFamily.Default,fontWeight = FontWeight.Bold,fontSize = 25.sp)
+                        modifier = Modifier.width(325.dp),textAlign = TextAlign.Center,fontFamily = PressStart/*FontFamily.Default*/,fontWeight = FontWeight.Bold,fontSize = 20.sp)
                     Spacer(modifier = Modifier.height(135.dp))
-                    Text(text = "Pixel Raffle is not liable for loss due to miss allocation of prize or disputes pertaining to such matters. Please play fairly.",
+                    Text(text = "Pixel Raffle is not liable for loss due to miss allocation of prizes or disputes pertaining to such matters. Please play fairly.",
                         modifier = Modifier.width(300.dp),textAlign = TextAlign.Justify,fontFamily = FontFamily.Default,fontWeight = FontWeight.Light,fontSize = 12.sp)
                 }
 
@@ -85,21 +86,30 @@ fun MainMenuScreen(){
                 //Google icon
                 FloatingActionButton(onClick = { /*TODO*/ },
                     shape = MaterialTheme.shapes.medium,
-                    backgroundColor = MaterialTheme.colors.secondary,modifier = Modifier.size(60.dp,60.dp)) {
+                    backgroundColor = blue_4,modifier = Modifier.size(60.dp,60.dp)) {
+
+                    Image(painter = painterResource(id = R.drawable.facebook), contentDescription ="facebook",Modifier.scale(.8f) )
+
 
                 }
 
                 //Twitter icon
                 FloatingActionButton(onClick = { /*TODO*/ },
                     shape = MaterialTheme.shapes.medium,
-                    backgroundColor = MaterialTheme.colors.secondary,modifier = Modifier.size(60.dp,60.dp)) {
+                    backgroundColor = blue_4,modifier = Modifier.size(60.dp,60.dp)) {
+
+                    Image(painter = painterResource(id = R.drawable.twitter), contentDescription ="twitter",Modifier.scale(.8f) )
+
 
                 }
 
                 //
                 FloatingActionButton(onClick = { /*TODO*/ },
                     shape = MaterialTheme.shapes.medium,
-                    backgroundColor = MaterialTheme.colors.secondary,modifier = Modifier.size(60.dp,60.dp)) {
+                    backgroundColor = blue_4,
+                    modifier = Modifier.size(60.dp,60.dp),) {
+
+                    Image(painter = painterResource(id = R.drawable.instagram), contentDescription ="instagram",Modifier.scale(.8f) )
 
                 }
 
