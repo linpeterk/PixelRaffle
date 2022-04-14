@@ -343,7 +343,7 @@ fun RegisterPage(){
                 )
                 Button( modifier= Modifier
                     .fillMaxWidth()
-                    .padding(start = 50.dp, top = 0.dp, end = 40.dp, bottom = 0.dp)
+                    .padding(start = 10.dp, top = 0.dp, end = 40.dp, bottom = 0.dp)
                     .shadow(
                         elevation = 15.dp,
                         shape = CircleShape,
@@ -354,7 +354,7 @@ fun RegisterPage(){
                         contentColor = Color.Black),
 
                     onClick = {
-
+                        Toast.makeText(context, "Login Page", Toast.LENGTH_LONG).show()
                     }) {
                     Text(
                         text = buildAnnotatedString {
