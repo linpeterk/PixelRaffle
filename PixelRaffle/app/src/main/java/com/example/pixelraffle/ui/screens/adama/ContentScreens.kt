@@ -564,7 +564,74 @@ fun LoginPage() {
                     fontSize = 15.sp,
                 )
             }
-            Spacer(modifier = Modifier.padding(0.dp))
+            Spacer(modifier = Modifier.padding(10.dp))
+
+            Row(horizontalArrangement = Arrangement.SpaceBetween,
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(2.dp)
+            ){
+                Text(
+                    text = buildAnnotatedString {
+                        append("Don't have an account?")
+                        addStyle(
+                            style = SpanStyle(
+                                color = Color.Red,
+                                //color = MaterialTheme.colors.primaryVariant
+                            ),
+                            start = 0,
+                            end = 12
+                        )
+                        addStyle(
+                            style = SpanStyle(
+                                color = Color.Black,
+                            ),
+                            start = 12,
+                            end = 23
+                        )
+                    },
+                    fontSize = 13.sp,
+                    modifier=Modifier.padding(start = 100.dp, top = 10.dp)
+                )
+                Button( modifier= Modifier
+                    .fillMaxWidth()
+                    .padding(start = 10.dp, top = 0.dp, end = 40.dp, bottom = 0.dp)
+                    .shadow(
+                        elevation = 15.dp,
+                        shape = CircleShape,
+                        clip = true
+                    ),
+                    colors = ButtonDefaults.buttonColors(
+                        backgroundColor = Color.White,
+                        contentColor = Color.Black),
+
+                    onClick = {
+                        Toast.makeText(context, "Register Page", Toast.LENGTH_LONG).show()
+                    }) {
+                    Text(
+                        text = buildAnnotatedString {
+                            append("SignUp")
+                            addStyle(
+                                style = SpanStyle(
+                                    color = Color.Red,
+                                    fontWeight = FontWeight.Bold,
+                                ),
+                                start = 0,
+                                end = 4
+                            )
+                            addStyle(
+                                style = SpanStyle(
+                                    color = Color.Black,
+                                    fontWeight = FontWeight.Bold
+                                ),
+                                start = 4,
+                                end = 5
+                            )
+                        },
+                        fontSize = 10.sp,
+                    )
+                }
+            }
         }
     }
 }
