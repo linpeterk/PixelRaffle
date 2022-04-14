@@ -274,7 +274,7 @@ fun RegisterPage(){
                 else PasswordVisualTransformation()
             )
         }
-        Spacer(modifier = Modifier.padding(15.dp))
+        Spacer(modifier = Modifier.padding(10.dp))
         Row(horizontalArrangement = Arrangement.Center,
             modifier = Modifier
                 .fillMaxWidth()
@@ -333,10 +333,8 @@ fun RegisterPage(){
             }
         }
         Spacer(modifier=Modifier.padding(0.dp))
-        Row(horizontalArrangement = Arrangement.Center,
-            modifier = Modifier
-                .fillMaxWidth()
-                .padding(start = 2.dp, top = 20.dp, end = 2.dp, bottom = 0.dp)
+        Row(horizontalArrangement = Arrangement.SpaceBetween,
+            modifier = Modifier.fillMaxWidth().padding(2.dp)
         ){
             Text(
                 text = buildAnnotatedString {
@@ -357,11 +355,11 @@ fun RegisterPage(){
                     )
                 },
                 fontSize = 13.sp,
-                modifier=Modifier.padding(start = 100.dp, top = 0.dp)
+               modifier=Modifier.padding(start = 100.dp, top = 10.dp)
                 )
             Button( modifier= Modifier
                 .fillMaxWidth()
-                .padding(start = 30.dp, top = 10.dp, end = 40.dp, bottom = 0.dp)
+                .padding(start = 50.dp, top = 0.dp, end = 40.dp, bottom = 0.dp)
                 .shadow(
                     elevation = 15.dp,
                     shape = CircleShape,
@@ -395,6 +393,7 @@ fun RegisterPage(){
                         )
                     },
                     fontSize = 10.sp,
+                   // modifier=Modifier.padding(start = 90.dp, top = 10.dp)
                 )
             }
         }
