@@ -35,36 +35,5 @@ import kotlinx.coroutines.launch
 import java.util.Stack
 import kotlin.math.abs
 
-@Composable
-fun createRoom(modifier:Modifier,
-               controller: SketchbookController,
-               onEventListener: (bitmap: Bitmap) -> Unit) {
 
-    Box(modifier = modifier) {
-        Image(
-            modifier = Modifier
-                .matchParentSize()
-                .padding(horizontal = 20.dp),
-            bitmap = ImageBitmap.imageResource(R.drawable.sketchbook_bg),
-            contentDescription = null
-        )
-
-        Sketchbook(
-            modifier = Modifier
-                .matchParentSize()
-                .padding(
-                    start = 30.dp,
-                    top = 40.dp,
-                    end = 30.dp,
-                    bottom = 20.dp
-                ),
-            controller = controller,
-            backgroundColor = Color.White,
-            onPathListener = {
-                val bitmap = controller.getSketchbookBitmap()
-                onEventListener.invoke(bitmap.asAndroidBitmap())
-            }
-        )
-    }
-}
 
