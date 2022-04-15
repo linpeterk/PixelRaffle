@@ -46,7 +46,7 @@ import com.example.pixelraffle.ui.theme.blue_2
 @Composable
 fun MainOverallScreen (navController: NavController){
 
-    Surface(modifier = Modifier.fillMaxSize()/*,color= Color.White*/) {
+    Scaffold(modifier = Modifier.fillMaxSize()/*,color= Color.White*/) {
 
       //  Image(painter = painterResource(id = com.example.pixelraffle.R.drawable.mnbase_02), contentDescription = "",alpha = .25f,contentScale = ContentScale.FillBounds)
 
