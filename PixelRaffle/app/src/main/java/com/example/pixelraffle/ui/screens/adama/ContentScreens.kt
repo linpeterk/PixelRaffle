@@ -275,9 +275,9 @@ fun RegisterPage(navController:NavController){
                 Button( modifier= Modifier
                     .fillMaxWidth()
                     .padding(start = 40.dp, top = 0.dp, end = 40.dp, bottom = 0.dp), shape = CircleShape,
-                    colors = ButtonDefaults.buttonColors(
-                        backgroundColor = Color.White,
-                        contentColor = Color.Black),
+                    //colors = ButtonDefaults.buttonColors(
+                        //backgroundColor = Color.White,
+                        //contentColor = Color.Black),
 
                     onClick = {
                         if(firstName.value.isNullOrEmpty()||
@@ -300,7 +300,7 @@ fun RegisterPage(navController:NavController){
                             append("CREATE ACCOUNT")
                             addStyle(
                                 style = SpanStyle(
-                                    color = Color.Red,
+                                    color = Color.White,
                                     fontWeight = FontWeight.Bold,
                                 ),
                                 start = 0,
@@ -308,11 +308,11 @@ fun RegisterPage(navController:NavController){
                             )
                             addStyle(
                                 style = SpanStyle(
-                                    color = Color.Black,
+                                    color = Color.White,
                                     fontWeight = FontWeight.Bold
                                 ),
                                 start = 6,
-                                end = 13
+                                end = 14
                             )
                         },
                         fontSize = 15.sp,
@@ -350,10 +350,6 @@ fun RegisterPage(navController:NavController){
                 Button( modifier= Modifier
                     .fillMaxWidth()
                     .padding(start = 10.dp, top = 0.dp, end = 40.dp, bottom = 0.dp),shape = CircleShape,
-                    colors = ButtonDefaults.buttonColors(
-                        backgroundColor = Color.White,
-                        contentColor = Color.Black),
-
                     onClick = {
                         navController.navigate(NavScreens.Login.route)
                     }) {
@@ -362,7 +358,7 @@ fun RegisterPage(navController:NavController){
                             append("Login")
                             addStyle(
                                 style = SpanStyle(
-                                    color = Color.Red,
+                                    color = Color.White,
                                     fontWeight = FontWeight.Bold,
                                 ),
                                 start = 0,
@@ -370,7 +366,7 @@ fun RegisterPage(navController:NavController){
                             )
                             addStyle(
                                 style = SpanStyle(
-                                    color = Color.Black,
+                                    color = Color.White,
                                     fontWeight = FontWeight.Bold
                                 ),
                                 start = 2,
@@ -525,9 +521,6 @@ fun LoginPage(navController:NavController) {
             Button( modifier= Modifier
                 .fillMaxWidth()
                 .padding(start = 40.dp, top = 0.dp, end = 40.dp, bottom = 0.dp), shape = CircleShape,
-                colors = ButtonDefaults.buttonColors(
-                    backgroundColor = Color.White,
-                    contentColor = Color.Black),
 
                 onClick = {
                     if(email.value.isNullOrEmpty()){
@@ -544,7 +537,7 @@ fun LoginPage(navController:NavController) {
                         append("LOGIN")
                         addStyle(
                             style = SpanStyle(
-                                color = Color.Red,
+                                color = Color.White,
                                 fontWeight = FontWeight.Bold,
                             ),
                             start = 0,
@@ -552,7 +545,7 @@ fun LoginPage(navController:NavController) {
                         )
                         addStyle(
                             style = SpanStyle(
-                                color = Color.Black,
+                                color = Color.White,
                                 fontWeight = FontWeight.Bold
                             ),
                             start = 3,
@@ -594,9 +587,6 @@ fun LoginPage(navController:NavController) {
                 Button( modifier= Modifier
                     .fillMaxWidth()
                     .padding(start = 10.dp, top = 0.dp, end = 40.dp, bottom = 0.dp), shape = CircleShape,
-                    colors = ButtonDefaults.buttonColors(
-                        backgroundColor = Color.White,
-                        contentColor = Color.Black),
 
                     onClick = {
                         navController.navigate(NavScreens.Register.route)
@@ -606,7 +596,7 @@ fun LoginPage(navController:NavController) {
                             append("SignUp")
                             addStyle(
                                 style = SpanStyle(
-                                    color = Color.Red,
+                                    color = Color.White,
                                     fontWeight = FontWeight.Bold,
                                 ),
                                 start = 0,
@@ -614,7 +604,7 @@ fun LoginPage(navController:NavController) {
                             )
                             addStyle(
                                 style = SpanStyle(
-                                    color = Color.Black,
+                                    color = Color.White,
                                     fontWeight = FontWeight.Bold
                                 ),
                                 start = 4,
