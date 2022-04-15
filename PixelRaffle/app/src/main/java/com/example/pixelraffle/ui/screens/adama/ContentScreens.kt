@@ -277,7 +277,7 @@ fun RegisterPage(navController:NavController){
                     .fillMaxWidth()
                     .padding(start = 40.dp, top = 0.dp, end = 40.dp, bottom = 0.dp)
                     .shadow(
-                        elevation = 15.dp,
+                        elevation = 10.dp,
                         shape = CircleShape,
                         clip = true
                     ),
@@ -388,7 +388,7 @@ fun RegisterPage(navController:NavController){
                                 end = 4
                             )
                         },
-                        fontSize = 10.sp,
+                        fontSize = 12.sp,
                     )
                 }
             }
@@ -611,7 +611,7 @@ fun LoginPage(navController:NavController) {
                     .fillMaxWidth()
                     .padding(start = 10.dp, top = 0.dp, end = 40.dp, bottom = 0.dp)
                     .shadow(
-                        elevation = 15.dp,
+                        elevation = 10.dp,
                         shape = CircleShape,
                         clip = true
                     ),
@@ -642,7 +642,7 @@ fun LoginPage(navController:NavController) {
                                 end = 5
                             )
                         },
-                        fontSize = 10.sp,
+                        fontSize = 12.sp,
                     )
                 }
             }
