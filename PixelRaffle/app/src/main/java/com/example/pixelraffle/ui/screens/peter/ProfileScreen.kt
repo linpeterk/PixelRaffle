@@ -1,6 +1,8 @@
 package com.example.pixelraffle.ui.screens.peter
 
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
+import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.*
 import androidx.compose.material.Button
 import androidx.compose.material.MaterialTheme
@@ -13,15 +15,23 @@ import androidx.compose.ui.draw.drawBehind
 import androidx.compose.ui.geometry.center
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.Path
+import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontFamily
+import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.navigation.NavController
+import com.example.pixelraffle.R
+import com.example.pixelraffle.ui.screens.adama.UserProfileImage
+import com.example.pixelraffle.ui.theme.orange_2
 
 
 @Composable
-fun ProfileScreen(){
+fun ProfileScreen(navController: NavController){
 
     Surface(color= MaterialTheme.colors.background){
-
+     //   Image(painter = painterResource(id = R.drawable.mnbase_02), contentDescription = "",alpha = .18f,contentScale = ContentScale.FillBounds)
         Box(
             modifier= Modifier
                 .fillMaxSize()
@@ -36,20 +46,46 @@ fun ProfileScreen(){
                         lineTo(x, center.y / 2)
                         cubicTo(
                             x1 = 3 * x / 4,
-                            y1 = center.y * 2 / 6,
+                            y1 = center.y * 4 / 7,
                             x2 = x / 4,
-                            y2 = center.y * 2 / 6,
+                            y2 = center.y * 4 / 7,
                             x3 = 0f,
                             y3 = center.y / 2
                         )
                     }
-                    drawPath(path = path, color = Color.Red
+                    drawPath(
+                        path = path, color = orange_2
 
                     )
 
                 }
         ){
 
+            //Content at top
+            Column(modifier = Modifier
+                .fillMaxSize()
+                .wrapContentSize(Alignment.TopCenter),
+                horizontalAlignment = Alignment.CenterHorizontally
+            )
+            {
+
+
+                UserProfileImage()
+                Text(
+                    text = "UserName",
+                    style= MaterialTheme.typography.h5,
+                    modifier = Modifier
+                        .padding(5.dp)
+                        .fillMaxWidth(),
+                    textAlign = TextAlign.Center
+
+                )
+                Spacer(Modifier.padding(20.dp))
+                Text("CenterTest1")
+                Text("CenterTest2")
+            }
+
+            //Content in middle
             Column(
                 modifier = Modifier
                     .fillMaxSize()
@@ -60,22 +96,24 @@ fun ProfileScreen(){
                 Text("CenterTest2")
             }
 
-            Column(modifier = Modifier
-                .fillMaxSize()
-                .padding(20.dp)
-                .wrapContentSize(align = Alignment.BottomCenter)) {
-
-                Button(
-                    onClick = { /*TODO*/ },
-                    modifier = Modifier.fillMaxWidth(),
-                    shape = MaterialTheme.shapes.medium
-                ) {
-                    Text(text = "Bottom Test")
-                }
-            }
+            //Content in Bottom
+//            Column(modifier = Modifier
+//                .fillMaxSize()
+//                .padding(20.dp)
+//                .wrapContentSize(align = Alignment.BottomCenter)) {
+//
+//                Button(
+//                    onClick = { /*TODO*/ },
+//                    modifier = Modifier.fillMaxWidth(),
+//                    shape = MaterialTheme.shapes.medium
+//                ) {
+//                    Text(text = "Bottom Test")
+//                }
+//            }
 
         }
 
     }
 
 }
+

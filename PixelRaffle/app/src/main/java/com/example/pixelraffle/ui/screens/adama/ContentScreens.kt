@@ -2,12 +2,14 @@ package com.example.pixelraffle.ui.screens.adama
 
 import android.net.Uri
 import android.provider.ContactsContract
+import android.util.Log
 import android.widget.Toast
 import androidx.activity.compose.rememberLauncherForActivityResult
 import androidx.activity.result.contract.ActivityResultContract
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.compose.foundation.*
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.lazy.GridCells
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material.*
 import androidx.compose.runtime.Composable
@@ -44,14 +46,15 @@ import com.example.pixelraffle.ui.theme.PressStart
 import com.example.pixelraffle.ui.theme.graySurface
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.setValue
+import com.example.pixelraffle.ui.navigation.NavScreens
 
 
 //@Preview
 //New User Register Page//
 //fun RegisterPage(navController: NavController, userViewModel: UserViewModel)
-@Preview
+
 @Composable
-fun RegisterPage(){
+fun RegisterPage(navController:NavController){
     val context = LocalContext.current
 
     //User First Name variable
@@ -78,7 +81,7 @@ fun RegisterPage(){
 
     val scrollState = rememberScrollState()
     Surface(modifier = Modifier.fillMaxSize()) {
-        Image(painter = painterResource(id = com.example.pixelraffle.R.drawable.mnbase_02), contentDescription = "",alpha = .25f,contentScale = ContentScale.FillBounds)
+       // Image(painter = painterResource(id = com.example.pixelraffle.R.drawable.mnbase_02), contentDescription = "",alpha = .25f,contentScale = ContentScale.FillBounds)
         LogoA()
         Column(
             modifier = Modifier
@@ -251,7 +254,8 @@ fun RegisterPage(){
                     trailingIcon = {
                         IconButton(
                             modifier=Modifier,
-                            onClick = { /*TODO*/
+                            onClick = {
+                                navController.navigate(NavScreens.Login.route)
                                 passwordVisibilty.value= !passwordVisibilty.value
                             }) {
 
@@ -293,7 +297,7 @@ fun RegisterPage(){
                         }else if(Password.value.length < 5){
                             Toast.makeText(context, "Password should be at least 5 characters", Toast.LENGTH_LONG).show()
                         }else{
-                            Toast.makeText(context, "Welcome On Board!", Toast.LENGTH_LONG).show()
+                            navController.navigate(NavScreens.Login.route)
                         }
 
                     }) {
@@ -362,7 +366,7 @@ fun RegisterPage(){
                         contentColor = Color.Black),
 
                     onClick = {
-                        Toast.makeText(context, "Login Page", Toast.LENGTH_LONG).show()
+                        navController.navigate(NavScreens.Login.route)
                     }) {
                     Text(
                         text = buildAnnotatedString {
@@ -396,9 +400,9 @@ fun RegisterPage(){
 }
 
 //User Login Page
-@Preview
+
 @Composable
-fun LoginPage() {
+fun LoginPage(navController:NavController) {
     val context = LocalContext.current
 
     //User Email Address variable
@@ -412,7 +416,7 @@ fun LoginPage() {
     val confirmationOfPasswordVisibilty = rememberSaveable{ mutableStateOf(false) }
 
     Surface(modifier = Modifier.fillMaxSize()) {
-        Image(painter = painterResource(id = com.example.pixelraffle.R.drawable.mnbase_02), contentDescription = "",alpha = .25f,contentScale = ContentScale.FillBounds)
+      //  Image(painter = painterResource(id = com.example.pixelraffle.R.drawable.mnbase_02), contentDescription = "",alpha = .25f,contentScale = ContentScale.FillBounds)
         LogoA()
         Column(
             modifier = Modifier
@@ -547,7 +551,7 @@ fun LoginPage() {
                     }else if (Password.value.isNullOrEmpty()){
                         Toast.makeText(context, "Password cannot be blank", Toast.LENGTH_LONG).show()
                     }else{
-                        Toast.makeText(context, "Welcome on Board!", Toast.LENGTH_LONG).show()
+                       navController.navigate(NavScreens.MainMenu.route)
                     }
 
                 }) {
@@ -616,7 +620,7 @@ fun LoginPage() {
                         contentColor = Color.Black),
 
                     onClick = {
-                        Toast.makeText(context, "Register Page", Toast.LENGTH_LONG).show()
+                        navController.navigate(NavScreens.Register.route)
                     }) {
                     Text(
                         text = buildAnnotatedString {
@@ -646,11 +650,10 @@ fun LoginPage() {
     }
 }
 
-
 //User's Profile and Activities Page
 @Preview
 @Composable
-fun ProfilePageAndHistories(){
+fun UserProfilePage(){
     val context = LocalContext.current
     val notification = rememberSaveable{mutableStateOf("")}
     if(notification.value.isNotEmpty()){
@@ -703,6 +706,8 @@ fun ProfilePageAndHistories(){
         }
     }
 }
+
+//User Profile Image
 @Composable
 fun UserProfileImage() {
     val imageUri = rememberSaveable{ mutableStateOf("")}
@@ -714,14 +719,15 @@ fun UserProfileImage() {
     )
     val launcher = rememberLauncherForActivityResult(contract = ActivityResultContracts.GetContent()
     ) {
-        uri: Uri? ->
+            uri: Uri? ->
         uri?.let { imageUri.value = it.toString() }
+        Log.d("ImageURI", "${imageUri.value}")
     }
     Column(
         modifier = Modifier
             .padding(8.dp)
             .fillMaxWidth(),
-            horizontalAlignment = Alignment.CenterHorizontally
+        horizontalAlignment = Alignment.CenterHorizontally
     ){
         Card(shape = CircleShape,
             modifier = Modifier
@@ -738,8 +744,84 @@ fun UserProfileImage() {
                 contentScale = ContentScale.Crop
             )
         }
-        Text(text="Change Profile Picture")
+       // Text(text="Change Profile Picture")
     }
 }
+
+@Composable
+fun GetProfileImage(){
+
+    var firstName by rememberSaveable{ mutableStateOf("F_Name")}
+    var lastName by rememberSaveable{ mutableStateOf("L_Name")}
+
+    val imageUri = rememberSaveable{ mutableStateOf("")}
+    val painter = rememberAsyncImagePainter(
+        if(imageUri.value.isEmpty())
+            R.drawable.default_user_image
+        else
+            imageUri.value
+    )
+    val launcher = rememberLauncherForActivityResult(contract = ActivityResultContracts.GetContent()
+    ) {
+            uri: Uri? ->
+        uri?.let { imageUri.value = it.toString() }
+    }
+    Column(
+        modifier = Modifier
+            .padding(8.dp)
+            .fillMaxWidth(),
+        horizontalAlignment = Alignment.CenterHorizontally
+    ){
+        Card(shape = CircleShape,
+            modifier = Modifier
+                .padding(8.dp)
+                .size(100.dp)
+        ){
+            Image(
+                painter = painter,
+                contentDescription = null,
+                modifier = Modifier
+                    //.wrapContentSize()
+                    .size(100.dp),
+                    //.clickable { launcher.launch("image/*") },
+                contentScale = ContentScale.Crop
+            )
+        }
+        Text(text="$firstName  $lastName")
+        Spacer(modifier = Modifier.padding(5.dp))
+        Row(horizontalArrangement = Arrangement.Center,
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(start = 2.dp, top = 20.dp, end = 2.dp, bottom = 5.dp)
+        ){
+            Text(
+                text = buildAnnotatedString {
+                    append("YOUR ACTIVITY HISTORIES")
+                },
+                fontSize = 24.sp,fontWeight = FontWeight.Bold
+            )
+        }
+        Spacer(modifier = Modifier.padding(2.dp))
+
+    }
+}
+//User Activities History
+
+@Composable
+fun UserActivityHistories(navController:NavController){
+    Surface(modifier = Modifier.fillMaxSize()) {
+        Image(painter = painterResource(id = com.example.pixelraffle.R.drawable.mnbase_02), contentDescription = "",alpha = .25f,contentScale = ContentScale.FillBounds)
+
+        Column(modifier = Modifier
+            .verticalScroll(rememberScrollState())
+            .padding(8.dp)
+        ) {
+            GetProfileImage()
+        }
+    }
+}
+
+
+
 
 
