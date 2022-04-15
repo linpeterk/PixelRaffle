@@ -112,7 +112,8 @@ dependencies {
     androidTestImplementation "androidx.compose.ui:ui-test-junit4:$compose_version"
     debugImplementation "androidx.compose.ui:ui-tooling:$compose_version"
     //end carlos
-//>>>>>>> 34cee4107c9089c38343a55bb583c702e9dd4c81
+    //
+    // >>>>>>> 34cee4107c9089c38343a55bb583c702e9dd4c81
 
 
 }
