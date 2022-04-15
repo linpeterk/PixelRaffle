@@ -44,7 +44,7 @@ fun RollRoom(navController: NavController){
 
     Scaffold(modifier = Modifier.fillMaxSize()) {
 
-        Image(painter = painterResource(id = R.drawable.mnbase_02), contentDescription = "",alpha = .13f,contentScale = ContentScale.FillBounds)
+        //Image(painter = painterResource(id = R.drawable.mnbase_02), contentDescription = "",alpha = .13f,contentScale = ContentScale.FillBounds)
 
         Sparkles()
 
