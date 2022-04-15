@@ -1,12 +1,13 @@
 package com.example.pixelraffle.ui.screens.adama
 
+import android.net.Uri
 import android.provider.ContactsContract
 import android.widget.Toast
-import androidx.compose.foundation.Image
-import androidx.compose.foundation.background
-import androidx.compose.foundation.clickable
+import androidx.activity.compose.rememberLauncherForActivityResult
+import androidx.activity.result.contract.ActivityResultContract
+import androidx.activity.result.contract.ActivityResultContracts
+import androidx.compose.foundation.*
 import androidx.compose.foundation.layout.*
-import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material.*
 import androidx.compose.runtime.Composable
@@ -16,6 +17,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.painterResource
@@ -32,16 +34,22 @@ import androidx.compose.ui.unit.TextUnit
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
+import coil.compose.rememberAsyncImagePainter
+import coil.compose.rememberImagePainter
 import com.example.pixelraffle.viewmodel.UserViewModel
 import com.example.pixelraffle.R
 import com.example.pixelraffle.ui.components.LogoA
+import com.example.pixelraffle.ui.screens.peter.ProfileScreen
 import com.example.pixelraffle.ui.theme.PressStart
 import com.example.pixelraffle.ui.theme.graySurface
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.setValue
 
 
 //@Preview
 //New User Register Page//
 //fun RegisterPage(navController: NavController, userViewModel: UserViewModel)
+@Preview
 @Composable
 fun RegisterPage(){
     val context = LocalContext.current
@@ -70,6 +78,7 @@ fun RegisterPage(){
 
     val scrollState = rememberScrollState()
     Surface(modifier = Modifier.fillMaxSize()) {
+        Image(painter = painterResource(id = com.example.pixelraffle.R.drawable.mnbase_02), contentDescription = "",alpha = .25f,contentScale = ContentScale.FillBounds)
         LogoA()
         Column(
             modifier = Modifier
@@ -403,6 +412,7 @@ fun LoginPage() {
     val confirmationOfPasswordVisibilty = rememberSaveable{ mutableStateOf(false) }
 
     Surface(modifier = Modifier.fillMaxSize()) {
+        Image(painter = painterResource(id = com.example.pixelraffle.R.drawable.mnbase_02), contentDescription = "",alpha = .25f,contentScale = ContentScale.FillBounds)
         LogoA()
         Column(
             modifier = Modifier
@@ -636,8 +646,100 @@ fun LoginPage() {
     }
 }
 
-//User's old activities page
-@Composable
-fun UserActivityHistoryPage(){
 
+//User's Profile and Activities Page
+@Preview
+@Composable
+fun ProfilePageAndHistories(){
+    val context = LocalContext.current
+    val notification = rememberSaveable{mutableStateOf("")}
+    if(notification.value.isNotEmpty()){
+        Toast.makeText(context, notification.value, Toast.LENGTH_LONG).show()
+        notification.value = ""
+    }
+    var firstName by rememberSaveable{ mutableStateOf("Room Database")}
+    var lastName by rememberSaveable{ mutableStateOf("Room Database")}
+    var Email by rememberSaveable{ mutableStateOf("Room Database")}
+    var Password by rememberSaveable{ mutableStateOf("Room Database")}
+
+    Column(modifier = Modifier
+        .verticalScroll(rememberScrollState())
+        .padding(8.dp)
+    ) {
+        Row(modifier = Modifier
+            .fillMaxSize()
+            .padding(8.dp),
+            horizontalArrangement = Arrangement.SpaceBetween
+        ){
+            Text(text="Cancel",
+                modifier = Modifier.clickable { notification.value = "Cancelled" })
+            Text(text = "Save",
+                modifier = Modifier.clickable { notification.value = "Profile updated" })
+        }
+        UserProfileImage()
+        Spacer(modifier=Modifier.padding(5.dp))
+        Row(modifier = Modifier
+            .fillMaxWidth()
+            .padding(start = 4.dp, end = 4.dp),
+            verticalAlignment = Alignment.CenterVertically
+        ){
+            Text(text="First Name: ", modifier = Modifier.width(100.dp))
+            TextField(value = firstName, onValueChange = {firstName = it}, colors = TextFieldDefaults.textFieldColors(
+                backgroundColor = Color.Transparent,
+                textColor = Color.Black
+            ))
+        }
+        Spacer(modifier=Modifier.padding(5.dp))
+        Row(modifier = Modifier
+            .fillMaxWidth()
+            .padding(start = 4.dp, end = 4.dp),
+            verticalAlignment = Alignment.CenterVertically
+        ){
+            Text(text="Last Name: ", modifier = Modifier.width(100.dp))
+            TextField(value = lastName, onValueChange = {lastName = it}, colors = TextFieldDefaults.textFieldColors(
+                backgroundColor = Color.Transparent,
+                textColor = Color.Black
+            ))
+        }
+    }
 }
+@Composable
+fun UserProfileImage() {
+    val imageUri = rememberSaveable{ mutableStateOf("")}
+    val painter = rememberAsyncImagePainter(
+        if(imageUri.value.isEmpty())
+            R.drawable.default_user_image
+        else
+            imageUri.value
+    )
+    val launcher = rememberLauncherForActivityResult(contract = ActivityResultContracts.GetContent()
+    ) {
+        uri: Uri? ->
+        uri?.let { imageUri.value = it.toString() }
+    }
+    Column(
+        modifier = Modifier
+            .padding(8.dp)
+            .fillMaxWidth(),
+            horizontalAlignment = Alignment.CenterHorizontally
+    ){
+        Card(shape = CircleShape,
+            modifier = Modifier
+                .padding(8.dp)
+                .size(100.dp)
+        ){
+            Image(
+                painter = painter,
+                contentDescription = null,
+                modifier = Modifier
+                    //.wrapContentSize()
+                    .size(100.dp)
+                    .clickable { launcher.launch("image/*") },
+                contentScale = ContentScale.Crop
+            )
+        }
+        Text(text="Change Profile Picture")
+    }
+}
+
+
