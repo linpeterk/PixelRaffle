@@ -18,6 +18,7 @@ import androidx.lifecycle.ViewModelProvider
 //import androidx.navigation.NavController
 import com.example.pixelraffle.ui.navigation.NavScreens
 import com.example.pixelraffle.ui.screens.adama.RegisterPage
+import com.example.pixelraffle.ui.screens.lyle.RollRoom
 import com.example.pixelraffle.ui.screens.peter.DrawScreen
 
 import com.example.pixelraffle.ui.screens.peter.ProfileScreen
@@ -35,7 +36,8 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colors.background
                 ) {
-                    
+
+
                 }
             }
         }

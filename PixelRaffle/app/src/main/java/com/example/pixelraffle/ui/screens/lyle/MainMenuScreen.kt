@@ -4,6 +4,7 @@ import android.graphics.drawable.shapes.Shape
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material.*
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -38,13 +39,13 @@ fun MainMenuScreen(){
     Scaffold(modifier = Modifier.fillMaxSize()) {
 
         Surface(modifier = Modifier.fillMaxSize()) {
-            Image(painter = painterResource(id = R.drawable.mnbase_02), contentDescription = "",alpha = .18f,contentScale = ContentScale.FillBounds)
+            Image(painter = painterResource(id = R.drawable.mnbase_02), contentDescription = "",alpha = .13f,contentScale = ContentScale.FillBounds)
 
 
             Row(modifier = Modifier
                 .fillMaxWidth()
                 .offset(y = 80.dp),horizontalArrangement = Arrangement.Center) {
-                Text(text = "WELCOME:   .",textAlign = TextAlign.Center,fontFamily = PressStart,fontSize = 22.sp,fontWeight = FontWeight.Bold)
+                Text(text = "WELCOME:   .",textAlign = TextAlign.Center,fontFamily = FontFamily.Default,fontSize = 25.sp,fontWeight = FontWeight.Bold)
             }
             
             Row(modifier = Modifier
@@ -67,8 +68,8 @@ fun MainMenuScreen(){
                 .offset(y = 70.dp), verticalAlignment = Alignment.CenterVertically) {
                 Column(modifier = Modifier.fillMaxWidth(),horizontalAlignment = Alignment.CenterHorizontally) {
                     Text(text = "Create Raffles to help raise funds for your event.",
-                        modifier = Modifier.width(325.dp),textAlign = TextAlign.Center,fontFamily = PressStart/*FontFamily.Default*/,fontWeight = FontWeight.Bold,fontSize = 20.sp)
-                    Spacer(modifier = Modifier.height(135.dp))
+                        modifier = Modifier.width(325.dp),textAlign = TextAlign.Center,fontFamily = /*PressStart*/FontFamily.Default,fontWeight = FontWeight.Bold,fontSize = 20.sp)
+                    Spacer(modifier = Modifier.height(100.dp))
                     Text(text = "Pixel Raffle is not liable for loss due to miss allocation of prizes or disputes pertaining to such matters. Please play fairly.",
                         modifier = Modifier.width(300.dp),textAlign = TextAlign.Justify,fontFamily = FontFamily.Default,fontWeight = FontWeight.Light,fontSize = 12.sp)
                 }
@@ -85,31 +86,33 @@ fun MainMenuScreen(){
 
                 //Google icon
                 FloatingActionButton(onClick = { /*TODO*/ },
-                    shape = MaterialTheme.shapes.medium,
-                    backgroundColor = blue_4,modifier = Modifier.size(60.dp,60.dp)) {
+                    shape = CircleShape,
+                    backgroundColor = Color.White,
+                    modifier = Modifier.size(70.dp,70.dp)) {
 
-                    Image(painter = painterResource(id = R.drawable.facebook), contentDescription ="facebook",Modifier.scale(.8f) )
+                    Image(painter = painterResource(id = R.drawable.facebook), contentDescription ="facebook",Modifier.scale(.6f) )
 
 
                 }
 
                 //Twitter icon
                 FloatingActionButton(onClick = { /*TODO*/ },
-                    shape = MaterialTheme.shapes.medium,
-                    backgroundColor = blue_4,modifier = Modifier.size(60.dp,60.dp)) {
+                    shape = CircleShape,
+                    backgroundColor = Color.White,
+                    modifier = Modifier.size(70.dp,70.dp)) {
 
-                    Image(painter = painterResource(id = R.drawable.twitter), contentDescription ="twitter",Modifier.scale(.8f) )
+                    Image(painter = painterResource(id = R.drawable.twitter), contentDescription ="twitter",Modifier.scale(.6f) )
 
 
                 }
 
                 //
                 FloatingActionButton(onClick = { /*TODO*/ },
-                    shape = MaterialTheme.shapes.medium,
-                    backgroundColor = blue_4,
-                    modifier = Modifier.size(60.dp,60.dp),) {
+                    shape = CircleShape,
+                    backgroundColor = Color.White,
+                    modifier = Modifier.size(70.dp,70.dp),) {
 
-                    Image(painter = painterResource(id = R.drawable.instagram), contentDescription ="instagram",Modifier.scale(.8f) )
+                    Image(painter = painterResource(id = R.drawable.instagram), contentDescription ="instagram",Modifier.scale(.6f) )
 
                 }
 

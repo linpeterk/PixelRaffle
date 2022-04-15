@@ -1,9 +1,11 @@
 package com.example.pixelraffle.ui.screens.lyle
 
 import android.content.res.Configuration
+import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material.*
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -60,13 +62,14 @@ fun MainOverallScreen (/*navController: NavController*/){
 
             Button(onClick = { /*navController.navigate(DrawerScreens.MainUser.route)*/ },modifier= Modifier
                 .padding(4.dp)
-                .width(240.dp)/*.offset(x=-18.dp,y=-50.dp)*/) {
+                .width(260.dp), shape = CircleShape) {
                 Text(text = "Log In", modifier = Modifier.padding(2.dp),color= Color.White)
 
             }
             Button(onClick = { /*navController.navigate(DrawerScreens.MainLawyer.route)*/ },modifier= Modifier
                 .padding(4.dp)
-                .width(240.dp)/*.offset(x=-18.dp,y=-50.dp)*/) {
+                .width(260.dp),shape = CircleShape,/*border = BorderStroke(2.dp,color = Color.White)*/
+            ) {
                 Text(text = "Register", modifier = Modifier.padding(2.dp),color=Color.White)
 
             }

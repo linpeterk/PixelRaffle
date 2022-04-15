@@ -21,7 +21,7 @@ import com.example.pixelraffle.R
 
 //////////////////////////  ANIMATION ////////////////////////////////
 @Composable
-fun Loader(){
+fun Sparkles(){
 
     val compositionResult: LottieCompositionResult = rememberLottieComposition(
         spec = LottieCompositionSpec.RawRes(com.example.pixelraffle.R.raw.pixelburst))
@@ -42,9 +42,9 @@ fun RollRoom(){
 
     Surface(modifier = Modifier.fillMaxSize()) {
 
-        Image(painter = painterResource(id = R.drawable.mnbase_02), contentDescription = "",alpha = .15f,contentScale = ContentScale.FillBounds)
+        Image(painter = painterResource(id = R.drawable.mnbase_02), contentDescription = "",alpha = .13f,contentScale = ContentScale.FillBounds)
 
-        Loader()
+        Sparkles()
 
         Row(modifier = Modifier.fillMaxWidth(),horizontalArrangement = Arrangement.Center,verticalAlignment = Alignment.CenterVertically) {
 
