@@ -17,7 +17,6 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
@@ -275,12 +274,7 @@ fun RegisterPage(navController:NavController){
             ) {
                 Button( modifier= Modifier
                     .fillMaxWidth()
-                    .padding(start = 40.dp, top = 0.dp, end = 40.dp, bottom = 0.dp)
-                    .shadow(
-                        elevation = 10.dp,
-                        shape = CircleShape,
-                        clip = true
-                    ),
+                    .padding(start = 40.dp, top = 0.dp, end = 40.dp, bottom = 0.dp), shape = CircleShape,
                     colors = ButtonDefaults.buttonColors(
                         backgroundColor = Color.White,
                         contentColor = Color.Black),
@@ -355,12 +349,7 @@ fun RegisterPage(navController:NavController){
                 )
                 Button( modifier= Modifier
                     .fillMaxWidth()
-                    .padding(start = 10.dp, top = 0.dp, end = 40.dp, bottom = 0.dp)
-                    .shadow(
-                        elevation = 10.dp,
-                        shape = CircleShape,
-                        clip = true
-                    ),
+                    .padding(start = 10.dp, top = 0.dp, end = 40.dp, bottom = 0.dp),shape = CircleShape,
                     colors = ButtonDefaults.buttonColors(
                         backgroundColor = Color.White,
                         contentColor = Color.Black),
@@ -535,12 +524,7 @@ fun LoginPage(navController:NavController) {
             Spacer(modifier = Modifier.padding(10.dp))
             Button( modifier= Modifier
                 .fillMaxWidth()
-                .padding(start = 40.dp, top = 0.dp, end = 40.dp, bottom = 0.dp)
-                .shadow(
-                    elevation = 10.dp,
-                    shape = CircleShape,
-                    clip = true
-                ),
+                .padding(start = 40.dp, top = 0.dp, end = 40.dp, bottom = 0.dp), shape = CircleShape,
                 colors = ButtonDefaults.buttonColors(
                     backgroundColor = Color.White,
                     contentColor = Color.Black),
@@ -609,12 +593,7 @@ fun LoginPage(navController:NavController) {
                 )
                 Button( modifier= Modifier
                     .fillMaxWidth()
-                    .padding(start = 10.dp, top = 0.dp, end = 40.dp, bottom = 0.dp)
-                    .shadow(
-                        elevation = 10.dp,
-                        shape = CircleShape,
-                        clip = true
-                    ),
+                    .padding(start = 10.dp, top = 0.dp, end = 40.dp, bottom = 0.dp), shape = CircleShape,
                     colors = ButtonDefaults.buttonColors(
                         backgroundColor = Color.White,
                         contentColor = Color.Black),
