@@ -2,6 +2,7 @@ package com.example.pixelraffle.ui.screens.adama
 
 import android.net.Uri
 import android.provider.ContactsContract
+import android.util.Log
 import android.widget.Toast
 import androidx.activity.compose.rememberLauncherForActivityResult
 import androidx.activity.result.contract.ActivityResultContract
@@ -45,14 +46,15 @@ import com.example.pixelraffle.ui.theme.PressStart
 import com.example.pixelraffle.ui.theme.graySurface
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.setValue
+import com.example.pixelraffle.ui.navigation.NavScreens
 
 
 //@Preview
 //New User Register Page//
 //fun RegisterPage(navController: NavController, userViewModel: UserViewModel)
-@Preview
+
 @Composable
-fun RegisterPage(){
+fun RegisterPage(navController:NavController){
     val context = LocalContext.current
 
     //User First Name variable
@@ -79,7 +81,7 @@ fun RegisterPage(){
 
     val scrollState = rememberScrollState()
     Surface(modifier = Modifier.fillMaxSize()) {
-        Image(painter = painterResource(id = com.example.pixelraffle.R.drawable.mnbase_02), contentDescription = "",alpha = .25f,contentScale = ContentScale.FillBounds)
+       // Image(painter = painterResource(id = com.example.pixelraffle.R.drawable.mnbase_02), contentDescription = "",alpha = .25f,contentScale = ContentScale.FillBounds)
         LogoA()
         Column(
             modifier = Modifier
@@ -252,7 +254,8 @@ fun RegisterPage(){
                     trailingIcon = {
                         IconButton(
                             modifier=Modifier,
-                            onClick = { /*TODO*/
+                            onClick = {
+                                navController.navigate(NavScreens.Login.route)
                                 passwordVisibilty.value= !passwordVisibilty.value
                             }) {
 
@@ -294,7 +297,7 @@ fun RegisterPage(){
                         }else if(Password.value.length < 5){
                             Toast.makeText(context, "Password should be at least 5 characters", Toast.LENGTH_LONG).show()
                         }else{
-                            Toast.makeText(context, "Welcome On Board!", Toast.LENGTH_LONG).show()
+                            navController.navigate(NavScreens.Login.route)
                         }
 
                     }) {
@@ -363,7 +366,7 @@ fun RegisterPage(){
                         contentColor = Color.Black),
 
                     onClick = {
-                        Toast.makeText(context, "Login Page", Toast.LENGTH_LONG).show()
+                        navController.navigate(NavScreens.Login.route)
                     }) {
                     Text(
                         text = buildAnnotatedString {
@@ -397,9 +400,9 @@ fun RegisterPage(){
 }
 
 //User Login Page
-@Preview
+
 @Composable
-fun LoginPage() {
+fun LoginPage(navController:NavController) {
     val context = LocalContext.current
 
     //User Email Address variable
@@ -413,7 +416,7 @@ fun LoginPage() {
     val confirmationOfPasswordVisibilty = rememberSaveable{ mutableStateOf(false) }
 
     Surface(modifier = Modifier.fillMaxSize()) {
-        Image(painter = painterResource(id = com.example.pixelraffle.R.drawable.mnbase_02), contentDescription = "",alpha = .25f,contentScale = ContentScale.FillBounds)
+      //  Image(painter = painterResource(id = com.example.pixelraffle.R.drawable.mnbase_02), contentDescription = "",alpha = .25f,contentScale = ContentScale.FillBounds)
         LogoA()
         Column(
             modifier = Modifier
@@ -548,7 +551,7 @@ fun LoginPage() {
                     }else if (Password.value.isNullOrEmpty()){
                         Toast.makeText(context, "Password cannot be blank", Toast.LENGTH_LONG).show()
                     }else{
-                        Toast.makeText(context, "Welcome on Board!", Toast.LENGTH_LONG).show()
+                       navController.navigate(NavScreens.MainMenu.route)
                     }
 
                 }) {
@@ -617,7 +620,7 @@ fun LoginPage() {
                         contentColor = Color.Black),
 
                     onClick = {
-                        Toast.makeText(context, "Register Page", Toast.LENGTH_LONG).show()
+                        navController.navigate(NavScreens.Register.route)
                     }) {
                     Text(
                         text = buildAnnotatedString {
@@ -718,6 +721,7 @@ fun UserProfileImage() {
     ) {
             uri: Uri? ->
         uri?.let { imageUri.value = it.toString() }
+        Log.d("ImageURI", "${imageUri.value}")
     }
     Column(
         modifier = Modifier
@@ -740,7 +744,7 @@ fun UserProfileImage() {
                 contentScale = ContentScale.Crop
             )
         }
-        Text(text="Change Profile Picture")
+       // Text(text="Change Profile Picture")
     }
 }
 
@@ -802,9 +806,9 @@ fun GetProfileImage(){
     }
 }
 //User Activities History
-@Preview
+
 @Composable
-fun UserActivityHistories(){
+fun UserActivityHistories(navController:NavController){
     Surface(modifier = Modifier.fillMaxSize()) {
         Image(painter = painterResource(id = com.example.pixelraffle.R.drawable.mnbase_02), contentDescription = "",alpha = .25f,contentScale = ContentScale.FillBounds)
 

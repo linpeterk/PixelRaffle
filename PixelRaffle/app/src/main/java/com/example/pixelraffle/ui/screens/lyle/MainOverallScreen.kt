@@ -18,35 +18,37 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavController
 import com.example.pixelraffle.ui.components.Logo
 import com.example.pixelraffle.ui.components.LogoA
+import com.example.pixelraffle.ui.navigation.NavScreens
 import com.example.pixelraffle.ui.theme.PixelRaffleTheme
 import com.example.pixelraffle.ui.theme.PressStart
 import com.example.pixelraffle.ui.theme.blue_2
 
 
-@Preview
+//@Preview
+//@Composable
+//fun previewTest(){
+//    MainOverallScreen ()
+//}
+//@Preview
+//@Composable
+//fun darkpreviewTest(){
+//    PixelRaffleTheme(darkTheme = true) {
+//        MainOverallScreen ()
+//    }
+//
+//}
+
+
+
 @Composable
-fun previewTest(){
-    MainOverallScreen ()
-}
-@Preview
-@Composable
-fun darkpreviewTest(){
-    PixelRaffleTheme(darkTheme = true) {
-        MainOverallScreen ()
-    }
-
-}
-
-
-
-@Composable
-fun MainOverallScreen (/*navController: NavController*/){
+fun MainOverallScreen (navController: NavController){
 
     Surface(modifier = Modifier.fillMaxSize()/*,color= Color.White*/) {
 
-        Image(painter = painterResource(id = com.example.pixelraffle.R.drawable.mnbase_02), contentDescription = "",alpha = .25f,contentScale = ContentScale.FillBounds)
+      //  Image(painter = painterResource(id = com.example.pixelraffle.R.drawable.mnbase_02), contentDescription = "",alpha = .25f,contentScale = ContentScale.FillBounds)
 
 
         Logo()
@@ -60,13 +62,13 @@ fun MainOverallScreen (/*navController: NavController*/){
                 .padding(2.dp)
                 .width(220.dp),color= Color.Black,fontFamily = PressStart,fontSize = 18.sp )
 
-            Button(onClick = { /*navController.navigate(DrawerScreens.MainUser.route)*/ },modifier= Modifier
+            Button(onClick = {  navController.navigate(NavScreens.Login.route) },modifier= Modifier
                 .padding(4.dp)
                 .width(260.dp), shape = CircleShape) {
                 Text(text = "Log In", modifier = Modifier.padding(2.dp),color= Color.White)
 
             }
-            Button(onClick = { /*navController.navigate(DrawerScreens.MainLawyer.route)*/ },modifier= Modifier
+            Button(onClick = {  navController.navigate(NavScreens.Register.route) },modifier= Modifier
                 .padding(4.dp)
                 .width(260.dp),shape = CircleShape,/*border = BorderStroke(2.dp,color = Color.White)*/
             ) {

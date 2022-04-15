@@ -15,6 +15,7 @@ import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavController
 import com.airbnb.lottie.compose.*
 import com.example.pixelraffle.R
 
@@ -38,7 +39,7 @@ fun Sparkles(){
 
 
 @Composable
-fun RollRoom(){
+fun RollRoom(navController: NavController){
 
     Surface(modifier = Modifier.fillMaxSize()) {
 

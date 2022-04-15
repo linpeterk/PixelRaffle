@@ -19,27 +19,32 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavController
 import com.example.pixelraffle.R
+import com.example.pixelraffle.ui.navigation.BottomNavigationBar
+import com.example.pixelraffle.ui.navigation.NavScreens
 import com.example.pixelraffle.ui.theme.*
 
 
-@Preview
+//@Preview
+//@Composable
+//fun previewMainMenu(){
+//    PixelRaffleTheme() {
+//        MainMenuScreen()
+//    }
+//
+//}
+
+
 @Composable
-fun previewMainMenu(){
-    PixelRaffleTheme() {
-        MainMenuScreen()
-    }
+fun MainMenuScreen(navController: NavController){
 
-}
-
-
-@Composable
-fun MainMenuScreen(){
-
-    Scaffold(modifier = Modifier.fillMaxSize()) {
+    Scaffold(modifier = Modifier.fillMaxSize(),
+        bottomBar = {BottomNavigationBar(navController)}
+        ) {
 
         Surface(modifier = Modifier.fillMaxSize()) {
-            Image(painter = painterResource(id = R.drawable.mnbase_02), contentDescription = "",alpha = .13f,contentScale = ContentScale.FillBounds)
+          //  Image(painter = painterResource(id = R.drawable.mnbase_02), contentDescription = "",alpha = .13f,contentScale = ContentScale.FillBounds)
 
 
             Row(modifier = Modifier
@@ -52,12 +57,12 @@ fun MainMenuScreen(){
                 .fillMaxWidth()
                 .offset(y = -150.dp),verticalAlignment = Alignment.CenterVertically,horizontalArrangement = Arrangement.SpaceEvenly) {
                 
-                FloatingActionButton(onClick = { /*TODO*/ },Modifier.size(120.dp,120.dp),shape = MaterialTheme.shapes.medium,backgroundColor = MaterialTheme.colors.primary) {
+                FloatingActionButton(onClick = { navController.navigate(NavScreens.CreateRoom.route) },Modifier.size(120.dp,120.dp),shape = MaterialTheme.shapes.medium,backgroundColor = MaterialTheme.colors.primary) {
                     Text(text = "Create Room",color = Color.White)
                     
                 }
 
-                FloatingActionButton(onClick = { /*TODO*/ },Modifier.size(120.dp,120.dp),shape = MaterialTheme.shapes.medium,backgroundColor = MaterialTheme.colors.primary) {
+                FloatingActionButton(onClick = { navController.navigate(NavScreens.Room.route) },Modifier.size(120.dp,120.dp),shape = MaterialTheme.shapes.medium,backgroundColor = MaterialTheme.colors.primary) {
                     Text(text = "Join Room",color = Color.White)
                 }
                 
