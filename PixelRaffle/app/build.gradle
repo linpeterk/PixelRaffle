@@ -10,6 +10,7 @@ android {
 
     defaultConfig {
         applicationId "com.example.pixelraffle"
+        applicationId "com.smarttoolfactory.composedrawingapp"
         minSdk 26
         targetSdk 32
         versionCode 1
@@ -100,8 +101,18 @@ dependencies {
     implementation("androidx.room:room-paging:2.5.0-alpha01")
     // ROOM DATABASE ^^^^
 
+//<<<<<<< HEAD
     //For uploading user profile image
     implementation("io.coil-kt:coil-compose:2.0.0-rc03")
+//=======
+    //carlos
+    testImplementation 'junit:junit:4.13.2'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.3'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
+    androidTestImplementation "androidx.compose.ui:ui-test-junit4:$compose_version"
+    debugImplementation "androidx.compose.ui:ui-tooling:$compose_version"
+    //end carlos
+//>>>>>>> 34cee4107c9089c38343a55bb583c702e9dd4c81
 
 
 }
