@@ -17,6 +17,7 @@ import com.example.pixelraffle.ui.screens.lyle.MainOverallScreen
 import androidx.lifecycle.ViewModelProvider
 //import androidx.navigation.NavController
 import com.example.pixelraffle.ui.navigation.NavScreens
+import com.example.pixelraffle.ui.screens.adama.LoginPage
 import com.example.pixelraffle.ui.screens.adama.RegisterPage
 import com.example.pixelraffle.ui.screens.peter.DrawScreen
 
@@ -35,7 +36,8 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colors.background
                 ) {
-                    
+                    //MainOverallScreen()
+                    LoginPage()
                 }
             }
         }

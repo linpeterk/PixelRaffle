@@ -8,6 +8,7 @@ import androidx.activity.result.contract.ActivityResultContract
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.compose.foundation.*
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.lazy.GridCells
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material.*
 import androidx.compose.runtime.Composable
@@ -646,11 +647,10 @@ fun LoginPage() {
     }
 }
 
-
 //User's Profile and Activities Page
 @Preview
 @Composable
-fun ProfilePageAndHistories(){
+fun UserProfilePage(){
     val context = LocalContext.current
     val notification = rememberSaveable{mutableStateOf("")}
     if(notification.value.isNotEmpty()){
@@ -703,6 +703,8 @@ fun ProfilePageAndHistories(){
         }
     }
 }
+
+//User Profile Image
 @Composable
 fun UserProfileImage() {
     val imageUri = rememberSaveable{ mutableStateOf("")}
@@ -714,14 +716,14 @@ fun UserProfileImage() {
     )
     val launcher = rememberLauncherForActivityResult(contract = ActivityResultContracts.GetContent()
     ) {
-        uri: Uri? ->
+            uri: Uri? ->
         uri?.let { imageUri.value = it.toString() }
     }
     Column(
         modifier = Modifier
             .padding(8.dp)
             .fillMaxWidth(),
-            horizontalAlignment = Alignment.CenterHorizontally
+        horizontalAlignment = Alignment.CenterHorizontally
     ){
         Card(shape = CircleShape,
             modifier = Modifier
@@ -741,5 +743,81 @@ fun UserProfileImage() {
         Text(text="Change Profile Picture")
     }
 }
+
+@Composable
+fun GetProfileImage(){
+
+    var firstName by rememberSaveable{ mutableStateOf("F_Name")}
+    var lastName by rememberSaveable{ mutableStateOf("L_Name")}
+
+    val imageUri = rememberSaveable{ mutableStateOf("")}
+    val painter = rememberAsyncImagePainter(
+        if(imageUri.value.isEmpty())
+            R.drawable.default_user_image
+        else
+            imageUri.value
+    )
+    val launcher = rememberLauncherForActivityResult(contract = ActivityResultContracts.GetContent()
+    ) {
+            uri: Uri? ->
+        uri?.let { imageUri.value = it.toString() }
+    }
+    Column(
+        modifier = Modifier
+            .padding(8.dp)
+            .fillMaxWidth(),
+        horizontalAlignment = Alignment.CenterHorizontally
+    ){
+        Card(shape = CircleShape,
+            modifier = Modifier
+                .padding(8.dp)
+                .size(100.dp)
+        ){
+            Image(
+                painter = painter,
+                contentDescription = null,
+                modifier = Modifier
+                    //.wrapContentSize()
+                    .size(100.dp),
+                    //.clickable { launcher.launch("image/*") },
+                contentScale = ContentScale.Crop
+            )
+        }
+        Text(text="$firstName  $lastName")
+        Spacer(modifier = Modifier.padding(5.dp))
+        Row(horizontalArrangement = Arrangement.Center,
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(start = 2.dp, top = 20.dp, end = 2.dp, bottom = 5.dp)
+        ){
+            Text(
+                text = buildAnnotatedString {
+                    append("YOUR ACTIVITY HISTORIES")
+                },
+                fontSize = 24.sp,fontWeight = FontWeight.Bold
+            )
+        }
+        Spacer(modifier = Modifier.padding(2.dp))
+
+    }
+}
+//User Activities History
+@Preview
+@Composable
+fun UserActivityHistories(){
+    Surface(modifier = Modifier.fillMaxSize()) {
+        Image(painter = painterResource(id = com.example.pixelraffle.R.drawable.mnbase_02), contentDescription = "",alpha = .25f,contentScale = ContentScale.FillBounds)
+
+        Column(modifier = Modifier
+            .verticalScroll(rememberScrollState())
+            .padding(8.dp)
+        ) {
+            GetProfileImage()
+        }
+    }
+}
+
+
+
 
 
