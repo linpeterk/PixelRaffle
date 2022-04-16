@@ -10,6 +10,7 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.*
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.saveable.rememberSaveable
@@ -36,10 +37,13 @@ import com.example.pixelraffle.ui.screens.adama.RegisterPage
 
 import com.example.pixelraffle.ui.screens.lyle.RollRoom
 import com.example.pixelraffle.ui.screens.adama.UserProfileImage
+import com.example.pixelraffle.ui.screens.carlos.PhotoPickerIcon
+import com.example.pixelraffle.ui.screens.carlos.rememberSketchbookController
 
 
 import com.example.pixelraffle.ui.screens.peter.ProfileScreen
 import com.example.pixelraffle.ui.theme.PixelRaffleTheme
+import com.example.pixelraffle.ui.theme.streamAccent
 import com.example.pixelraffle.viewmodel.TheViewModel
 import com.example.pixelraffle.viewmodel.UserViewModel
 
@@ -116,6 +120,12 @@ fun Default(navController: NavController) {
 
 @Composable
 fun createRoom(navController: NavController) {
+    val sketchbookController = rememberSketchbookController()
+
+    LaunchedEffect(Unit) {
+        sketchbookController.setPaintStrokeWidth(23f)
+        sketchbookController.setPaintColor(streamAccent)
+    }
     Scaffold(
 
         topBar = {
@@ -125,6 +135,7 @@ fun createRoom(navController: NavController) {
                 contentColor = MaterialTheme.colors.onSurface,
                 title = {
                     Text("Pixel Raffle")
+                    PhotoPickerIcon(controller = sketchbookController)
                     Button(onClick = {
                         navController.navigate(NavScreens.Room.route)
 
