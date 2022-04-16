@@ -129,7 +129,7 @@ fun MainMenuScreen(navController: NavController){
                 FloatingActionButton(onClick = { /*TODO*/ },
                     shape = CircleShape,
                     backgroundColor = Color.White,
-                    modifier = Modifier.size(70.dp,70.dp)) {
+                    modifier = Modifier.size(70.dp,70.dp).border(2.dp,color = MaterialTheme.colors.primary,shape = CircleShape)) {
 
                     Image(painter = painterResource(id = R.drawable.facebook), contentDescription ="facebook",Modifier.scale(.6f) )
 
@@ -140,7 +140,7 @@ fun MainMenuScreen(navController: NavController){
                 FloatingActionButton(onClick = { /*TODO*/ },
                     shape = CircleShape,
                     backgroundColor = Color.White,
-                    modifier = Modifier.size(70.dp,70.dp)) {
+                    modifier = Modifier.size(70.dp,70.dp).border(2.dp,color = MaterialTheme.colors.primary,shape = CircleShape)) {
 
                     Image(painter = painterResource(id = R.drawable.twitter), contentDescription ="twitter",Modifier.scale(.6f) )
 
@@ -151,7 +151,7 @@ fun MainMenuScreen(navController: NavController){
                 FloatingActionButton(onClick = { /*TODO*/ },
                     shape = CircleShape,
                     backgroundColor = Color.White,
-                    modifier = Modifier.size(70.dp,70.dp),) {
+                    modifier = Modifier.size(70.dp,70.dp).border(2.dp,color = MaterialTheme.colors.primary,shape = CircleShape)) {
 
                     Image(painter = painterResource(id = R.drawable.instagram), contentDescription ="instagram",Modifier.scale(.6f) )
 
