@@ -53,12 +53,39 @@ fun MainMenuScreen(navController: NavController){
                 Text(text = "WELCOME:   .",textAlign = TextAlign.Center,fontFamily = FontFamily.Default,fontSize = 25.sp,fontWeight = FontWeight.Bold)
             }
 
-            Column(modifier=Modifier.fillMaxWidth().offset(y=200.dp)/*,verticalArrangement = Arrangement.SpaceEvenly*/) {
 
+            Column(modifier=Modifier.fillMaxWidth().offset(y=200.dp)/*,verticalArrangement = Arrangement.SpaceEvenly*/) {
 
                 Row(modifier = Modifier
                     .fillMaxWidth()
                     .offset(y = 10.dp),verticalAlignment = Alignment.CenterVertically,horizontalArrangement = Arrangement.SpaceEvenly) {
+                    OutlinedTextField(value = RoomID.value, onValueChange = {RoomID.value=it},
+                        label = {Text(text = buildAnnotatedString {
+                            append("Room ID")
+                            addStyle(style = SpanStyle(color = Color.Red,), start = 0, end = 6)
+                            addStyle(style = SpanStyle(color = Color.Black,), start = 6, end = 13) },
+                            fontSize = 13.sp,)},
+                        singleLine = true,
+                        modifier = Modifier.fillMaxWidth(0.9f))
+                }
+
+                Row(modifier = Modifier
+                    .fillMaxWidth()
+                    .offset(y = 10.dp),verticalAlignment = Alignment.CenterVertically,horizontalArrangement = Arrangement.SpaceEvenly) {
+
+                    Button(onClick = {  navController.navigate(NavScreens.Room.route) },modifier= Modifier
+                        .padding(4.dp)
+                        .width(350.dp),shape = CircleShape,/*border = BorderStroke(2.dp,color = Color.White)*/
+                    ) {
+                        Text(text = "Join Room", modifier = Modifier.padding(2.dp),color=Color.White)
+                    }
+
+                }
+
+
+                Row(modifier = Modifier
+                    .fillMaxWidth()
+                    .offset(y = 30.dp),verticalAlignment = Alignment.CenterVertically,horizontalArrangement = Arrangement.SpaceEvenly) {
 
                     Button(
                         onClick = { navController.navigate(NavScreens.CreateRoom.route) },
@@ -68,55 +95,7 @@ fun MainMenuScreen(navController: NavController){
                         shape = CircleShape,/*border = BorderStroke(2.dp,color = Color.White)*/
                     ) {
                         Text(text = "Create Room", modifier = Modifier.padding(2.dp), color = Color.White)
-
                     }
-                }
-                //Spacer(modifier = Modifier.height(50.dp))
-
-                Row(modifier = Modifier
-                    .fillMaxWidth()
-                    .offset(y = 30.dp),verticalAlignment = Alignment.CenterVertically,horizontalArrangement = Arrangement.SpaceEvenly) {
-
-                    OutlinedTextField(value = RoomID.value, onValueChange = {RoomID.value=it},
-                        label = {Text(text = buildAnnotatedString {
-                            append("Room ID")
-                            addStyle(
-                                style = SpanStyle(
-                                    color = Color.Red,
-                                ),
-                                start = 0,
-                                end = 6
-                            )
-                            addStyle(
-                                style = SpanStyle(
-                                    color = Color.Black,
-                                ),
-                                start = 6,
-                                end = 13
-                            )
-                        },
-                            fontSize = 13.sp,
-                        )},
-
-                        singleLine = true,
-                        modifier = Modifier.fillMaxWidth(0.9f)
-                    )
-
-                }
-                //Spacer(modifier = Modifier.height(300.dp))
-
-                Row(modifier = Modifier
-                    .fillMaxWidth()
-                    .offset(y = 40.dp),verticalAlignment = Alignment.CenterVertically,horizontalArrangement = Arrangement.SpaceEvenly) {
-
-                    Button(onClick = {  navController.navigate(NavScreens.Room.route) },modifier= Modifier
-                        .padding(4.dp)
-                        .width(350.dp),shape = CircleShape,/*border = BorderStroke(2.dp,color = Color.White)*/
-                    ) {
-                        Text(text = "Join Room", modifier = Modifier.padding(2.dp),color=Color.White)
-
-                    }
-
                 }
 
             }
@@ -131,7 +110,7 @@ fun MainMenuScreen(navController: NavController){
                 Column(modifier = Modifier.fillMaxWidth(),horizontalAlignment = Alignment.CenterHorizontally) {
 //                    Text(text = "Create Raffles to help raise funds for your event.",
 //                        modifier = Modifier.width(325.dp),textAlign = TextAlign.Center,fontFamily = /*PressStart*/FontFamily.Default,fontWeight = FontWeight.Bold,fontSize = 20.sp)
-                    Spacer(modifier = Modifier.height(100.dp))
+                    //Spacer(modifier = Modifier.height(100.dp))
                     Text(text = "Pixel Raffle is not liable for loss due to miss allocation of prizes or disputes pertaining to such matters. Please play fairly.",
                         modifier = Modifier.width(300.dp),textAlign = TextAlign.Justify,fontFamily = FontFamily.Default,fontWeight = FontWeight.Light,fontSize = 12.sp)
                 }
