@@ -51,8 +51,8 @@ class MainActivity : ComponentActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        val theViewModel= ViewModelProvider(this).get(TheViewModel::class.java) // viewmodel
-        
+        val theViewModel = ViewModelProvider(this).get(TheViewModel::class.java) // viewmodel
+
         setContent {
             val navController = rememberNavController()
             PixelRaffleTheme {
@@ -61,7 +61,7 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colors.background
                 ) {
-                Navigation(navController = navController)
+                    Navigation(navController = navController)
 
                 }
             }
@@ -100,16 +100,17 @@ fun Default(navController: NavController) {
     Scaffold(
 
         modifier = Modifier,
-        bottomBar = {if(bottomBarState.value) {
-            BottomNavigationBar(navController)
-        }else{
+        bottomBar = {
+            if (bottomBarState.value) {
+                BottomNavigationBar(navController)
+            } else {
 
-        }
+            }
 
         }
     ) {
 
-        Box(modifier = Modifier.padding(bottom=56.dp)) {
+        Box(modifier = Modifier.padding(bottom = 56.dp)) {
             Navigation(navController = navController)
         }
 
@@ -120,6 +121,7 @@ fun Default(navController: NavController) {
 
 @Composable
 fun createRoom(navController: NavController) {
+
     val sketchbookController = rememberSketchbookController()
 
     LaunchedEffect(Unit) {
@@ -139,7 +141,7 @@ fun createRoom(navController: NavController) {
                     Button(onClick = {
                         navController.navigate(NavScreens.Room.route)
 
-                    }){
+                    }) {
                         Text("Temp navigate to Room")
 
                     }

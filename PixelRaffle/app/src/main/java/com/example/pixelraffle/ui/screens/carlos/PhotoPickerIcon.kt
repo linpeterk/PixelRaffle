@@ -1,5 +1,3 @@
-
-
 package com.example.pixelraffle.ui.screens.carlos
 
 import android.annotation.SuppressLint
