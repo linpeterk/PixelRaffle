@@ -49,7 +49,7 @@ fun RollRoom(navController: NavController){
         Sparkles()
 
         Row(modifier = Modifier.fillMaxWidth(),horizontalArrangement = Arrangement.Center,verticalAlignment = Alignment.CenterVertically) {
-
+            Sparkles()
             Text(text = "CONGRATULATIONS:    !",fontWeight = FontWeight.Bold,fontSize = 20.sp)
 
         }
