@@ -55,7 +55,7 @@ fun MainOverallScreen (navController: NavController){
 
         Column(modifier = Modifier
             .fillMaxSize()
-            .offset(y = 90.dp)/*.border(2.dp,color= Color.Red)*/
+            .offset(y = 200.dp)/*.border(2.dp,color= Color.Red)*/
             .padding(4.dp),verticalArrangement = Arrangement.Center,horizontalAlignment = Alignment.CenterHorizontally) {
 
             Text(text = "ADDING THAT LITTLE EXTRA TO YOUR EVENT!",textAlign = TextAlign.Center, modifier = Modifier
@@ -64,13 +64,13 @@ fun MainOverallScreen (navController: NavController){
 
             Button(onClick = {  navController.navigate(NavScreens.Login.route) },modifier= Modifier
                 .padding(4.dp)
-                .width(260.dp), shape = CircleShape) {
+                .width(300.dp), shape = CircleShape) {
                 Text(text = "Log In", modifier = Modifier.padding(2.dp),color= Color.White)
 
             }
             Button(onClick = {  navController.navigate(NavScreens.Register.route) },modifier= Modifier
                 .padding(4.dp)
-                .width(260.dp),shape = CircleShape,/*border = BorderStroke(2.dp,color = Color.White)*/
+                .width(300.dp),shape = CircleShape,/*border = BorderStroke(2.dp,color = Color.White)*/
             ) {
                 Text(text = "Register", modifier = Modifier.padding(2.dp),color=Color.White)
 

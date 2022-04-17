@@ -1,10 +1,7 @@
 package com.example.pixelraffle.ui.screens.lyle
 
 import androidx.compose.foundation.Image
-import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.*
 import androidx.compose.material.Scaffold
 import androidx.compose.material.Surface
 import androidx.compose.material.Text
@@ -38,24 +35,69 @@ fun Sparkles(){
 
 }
 
+//////////////////////////  ANIMATION ////////////////////////////////
+@Composable
+fun SparklesA(){
+
+    val compositionResult: LottieCompositionResult = rememberLottieComposition(
+        spec = LottieCompositionSpec.RawRes(com.example.pixelraffle.R.raw.pixelburst))
+
+    val progress by animateLottieCompositionAsState(
+        compositionResult.value,
+        isPlaying = true,
+        iterations = LottieConstants.IterateForever,
+        speed = .2f)
+
+    LottieAnimation(compositionResult.value, progress)
+
+}
+
 
 @Composable
 fun RollRoom(navController: NavController){
 
     Scaffold(modifier = Modifier.fillMaxSize()) {
 
-        Image(painter = painterResource(id = R.drawable.mnbase_02), contentDescription = "",alpha = .13f,contentScale = ContentScale.FillBounds)
+        SparklesA()
 
-        Sparkles()
-
-        Row(modifier = Modifier.fillMaxWidth(),horizontalArrangement = Arrangement.Center,verticalAlignment = Alignment.CenterVertically) {
+        Row(
+            modifier = Modifier.fillMaxWidth(),
+            horizontalArrangement = Arrangement.Center,
+            verticalAlignment = Alignment.CenterVertically
+        ) {
             Sparkles()
-            Text(text = "CONGRATULATIONS:    !",fontWeight = FontWeight.Bold,fontSize = 20.sp)
+
+            Column(
+                modifier = Modifier.fillMaxSize(),
+                verticalArrangement = Arrangement.Center,
+                horizontalAlignment = Alignment.CenterHorizontally
+            ) {
+                Sparkles()
+            }
+
+            Row(
+                modifier = Modifier.fillMaxSize(),
+                horizontalArrangement = Arrangement.Center,
+                verticalAlignment = Alignment.CenterVertically
+            ) {
+
+                Text(text = "CONGRATULATIONS:    !", fontWeight = FontWeight.Bold, fontSize = 20.sp)
+            }
+
+            Column(
+                modifier = Modifier.fillMaxSize(),
+                verticalArrangement = Arrangement.Bottom,
+                horizontalAlignment = Alignment.End
+            ) {
+                SparklesA()
+            }
+
+
+            //Image(painter = painterResource(id = R.drawable.mnbase_02), contentDescription = "",alpha = .13f,contentScale = ContentScale.FillBounds)
+
 
         }
 
     }
-
-
 
 }
