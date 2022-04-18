@@ -46,6 +46,23 @@ fun SparklesA(){
         compositionResult.value,
         isPlaying = true,
         iterations = LottieConstants.IterateForever,
+        speed = .35f)
+
+    LottieAnimation(compositionResult.value, progress)
+
+}
+
+//////////////////////////  ANIMATION ////////////////////////////////
+@Composable
+fun SparklesB(){
+
+    val compositionResult: LottieCompositionResult = rememberLottieComposition(
+        spec = LottieCompositionSpec.RawRes(com.example.pixelraffle.R.raw.pixelburst))
+
+    val progress by animateLottieCompositionAsState(
+        compositionResult.value,
+        isPlaying = true,
+        iterations = LottieConstants.IterateForever,
         speed = .2f)
 
     LottieAnimation(compositionResult.value, progress)
@@ -69,7 +86,7 @@ fun RollRoom(navController: NavController){
         }
 
         Column(modifier = Modifier.fillMaxSize(),verticalArrangement = Arrangement.Bottom,horizontalAlignment = Alignment.End) {
-            SparklesA()
+            SparklesB()
         }
 
 
