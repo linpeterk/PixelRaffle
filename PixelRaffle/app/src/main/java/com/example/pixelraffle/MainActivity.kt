@@ -43,12 +43,22 @@ import com.example.pixelraffle.ui.theme.PixelRaffleTheme
 import com.example.pixelraffle.viewmodel.TheViewModel
 import com.example.pixelraffle.viewmodel.UserViewModel
 
+
+
 class MainActivity : ComponentActivity() {
+
+    private lateinit var theViewModel: TheViewModel
+    private lateinit var userViewModel: UserViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        val theViewModel= ViewModelProvider(this).get(TheViewModel::class.java) // viewmodel
+
         
+
+        theViewModel = ViewModelProvider(this).get(TheViewModel::class.java) // General viewmodel
+        userViewModel = ViewModelProvider(this).get(UserViewModel::class.java) // Userviewmodel
+
+
         setContent {
             val navController = rememberNavController()
             PixelRaffleTheme {
@@ -57,6 +67,7 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colors.background
                 ) {
+
                 Navigation(navController = navController)
 
                 }
@@ -105,7 +116,8 @@ fun Default(navController: NavController) {
         }
     ) {
 
-        Box(modifier = Modifier.padding(bottom=56.dp)) {
+        Box(modifier = Modifier.padding(bottom = 56.dp)) {
+
             Navigation(navController = navController)
         }
 
