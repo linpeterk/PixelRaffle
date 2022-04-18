@@ -7,6 +7,7 @@ import androidx.activity.compose.rememberLauncherForActivityResult
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.compose.foundation.*
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material.*
 import androidx.compose.runtime.Composable
@@ -773,6 +774,36 @@ fun UserActivityHistories(navController:NavController){
             .padding(8.dp)
         ) {
             GetProfileImage()
+        }
+    }
+}
+@Preview
+@Composable
+fun UserHistorySearch(){
+    Scaffold(
+        topBar = {
+            TopAppBar(backgroundColor = MaterialTheme.colors.background,
+            title ={
+                Text(text = "UER HISTORIES")
+            }
+                )
+        },
+        bottomBar = {
+
+        }
+
+    ) {
+        LazyColumn(modifier = Modifier
+            .fillMaxWidth()
+            .fillMaxHeight(.95f),
+            contentPadding = PaddingValues(horizontal = 12.dp, vertical = 8.dp)
+        ){
+            item {
+                Row() {
+                    Column(){
+                    }
+                }
+            }
         }
     }
 }
