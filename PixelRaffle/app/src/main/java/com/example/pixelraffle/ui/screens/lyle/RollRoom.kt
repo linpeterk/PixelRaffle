@@ -46,6 +46,23 @@ fun SparklesA(){
         compositionResult.value,
         isPlaying = true,
         iterations = LottieConstants.IterateForever,
+        speed = .35f)
+
+    LottieAnimation(compositionResult.value, progress)
+
+}
+
+//////////////////////////  ANIMATION ////////////////////////////////
+@Composable
+fun SparklesB(){
+
+    val compositionResult: LottieCompositionResult = rememberLottieComposition(
+        spec = LottieCompositionSpec.RawRes(com.example.pixelraffle.R.raw.pixelburst))
+
+    val progress by animateLottieCompositionAsState(
+        compositionResult.value,
+        isPlaying = true,
+        iterations = LottieConstants.IterateForever,
         speed = .2f)
 
     LottieAnimation(compositionResult.value, progress)
@@ -60,44 +77,25 @@ fun RollRoom(navController: NavController){
 
         SparklesA()
 
-        Row(
-            modifier = Modifier.fillMaxWidth(),
-            horizontalArrangement = Arrangement.Center,
-            verticalAlignment = Alignment.CenterVertically
-        ) {
+        Column(modifier = Modifier.fillMaxSize(),verticalArrangement = Arrangement.Center,horizontalAlignment = Alignment.CenterHorizontally) {
             Sparkles()
-
-            Column(
-                modifier = Modifier.fillMaxSize(),
-                verticalArrangement = Arrangement.Center,
-                horizontalAlignment = Alignment.CenterHorizontally
-            ) {
-                Sparkles()
-            }
-
-            Row(
-                modifier = Modifier.fillMaxSize(),
-                horizontalArrangement = Arrangement.Center,
-                verticalAlignment = Alignment.CenterVertically
-            ) {
-
-                Text(text = "CONGRATULATIONS:    !", fontWeight = FontWeight.Bold, fontSize = 20.sp)
-            }
-
-            Column(
-                modifier = Modifier.fillMaxSize(),
-                verticalArrangement = Arrangement.Bottom,
-                horizontalAlignment = Alignment.End
-            ) {
-                SparklesA()
-            }
-
-
-            //Image(painter = painterResource(id = R.drawable.mnbase_02), contentDescription = "",alpha = .13f,contentScale = ContentScale.FillBounds)
-
-
         }
 
+        Row(modifier = Modifier.fillMaxSize(),horizontalArrangement = Arrangement.Center,verticalAlignment = Alignment.CenterVertically) {
+            Text(text = "CONGRATULATIONS:    !",fontWeight = FontWeight.Bold,fontSize = 20.sp)
+        }
+
+
+        Column(modifier = Modifier.fillMaxSize(),verticalArrangement = Arrangement.Bottom,horizontalAlignment = Alignment.End) {
+            SparklesB()
+        }
+
+
+        //Image(painter = painterResource(id = R.drawable.mnbase_02), contentDescription = "",alpha = .13f,contentScale = ContentScale.FillBounds)
+
+
     }
+
+
 
 }

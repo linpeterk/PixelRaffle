@@ -520,10 +520,7 @@ fun LoginPage(navController:NavController) {
             Spacer(modifier = Modifier.padding(10.dp))
             Button( modifier= Modifier
                 .fillMaxWidth()
-
                 .padding(start = 40.dp, top = 0.dp, end = 40.dp, bottom = 0.dp), shape = CircleShape,
-
-
 
                 onClick = {
                     if(email.value.isNullOrEmpty()){
