@@ -9,7 +9,7 @@ android {
     compileSdk 32
 
     defaultConfig {
-        applicationId "com.example.pixelraffle"
+        applicationId "com.revature.pixelraffle"
         applicationId "com.smarttoolfactory.composedrawingapp"
         minSdk 26
         targetSdk 32
