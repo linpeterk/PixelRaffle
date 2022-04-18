@@ -85,6 +85,7 @@ fun RollRoom(navController: NavController){
             Text(text = "CONGRATULATIONS:    !",fontWeight = FontWeight.Bold,fontSize = 20.sp)
         }
 
+
         Column(modifier = Modifier.fillMaxSize(),verticalArrangement = Arrangement.Bottom,horizontalAlignment = Alignment.End) {
             SparklesB()
         }
