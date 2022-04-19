@@ -1,4 +1,4 @@
-package com.revature.pixelraffle.ui.screens.adama.ui
+package com.revature.pixelraffle.ui.screens.adama
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity
