@@ -20,6 +20,7 @@ import androidx.compose.ui.input.pointer.consumeDownChange
 import androidx.compose.ui.input.pointer.consumePositionChange
 import androidx.compose.ui.input.pointer.positionChange
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.res.imageResource
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import com.revature.pixelraffle.R
@@ -97,7 +98,7 @@ fun DrawingApp(paddingValues: PaddingValues) {
 
     Column(
         modifier = Modifier
-            .size(200.dp)
+            .fillMaxSize()
             .background(backgroundColor)
     ) {
 
@@ -107,6 +108,7 @@ fun DrawingApp(paddingValues: PaddingValues) {
             .fillMaxWidth()
             .weight(1f)
             .background(Color.White)
+
 
 //            .background(getRandomColor())
             .dragMotionEvent(
@@ -138,19 +140,14 @@ fun DrawingApp(paddingValues: PaddingValues) {
                 }
             )
 
+        val imageBitmap: ImageBitmap = ImageBitmap.imageResource(R.drawable.facebook)
+
         Canvas(modifier = drawModifier) {
 
-//            drawImage(
-//                image = ImageBitmap,
-//                dstSize = IntSize(
-//                    width = size.toIntPx(),
-//                    height = size.toIntPx()
-//                ),
-//                colorFilter = ColorFilter.tint(
-//                    color = defaultColor
-//                ),
-//                blendMode = BlendMode.Src
-//            )
+            drawImage(
+                image = imageBitmap
+
+            )
 
             when (motionEvent) {
 
