@@ -24,6 +24,7 @@ import com.revature.pixelraffle.ui.navigation.BottomNavigationBar
 //import androidx.navigation.NavController
 import com.revature.pixelraffle.ui.navigation.NavScreens
 import com.revature.pixelraffle.ui.navigation.Navigation
+import com.revature.pixelraffle.ui.screens.adama.UserProfileImage
 
 
 import com.revature.pixelraffle.ui.theme.PixelRaffleTheme
@@ -131,6 +132,9 @@ fun createRoom(navController: NavController) {
                         Text("Temp navigate to Room")
 
                     }
+
+                    UserProfileImage()
+
                 },
 
                 actions = {}
