@@ -2,6 +2,7 @@ package com.revature.pixelraffle.ui.screens.adama
 
 import android.content.res.Configuration.UI_MODE_NIGHT_NO
 import android.content.res.Configuration.UI_MODE_NIGHT_YES
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
@@ -10,10 +11,13 @@ import androidx.compose.material.SnackbarDefaults.backgroundColor
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.listviewcustomizedv1.ui.theme.raffles
+import com.revature.pixelraffle.R
 import com.revature.pixelraffle.database.datamodel.Raffle
 import com.revature.pixelraffle.database.datamodel.RaffleCard
 import com.revature.pixelraffle.ui.theme.PixelRaffleTheme
@@ -44,7 +48,6 @@ fun defaultPreview()
 @Composable
 fun RaffleHistories(raffleList:List<Raffle>)
 {
-
     Surface(modifier = Modifier.fillMaxSize()) {
         Scaffold(
 

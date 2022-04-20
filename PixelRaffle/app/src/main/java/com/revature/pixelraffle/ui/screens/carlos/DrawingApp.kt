@@ -3,12 +3,14 @@ package com.revature.p3test.ui
 import android.graphics.Paint
 import android.widget.Toast
 import androidx.compose.foundation.Canvas
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.SnackbarDefaults.backgroundColor
 import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.drawBehind
 import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.graphics.*
@@ -18,7 +20,11 @@ import androidx.compose.ui.input.pointer.consumeDownChange
 import androidx.compose.ui.input.pointer.consumePositionChange
 import androidx.compose.ui.input.pointer.positionChange
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.res.imageResource
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
+import com.revature.pixelraffle.R
+import com.revature.pixelraffle.ui.screens.adama.UserProfileImage
 //import com.example.p3test.DrawMode
 import com.revature.pixelraffle.ui.screens.carlos.DrawMode
 import com.smarttoolfactory.composedrawingapp.gesture.MotionEvent
@@ -102,6 +108,8 @@ fun DrawingApp(paddingValues: PaddingValues) {
             .fillMaxWidth()
             .weight(1f)
             .background(Color.White)
+
+
 //            .background(getRandomColor())
             .dragMotionEvent(
                 onDragStart = { pointerInputChange ->
@@ -132,7 +140,14 @@ fun DrawingApp(paddingValues: PaddingValues) {
                 }
             )
 
+        val imageBitmap: ImageBitmap = ImageBitmap.imageResource(R.drawable.facebook)
+
         Canvas(modifier = drawModifier) {
+
+            drawImage(
+                image = imageBitmap
+
+            )
 
             when (motionEvent) {
 
