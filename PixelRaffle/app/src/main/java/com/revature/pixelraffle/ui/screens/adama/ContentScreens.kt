@@ -777,36 +777,6 @@ fun UserActivityHistories(navController:NavController){
         }
     }
 }
-@Preview
-@Composable
-fun UserHistorySearch(){
-    Scaffold(
-        topBar = {
-            TopAppBar(backgroundColor = MaterialTheme.colors.background,
-            title ={
-                Text(text = "UER HISTORIES")
-            }
-                )
-        },
-        bottomBar = {
-
-        }
-
-    ) {
-        LazyColumn(modifier = Modifier
-            .fillMaxWidth()
-            .fillMaxHeight(.95f),
-            contentPadding = PaddingValues(horizontal = 12.dp, vertical = 8.dp)
-        ){
-            item {
-                Row() {
-                    Column(){
-                    }
-                }
-            }
-        }
-    }
-}
 
 
 

@@ -1,4 +1,4 @@
 <resources>
     <string name="app_name">PixelRaffle</string>
-    <string name="title_activity_user_histories">UserActivityHistories</string>
+    <string name="title_activity_user_histories">User Activity Histories</string>
 </resources>

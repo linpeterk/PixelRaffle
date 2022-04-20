@@ -19,12 +19,13 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.NavController
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
+import com.example.listviewcustomizedv1.ui.theme.raffles
 import com.revature.p3test.ui.DrawingApp
 import com.revature.pixelraffle.ui.navigation.BottomNavigationBar
 //import androidx.navigation.NavController
 import com.revature.pixelraffle.ui.navigation.NavScreens
 import com.revature.pixelraffle.ui.navigation.Navigation
-
+import com.revature.pixelraffle.ui.screens.adama.RaffleHistories
 
 import com.revature.pixelraffle.ui.theme.PixelRaffleTheme
 import com.revature.pixelraffle.viewmodel.TheViewModel
@@ -55,8 +56,8 @@ class MainActivity : ComponentActivity() {
                     color = MaterialTheme.colors.background
                 ) {
 
-                Navigation(navController = navController)
-
+                //Navigation(navController = navController)
+                   RaffleHistories(raffles)
                 }
             }
         }
