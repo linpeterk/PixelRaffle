@@ -8,7 +8,7 @@ sealed class NavScreens(var route: String, var icon: Int, var title: String){
     object Register : NavScreens("Register", R.drawable.ic_launcher_background, "Register")
     object Login : NavScreens("Login", R.drawable.ic_launcher_background, "Login")
     //object UserProfilePage : NavScreens("UserProfilePage", R.drawable.ic_launcher_background, "UserProfilePage")
-    object UserActivityHistories : NavScreens("UserActivityHistories", R.drawable.ic_launcher_background, "History")
+    object RaffleHistories : NavScreens("RaffleHistories", R.drawable.ic_launcher_background, "History")
 
     //lyles
     object MainMenu :  NavScreens("MainMenu", R.drawable.ic_launcher_background, "Home")

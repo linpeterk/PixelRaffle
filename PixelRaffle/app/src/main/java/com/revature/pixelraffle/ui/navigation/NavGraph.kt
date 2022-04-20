@@ -4,8 +4,10 @@ import androidx.compose.runtime.Composable
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
+import com.example.listviewcustomizedv1.ui.theme.raffles
 import com.revature.pixelraffle.createRoom
 import com.revature.pixelraffle.ui.screens.adama.LoginPage
+import com.revature.pixelraffle.ui.screens.adama.RaffleHistories
 import com.revature.pixelraffle.ui.screens.adama.RegisterPage
 import com.revature.pixelraffle.ui.screens.adama.UserActivityHistories
 import com.revature.pixelraffle.ui.screens.lyle.MainMenuScreen
@@ -27,8 +29,10 @@ fun Navigation(navController: NavHostController) {
             LoginPage(navController)
         }
 
-        composable(NavScreens.UserActivityHistories.route) {
-            UserActivityHistories(navController)
+        composable(NavScreens.RaffleHistories.route) {
+            //UserActivityHistories(navController)
+            RaffleHistories(raffles,navController)
+
         }
 
         //lyles

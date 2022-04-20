@@ -16,6 +16,7 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.navigation.NavController
 import com.example.listviewcustomizedv1.ui.theme.raffles
 import com.revature.pixelraffle.R
 import com.revature.pixelraffle.database.datamodel.Raffle
@@ -39,14 +40,14 @@ fun defaultPreview()
 {
     PixelRaffleTheme {
 
-        RaffleHistories(raffles)
+        //RaffleHistories(raffles,)
     }
 
 }
 
 
 @Composable
-fun RaffleHistories(raffleList:List<Raffle>)
+fun RaffleHistories(raffleList:List<Raffle>, navController: NavController)
 {
     Surface(modifier = Modifier.fillMaxSize()) {
         Scaffold(
