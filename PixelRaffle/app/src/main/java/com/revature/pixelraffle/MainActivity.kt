@@ -30,6 +30,7 @@ import com.revature.pixelraffle.ui.screens.adama.RaffleHistories
 import com.revature.pixelraffle.ui.screens.adama.UserProfileImage
 import com.revature.pixelraffle.ui.screens.carlos.PhotoPickerIcon
 import com.revature.pixelraffle.ui.screens.carlos.rememberSketchbookController
+import com.revature.pixelraffle.ui.screens.peter.NearbyScreens
 
 
 import com.revature.pixelraffle.ui.theme.PixelRaffleTheme
@@ -60,8 +61,8 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colors.background
                 ) {
-
-                Navigation(navController = navController)
+                    NearbyScreens(theViewModel, navController)
+               // Navigation(navController = navController)
                    //RaffleHistories(raffles)
                 }
             }

@@ -2,7 +2,7 @@ plugins {
     id 'com.android.application'
     id 'org.jetbrains.kotlin.android'
     id 'kotlin-kapt'
-
+    id 'com.google.android.libraries.mapsplatform.secrets-gradle-plugin'
 }
 
 android {
@@ -166,6 +166,18 @@ dependencies {
     testImplementation 'org.mockito:mockito-inline:2.21.0'
     //end carloss
 
+    implementation "com.google.maps.android:maps-compose:1.0.0"
+    implementation "com.google.android.gms:play-services-maps:18.0.2"
+    implementation 'com.google.android.gms:play-services-location:17.0.0'
 
+    //Paging Slider dependencies
+    implementation "com.google.accompanist:accompanist-pager:0.13.0"
+    implementation "com.google.accompanist:accompanist-pager-indicators:0.13.0"
+
+    //bottomdrawer
+    implementation 'de.charlex.compose:bottom-drawer-scaffold:1.0.0-rc01'
+
+    //bottomdrawer
+    implementation 'de.charlex.compose:bottom-drawer-scaffold:1.0.0-rc01'
 
 }
