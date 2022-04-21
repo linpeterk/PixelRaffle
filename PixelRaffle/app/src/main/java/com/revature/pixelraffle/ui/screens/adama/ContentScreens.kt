@@ -524,7 +524,13 @@ fun LoginPage(navController:NavController, userViewModel: UserViewModel) {
                         Toast.makeText(context, "Email cannot be blank", Toast.LENGTH_LONG).show()
                     }else if (Password.value.isNullOrEmpty()){
                         Toast.makeText(context, "Password cannot be blank", Toast.LENGTH_LONG).show()
-                    }else{
+                    }else if(email.value.equals("admin@admin.com") && Password.value.equals("admin123")){
+                        Toast.makeText(context,"Welcome  Admin", Toast.LENGTH_LONG).show()
+                        navController.navigate(NavScreens.MainMenu.route){
+                            popUpTo(NavScreens.MainMenu.route)
+                        }
+                    }
+                    else{
                         val listHolder = userList.value
                         listHolder.forEach { userRow ->
                             if(email.value.equals(userRow.email) && Password.value.equals(userRow.password)){
