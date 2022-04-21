@@ -61,9 +61,9 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colors.background
                 ) {
-                    NearbyScreens(theViewModel, navController)
-               // Navigation(navController = navController)
-                   //RaffleHistories(raffles)
+                    //NearbyScreens(theViewModel, navController)
+               //Navigation(navController = navController)
+                   RaffleHistories(raffles, navController)
                 }
             }
         }

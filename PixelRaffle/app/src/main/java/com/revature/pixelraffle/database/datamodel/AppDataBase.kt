@@ -23,7 +23,7 @@ abstract class AppDataBase: RoomDatabase() {
             }
             synchronized(this){
                 var instance = Room.databaseBuilder(context.applicationContext,
-                    AppDataBase::class.java, "Adama C.")
+                    AppDataBase::class.java, "Adama C. and Lyle")
                     .fallbackToDestructiveMigration()
                     .build()
                 INSTANCE = instance

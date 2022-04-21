@@ -278,7 +278,7 @@ fun RegisterPage(navController:NavController){
                             Toast.makeText(context, "User Email should be at least 10 characters", Toast.LENGTH_LONG).show()
                         }else if(Password.value.length < 5){
                             Toast.makeText(context, "Password should be at least 5 characters", Toast.LENGTH_LONG).show()
-                        }else{
+                        }else {
                             navController.navigate(NavScreens.Login.route)
                         }
 
@@ -665,6 +665,7 @@ fun UserProfilePage(){
 }
 //val globalTest = """"
 //User Profile Image
+@Preview
 @Composable
 fun UserProfileImage() {
     val imageUri = rememberSaveable{ mutableStateOf("")}
@@ -705,6 +706,7 @@ fun UserProfileImage() {
     }
 }
 
+@Preview
 @Composable
 fun GetProfileImage(){
 
