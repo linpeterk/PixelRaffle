@@ -29,6 +29,7 @@ import com.revature.pixelraffle.ui.navigation.Navigation
 import com.revature.pixelraffle.ui.screens.adama.RaffleHistories
 import com.revature.pixelraffle.ui.screens.adama.UserProfileImage
 import com.revature.pixelraffle.ui.screens.carlos.PhotoPickerIcon
+import com.revature.pixelraffle.ui.screens.carlos.SketchbookScreen
 import com.revature.pixelraffle.ui.screens.carlos.rememberSketchbookController
 import com.revature.pixelraffle.ui.screens.peter.NearbyScreens
 
@@ -158,6 +159,12 @@ fun createRoom(navController: NavController) {
         }
     ) { paddingValues: PaddingValues ->
         DrawingApp(paddingValues)
+        SketchbookScreen(
+            modifier = Modifier
+                .fillMaxSize(),
+
+            controller = sketchbookController
+        )
     }
 }
 
