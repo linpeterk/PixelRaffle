@@ -242,7 +242,7 @@ fun RegisterPage(navController:NavController, userViewModel:UserViewModel){
                         IconButton(
                             modifier=Modifier,
                             onClick = {
-                                navController.navigate(NavScreens.Login.route)
+                                //navController.navigate(NavScreens.Login.route)
                                 passwordVisibilty.value= !passwordVisibilty.value
                             }) {
 
