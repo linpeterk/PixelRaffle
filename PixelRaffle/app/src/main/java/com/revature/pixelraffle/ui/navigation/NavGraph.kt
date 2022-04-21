@@ -32,7 +32,7 @@ fun Navigation(navController: NavHostController, userViewModel: UserViewModel) {
 
         composable(NavScreens.RaffleHistories.route) {
             //UserActivityHistories(navController)
-            RaffleHistories(raffles,navController)
+            RaffleHistories(raffles,navController, userViewModel)
 
         }
 

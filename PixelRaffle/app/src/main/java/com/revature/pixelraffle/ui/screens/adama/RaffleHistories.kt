@@ -22,6 +22,7 @@ import com.revature.pixelraffle.R
 import com.revature.pixelraffle.database.datamodel.Raffle
 import com.revature.pixelraffle.database.datamodel.RaffleCard
 import com.revature.pixelraffle.ui.theme.PixelRaffleTheme
+import com.revature.pixelraffle.viewmodel.UserViewModel
 
 @Preview(
 
@@ -47,7 +48,7 @@ fun defaultPreview()
 
 
 @Composable
-fun RaffleHistories(raffleList:List<Raffle>, navController: NavController)
+fun RaffleHistories(raffleList:List<Raffle>, navController: NavController, userViewModel: UserViewModel)
 {
     Surface(modifier = Modifier.fillMaxSize()) {
         Scaffold(
@@ -56,7 +57,7 @@ fun RaffleHistories(raffleList:List<Raffle>, navController: NavController)
                 //TopAppBar(backgroundColor = MaterialTheme.colors.primary,
                     //title = { Text(text = "USER RAFFLE PAGE")})
                 Row(modifier = Modifier.padding(bottom = 5.dp)) {
-                    GetProfileImage()
+                    GetProfileImage(userViewModel)
                 }
 
             }

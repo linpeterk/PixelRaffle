@@ -732,14 +732,20 @@ fun UserProfileImage() {
     }
 }
 
-@Preview
+
 @Composable
-fun GetProfileImage(){
+fun GetProfileImage(userViewModel:UserViewModel){
 
     var firstName by rememberSaveable{ mutableStateOf("F_Name")}
     var lastName by rememberSaveable{ mutableStateOf("L_Name")}
 
     val imageUri = rememberSaveable{ mutableStateOf("")}
+
+
+    //Get user list
+    val userList = userViewModel.getAllUsersData.observeAsState(arrayListOf())
+
+
     val painter = rememberAsyncImagePainter(
         if(imageUri.value.isEmpty())
             R.drawable.default_user_image
@@ -772,7 +778,9 @@ fun GetProfileImage(){
                 contentScale = ContentScale.Crop
             )
         }
-        Text(text="$firstName  $lastName")
+        val listHolder = userList.value
+        listHolder.forEach { userRow ->
+        Text(text="${userRow.first_name}  ${userRow.last_name}")}
         Spacer(modifier = Modifier.padding(5.dp))
         Row(horizontalArrangement = Arrangement.Center,
             modifier = Modifier
@@ -793,7 +801,7 @@ fun GetProfileImage(){
 //User Activities History
 
 @Composable
-fun UserActivityHistories(navController:NavController){
+fun UserActivityHistories(navController:NavController, userViewModel: UserViewModel){
     Surface(modifier = Modifier.fillMaxSize()) {
         Image(painter = painterResource(id = com.revature.pixelraffle.R.drawable.mnbase_02), contentDescription = "",alpha = .25f,contentScale = ContentScale.FillBounds)
 
@@ -801,7 +809,7 @@ fun UserActivityHistories(navController:NavController){
             .verticalScroll(rememberScrollState())
             .padding(8.dp)
         ) {
-            GetProfileImage()
+            //GetProfileImage(userViewModel)
         }
     }
 }
