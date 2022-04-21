@@ -10,8 +10,8 @@ import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material.*
-import androidx.compose.runtime.Composable
-import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.*
+import androidx.compose.runtime.livedata.observeAsState
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -30,10 +30,10 @@ import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import coil.compose.rememberAsyncImagePainter
 import com.revature.pixelraffle.R
+import com.revature.pixelraffle.database.datamodel.UserRow
 import com.revature.pixelraffle.ui.components.LogoA
-import androidx.compose.runtime.getValue
-import androidx.compose.runtime.setValue
 import com.revature.pixelraffle.ui.navigation.NavScreens
+import com.revature.pixelraffle.viewmodel.UserViewModel
 
 
 //@Preview
@@ -41,7 +41,7 @@ import com.revature.pixelraffle.ui.navigation.NavScreens
 //fun RegisterPage(navController: NavController, userViewModel: UserViewModel)
 
 @Composable
-fun RegisterPage(navController:NavController){
+fun RegisterPage(navController:NavController, userViewModel:UserViewModel){
     val context = LocalContext.current
 
     //User First Name variable
@@ -54,7 +54,7 @@ fun RegisterPage(navController:NavController){
     val email = rememberSaveable{ mutableStateOf("")}
 
     //User Password variable
-    val Password = rememberSaveable{ mutableStateOf("")}
+    val password = rememberSaveable{ mutableStateOf("")}
 
     //User Address variable
     val Adrress = rememberSaveable{ mutableStateOf("")}
@@ -213,7 +213,7 @@ fun RegisterPage(navController:NavController){
                     .padding(start = 2.dp, top = 0.dp, end = 2.dp, bottom = 0.dp)
             ){
                 //User Password textfield field
-                OutlinedTextField(value = Password.value, onValueChange = {Password.value=it},
+                OutlinedTextField(value = password.value, onValueChange = {password.value=it},
                     label = {Text(
                         text = buildAnnotatedString {
                             append("Create Password")
@@ -260,6 +260,7 @@ fun RegisterPage(navController:NavController){
                     .fillMaxWidth()
                     .padding(start = 2.dp, top = 0.dp, end = 2.dp, bottom = 10.dp)
             ) {
+                var validationStatus by remember{ mutableStateOf("")}
                 Button( modifier= Modifier
                     .fillMaxWidth()
                     .padding(start = 40.dp, top = 0.dp, end = 40.dp, bottom = 0.dp), shape = CircleShape,
@@ -267,19 +268,24 @@ fun RegisterPage(navController:NavController){
                         //backgroundColor = Color.White,
                         //contentColor = Color.Black),
 
-                    onClick = {
-                        if(firstName.value.isNullOrEmpty()||
-                            lastName.value.isNullOrEmpty()||
-                            email.value.isNullOrEmpty()||
-                            Password.value.isNullOrEmpty()
-                        ) {
-                            Toast.makeText(context, "All field might be filed", Toast.LENGTH_LONG).show()
-                        }else if(email.value.length <10){
+                    onClick = { validationStatus = UserValidations(firstName.value, lastName.value, email.value, password.value)
+                        if(email.value.length <10){
                             Toast.makeText(context, "User Email should be at least 10 characters", Toast.LENGTH_LONG).show()
-                        }else if(Password.value.length < 5){
+                        }else if(password.value.length < 5){
                             Toast.makeText(context, "Password should be at least 5 characters", Toast.LENGTH_LONG).show()
                         }else {
-                            navController.navigate(NavScreens.Login.route)
+                            userViewModel.inserNewUser(
+                                UserRow(
+                                    first_name = firstName.value,
+                                    last_name = lastName.value,
+                                    email = email.value,
+                                    password = password.value
+                                )
+                            )
+                            Toast.makeText(context,"Sign Up Success", Toast.LENGTH_LONG).show()
+                            navController.navigate(NavScreens.Login.route){
+                                popUpTo(NavScreens.Login.route)
+                            }
                         }
 
                     }) {
@@ -375,7 +381,7 @@ fun RegisterPage(navController:NavController){
 //User Login Page
 
 @Composable
-fun LoginPage(navController:NavController) {
+fun LoginPage(navController:NavController, userViewModel: UserViewModel) {
     val context = LocalContext.current
 
     //User Email Address variable
@@ -387,6 +393,9 @@ fun LoginPage(navController:NavController) {
     //User Password Visibility
     val passwordVisibilty = rememberSaveable{ mutableStateOf(false) }
     val confirmationOfPasswordVisibilty = rememberSaveable{ mutableStateOf(false) }
+
+    //Get user list
+    val userList = userViewModel.getAllUsersData.observeAsState(arrayListOf())
 
     Surface(modifier = Modifier.fillMaxSize()) {
       //  Image(painter = painterResource(id = com.example.pixelraffle.R.drawable.mnbase_02), contentDescription = "",alpha = .25f,contentScale = ContentScale.FillBounds)
@@ -516,7 +525,18 @@ fun LoginPage(navController:NavController) {
                     }else if (Password.value.isNullOrEmpty()){
                         Toast.makeText(context, "Password cannot be blank", Toast.LENGTH_LONG).show()
                     }else{
-                       navController.navigate(NavScreens.MainMenu.route)
+                        val listHolder = userList.value
+                        listHolder.forEach { userRow ->
+                            if(email.value.equals(userRow.email) && Password.value.equals(userRow.password)){
+                                Toast.makeText(context,"Welcome  ${userRow.first_name}", Toast.LENGTH_LONG).show()
+                                navController.navigate(NavScreens.MainMenu.route){
+                                    popUpTo(NavScreens.MainMenu.route)
+                                }
+                        }else {
+                                Toast.makeText(context,"Please enter a valid Email and Password", Toast.LENGTH_LONG).show()
+                        }
+                        }
+
                     }
 
                 }) {

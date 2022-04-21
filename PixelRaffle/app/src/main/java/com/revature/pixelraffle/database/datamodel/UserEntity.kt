@@ -18,11 +18,11 @@ data class UserRow(
     @ColumnInfo(name ="email")
     val email: String,
 
-    @ColumnInfo(name ="secret_questions")
-    val secret_questions: String,
+    //@ColumnInfo(name ="secret_questions")
+    //val secret_questions: String,
 
-    @ColumnInfo(name ="secret_answer")
-    val secret_answer: String,
+    //@ColumnInfo(name ="secret_answer")
+    //val secret_answer: String,
 
     @ColumnInfo(name ="password")
     val password: String,

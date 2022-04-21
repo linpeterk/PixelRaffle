@@ -62,8 +62,8 @@ class MainActivity : ComponentActivity() {
                     color = MaterialTheme.colors.background
                 ) {
                     //NearbyScreens(theViewModel, navController)
-               //Navigation(navController = navController)
-                   RaffleHistories(raffles, navController)
+                    Navigation(navController = navController, userViewModel)
+                   //RaffleHistories(raffles, navController)
                 }
             }
         }
@@ -71,7 +71,7 @@ class MainActivity : ComponentActivity() {
 }
 
 @Composable
-fun Default(navController: NavController) {
+fun Default(navController: NavController, userViewModel: UserViewModel) {
     val bottomBarState = rememberSaveable { (mutableStateOf(true)) }
 
     val navController = rememberNavController()
@@ -112,7 +112,7 @@ fun Default(navController: NavController) {
 
         Box(modifier = Modifier.padding(bottom = 56.dp)) {
 
-            Navigation(navController = navController)
+            Navigation(navController = navController, userViewModel)
         }
 
     }

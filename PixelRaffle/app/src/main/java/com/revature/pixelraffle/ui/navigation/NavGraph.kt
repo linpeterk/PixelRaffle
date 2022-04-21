@@ -15,18 +15,19 @@ import com.revature.pixelraffle.ui.screens.lyle.MainOverallScreen
 import com.revature.pixelraffle.ui.screens.lyle.RollRoom
 import com.revature.pixelraffle.ui.screens.peter.ProfileScreen
 import com.revature.pixelraffle.ui.screens.peter.RoomScreen
+import com.revature.pixelraffle.viewmodel.UserViewModel
 
 @Composable
-fun Navigation(navController: NavHostController) {
+fun Navigation(navController: NavHostController, userViewModel: UserViewModel) {
     NavHost(navController, startDestination = NavScreens.MainOverall.route) {
 
         //adama
         composable(NavScreens.Register.route) {
-             RegisterPage(navController)
+             RegisterPage(navController,userViewModel)
         }
 
         composable(NavScreens.Login.route) {
-            LoginPage(navController)
+            LoginPage(navController, userViewModel)
         }
 
         composable(NavScreens.RaffleHistories.route) {
