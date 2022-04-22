@@ -5,6 +5,7 @@ import androidx.compose.material.Scaffold
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.livedata.observeAsState
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.font.FontWeight
@@ -12,6 +13,7 @@ import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import com.airbnb.lottie.compose.*
 import com.revature.pixelraffle.R
+import com.revature.pixelraffle.viewmodel.UserViewModel
 
 
 //////////////////////////  ANIMATION ////////////////////////////////
@@ -67,7 +69,10 @@ fun SparklesB(){
 
 
 @Composable
-fun RollRoom(navController: NavController){
+fun RollRoom(navController: NavController,userViewModel: UserViewModel){
+
+    val user= userViewModel.getAllUserLis().observeAsState(arrayListOf())
+    val listHolder = user.value
 
     Scaffold(modifier = Modifier.fillMaxSize()) {
 
@@ -78,7 +83,10 @@ fun RollRoom(navController: NavController){
         }
 
         Row(modifier = Modifier.fillMaxSize(),horizontalArrangement = Arrangement.Center,verticalAlignment = Alignment.CenterVertically) {
-            Text(text = "CONGRATULATIONS:    !",fontWeight = FontWeight.Bold,fontSize = 20.sp)
+            listHolder.forEach { userRow ->
+                Text(text = "CONGRATULATIONS: ${userRow.first_name} !",fontWeight = FontWeight.Bold,fontSize = 20.sp)
+
+            }
         }
 
 

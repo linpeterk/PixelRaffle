@@ -6,6 +6,7 @@ import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material.*
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.livedata.observeAsState
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.Alignment
@@ -25,6 +26,7 @@ import com.revature.pixelraffle.R
 import com.revature.pixelraffle.ui.navigation.BottomNavigationBar
 import com.revature.pixelraffle.ui.navigation.NavScreens
 import com.revature.pixelraffle.ui.theme.*
+import com.revature.pixelraffle.viewmodel.UserViewModel
 
 
 //@Preview
@@ -38,8 +40,10 @@ import com.revature.pixelraffle.ui.theme.*
 
 
 @Composable
-fun MainMenuScreen(navController: NavController){
+fun MainMenuScreen(navController: NavController,userViewModel: UserViewModel){
     val RoomID = rememberSaveable{ mutableStateOf("") }
+    val user= userViewModel.getAllUserLis().observeAsState(arrayListOf())
+    val listHolder = user.value
 
     Scaffold(modifier = Modifier.fillMaxSize(), bottomBar = {BottomNavigationBar(navController)}) {
 
@@ -47,11 +51,14 @@ fun MainMenuScreen(navController: NavController){
             Row(modifier = Modifier
                 .fillMaxWidth()
                 .offset(y = 80.dp),horizontalArrangement = Arrangement.Center) {
-                Text(text = "WELCOME:   .",textAlign = TextAlign.Center,fontFamily = FontFamily.Default,fontSize = 25.sp,fontWeight = FontWeight.Bold)
+                listHolder.forEach { userRow ->
+                    Text(text = "WELCOME: ${userRow.first_name} !",textAlign = TextAlign.Center,fontFamily = FontFamily.Default,fontSize = 25.sp,fontWeight = FontWeight.Bold)
+
+                }
             }
 
 
-            Column(modifier=Modifier.fillMaxWidth().offset(y=200.dp)/*,verticalArrangement = Arrangement.SpaceEvenly*/) {
+            Column(modifier=Modifier.fillMaxWidth().offset(y=200.dp)) {
 
                 Row(modifier = Modifier
                     .fillMaxWidth()
@@ -72,7 +79,7 @@ fun MainMenuScreen(navController: NavController){
 
                     Button(onClick = {  navController.navigate(NavScreens.Room.route) },modifier= Modifier
                         .padding(4.dp)
-                        .width(350.dp),shape = CircleShape,/*border = BorderStroke(2.dp,color = Color.White)*/
+                        .width(350.dp),shape = CircleShape,
                     ) {
                         Text(text = "Join Room", modifier = Modifier.padding(2.dp),color=Color.White)
                     }
@@ -89,7 +96,7 @@ fun MainMenuScreen(navController: NavController){
                         modifier = Modifier
                             .padding(4.dp)
                             .width(350.dp),
-                        shape = CircleShape,/*border = BorderStroke(2.dp,color = Color.White)*/
+                        shape = CircleShape,
                     ) {
                         Text(text = "Create Room", modifier = Modifier.padding(2.dp), color = Color.White)
                     }
@@ -105,9 +112,6 @@ fun MainMenuScreen(navController: NavController){
                 .fillMaxWidth()
                 .offset(y = 70.dp), verticalAlignment = Alignment.CenterVertically) {
                 Column(modifier = Modifier.fillMaxWidth(),horizontalAlignment = Alignment.CenterHorizontally) {
-//                    Text(text = "Create Raffles to help raise funds for your event.",
-//                        modifier = Modifier.width(325.dp),textAlign = TextAlign.Center,fontFamily = /*PressStart*/FontFamily.Default,fontWeight = FontWeight.Bold,fontSize = 20.sp)
-                    //Spacer(modifier = Modifier.height(100.dp))
                     Text(text = "Pixel Raffle is not liable for loss due to miss allocation of prizes or disputes pertaining to such matters. Please play fairly.",
                         modifier = Modifier.width(300.dp),textAlign = TextAlign.Justify,fontFamily = FontFamily.Default,fontWeight = FontWeight.Light,fontSize = 12.sp)
                 }

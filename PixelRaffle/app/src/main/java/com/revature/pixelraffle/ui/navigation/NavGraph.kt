@@ -41,10 +41,10 @@ fun Navigation(navController: NavHostController, userViewModel: UserViewModel) {
             MainOverallScreen(navController)
         }
         composable(NavScreens.MainMenu.route) {
-            MainMenuScreen(navController)
+            MainMenuScreen(navController,userViewModel)
         }
         composable(NavScreens.RollRoom.route) {
-            RollRoom(navController)
+            RollRoom(navController,userViewModel)
         }
 
         //carlos
