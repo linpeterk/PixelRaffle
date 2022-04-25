@@ -12,11 +12,13 @@ import kotlinx.coroutines.launch
 
 class UserViewModel(application: Application): AndroidViewModel(application) {
     val getAllUsersData: LiveData<List<UserRow>>
+    val getUserFirstName: LiveData<UserRow>
     private val userRepository: UserRepository
     init{
         val userDao = AppDataBase.getDatabase(application).user_Dao()
         userRepository = UserRepository(userDao)
         getAllUsersData = userRepository.getAllUser
+        getUserFirstName = userRepository.getUserFirstName
     }
 
     fun inserNewUser(newUser: UserRow){
@@ -27,5 +29,9 @@ class UserViewModel(application: Application): AndroidViewModel(application) {
 
     fun getAllUserLis():LiveData<List<UserRow>>{
         return   userRepository.getAllUser
+    }
+
+    fun getUserFirstName():LiveData<UserRow>{
+        return   userRepository.getUserFirstName
     }
 }

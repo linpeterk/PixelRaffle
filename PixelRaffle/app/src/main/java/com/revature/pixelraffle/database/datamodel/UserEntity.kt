@@ -1,5 +1,6 @@
 package com.revature.pixelraffle.database.datamodel
 
+import androidx.annotation.NonNull
 import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
@@ -7,7 +8,9 @@ import androidx.room.PrimaryKey
 @Entity(tableName = "USER_TABLE")
 data class UserRow(
     @PrimaryKey(autoGenerate = true)
+    @NonNull
     val id:Int = 0,
+
 
     @ColumnInfo(name ="first_name")
     val first_name: String,

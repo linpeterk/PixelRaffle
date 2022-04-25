@@ -15,6 +15,9 @@ interface UserDao {
    @Query("SELECT * FROM USER_TABLE WHERE id = :id")
    fun getUserById(id: Int): UserRow
 
+   @Query("SELECT * FROM USER_TABLE")
+   fun getUserFirstName(): LiveData<UserRow>
+
    //@Update
    //suspend fun updateUser(item: UserRow)
 

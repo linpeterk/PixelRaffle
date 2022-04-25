@@ -744,6 +744,7 @@ fun GetProfileImage(userViewModel:UserViewModel){
 
     //Get user list
     val userList = userViewModel.getAllUsersData.observeAsState(arrayListOf())
+    val getUserFirstName = userViewModel.getUserFirstName
 
 
     val painter = rememberAsyncImagePainter(
@@ -778,9 +779,11 @@ fun GetProfileImage(userViewModel:UserViewModel){
                 contentScale = ContentScale.Crop
             )
         }
-        val listHolder = userList.value
-        listHolder.forEach { userRow ->
-        Text(text="${userRow.first_name}  ${userRow.last_name}")}
+        //val listHolder = userList.value
+        val UserFirstName = getUserFirstName.value
+
+        //listHolder.forEach { userRow ->
+        Text(text="${UserFirstName?.first_name}")
         Spacer(modifier = Modifier.padding(5.dp))
         Row(horizontalArrangement = Arrangement.Center,
             modifier = Modifier

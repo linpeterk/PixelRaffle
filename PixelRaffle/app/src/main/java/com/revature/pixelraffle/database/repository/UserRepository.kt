@@ -9,7 +9,7 @@ import com.revature.pixelraffle.database.datamodel.UserRow
 class UserRepository(private val userDao: UserDao) {
 
     val getAllUser: LiveData<List<UserRow>> = userDao.getAllUSers()
-
+    val getUserFirstName: LiveData<UserRow> = userDao.getUserFirstName()
     //Insert New User to User Table
     suspend fun addNewUser(newUser: UserRow){
         userDao.insertNewUser(newUser)
