@@ -69,10 +69,10 @@ fun SparklesB(){
 
 
 @Composable
-fun RollRoom(navController: NavController,userViewModel: UserViewModel){
+fun RollRoom(navController: NavController){
 
-    val user= userViewModel.getAllUserLis().observeAsState(arrayListOf())
-    val listHolder = user.value
+//    val user= userViewModel.getAllUserLis().observeAsState(arrayListOf())
+//    val listHolder = user.value
 
     Scaffold(modifier = Modifier.fillMaxSize()) {
 
@@ -83,10 +83,10 @@ fun RollRoom(navController: NavController,userViewModel: UserViewModel){
         }
 
         Row(modifier = Modifier.fillMaxSize(),horizontalArrangement = Arrangement.Center,verticalAlignment = Alignment.CenterVertically) {
-            listHolder.forEach { userRow ->
-                Text(text = "CONGRATULATIONS: ${userRow.first_name} !",fontWeight = FontWeight.Bold,fontSize = 20.sp)
 
-            }
+                Text(text = "CONGRATULATIONS:  !",fontWeight = FontWeight.Bold,fontSize = 20.sp)
+
+
         }
 
 

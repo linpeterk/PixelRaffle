@@ -1,29 +1,32 @@
 package com.revature.pixelraffle.ui.navigation
 
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.*
+import androidx.compose.ui.graphics.vector.ImageVector
 import com.revature.pixelraffle.R
 
-sealed class NavScreens(var route: String, var icon: Int, var title: String){
+sealed class NavScreens(var route: String, val icon: ImageVector, var title: String){
 
     //adama
-    object Register : NavScreens("Register", R.drawable.ic_launcher_background, "Register")
-    object Login : NavScreens("Login", R.drawable.ic_launcher_background, "Login")
+    object Register : NavScreens("Register", Icons.Default.Home, "Register")
+    object Login : NavScreens("Login", Icons.Default.Home, "Login")
     //object UserProfilePage : NavScreens("UserProfilePage", R.drawable.ic_launcher_background, "UserProfilePage")
-    object RaffleHistories : NavScreens("RaffleHistories", R.drawable.ic_launcher_background, "History")
+    object RaffleHistories : NavScreens("RaffleHistories", Icons.Default.History, "History")
 
     //lyles
-    object MainMenu :  NavScreens("MainMenu", R.drawable.ic_launcher_background, "Home")
-    object MainOverall :  NavScreens("MainOverall", R.drawable.ic_launcher_background, "MainOverall")
-    object RollRoom :  NavScreens("RollRoom", R.drawable.ic_launcher_background, "RollRoom")
+    object MainMenu :  NavScreens("MainMenu", Icons.Default.Home, "Home")
+    object MainOverall :  NavScreens("MainOverall", Icons.Default.Home, "MainOverall")
+    object RollRoom :  NavScreens("RollRoom", Icons.Default.Home, "RollRoom")
 
 
     //carlos
-    object CreateRoom :  NavScreens("CreateRoom", R.drawable.ic_launcher_background, "Create Room")
-    object Ticket :  NavScreens("Ticket", R.drawable.ic_launcher_background, "Ticket")
+    object CreateRoom :  NavScreens("CreateRoom", Icons.Default.Create, "Create Room")
+    object Ticket :  NavScreens("Ticket", Icons.Default.Home, "Ticket")
 
     //Peter
-    object Profile :  NavScreens("Profile", R.drawable.ic_launcher_background, "Profile")
-    object Room :  NavScreens("Room", R.drawable.ic_launcher_background, "Room")
-    object NearBy :  NavScreens("NearBy", R.drawable.ic_launcher_background, "NearBy")
+    object Profile :  NavScreens("Profile", Icons.Default.Person, "Profile")
+    object Room :  NavScreens("Room", Icons.Default.Home, "Room")
+    object NearBy :  NavScreens("NearBy", Icons.Default.Home, "NearBy")
 
 
 }

@@ -5,6 +5,7 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.size
 import androidx.compose.material.BottomNavigation
 import androidx.compose.material.BottomNavigationItem
+import androidx.compose.material.Icon
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
@@ -36,8 +37,7 @@ fun BottomNavigationBar(navController: NavController) {
         items.forEach { item ->
             BottomNavigationItem(
 
-                icon = { Image(painterResource(id = item.icon), contentDescription = item.title, modifier = Modifier.size(20.dp))
-                },
+                icon = { Icon(imageVector =item.icon, contentDescription = "Navigation Icon" )  },
 
                 label = { Text(text = item.title) },
                 selectedContentColor = Color.White,
