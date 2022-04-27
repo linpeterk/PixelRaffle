@@ -533,7 +533,10 @@ fun LoginPage(navController:NavController, userViewModel: UserViewModel) {
                     else{
                         val listHolder = userList.value
                         listHolder.forEach { userRow ->
+                            //login success
                             if(email.value.equals(userRow.email) && Password.value.equals(userRow.password)){
+
+                                userViewModel.getUserByEmail(email.value)
                                 Toast.makeText(context,"Welcome  ${userRow.first_name}", Toast.LENGTH_LONG).show()
                                 navController.navigate(NavScreens.MainMenu.route){
                                     popUpTo(NavScreens.MainMenu.route)
@@ -745,7 +748,7 @@ fun GetProfileImage(userViewModel:UserViewModel){
     //Get user list
     val userList = userViewModel.getAllUsersData.observeAsState(arrayListOf())
     val getUserFirstName = userViewModel.getUserFirstName
-
+    val getuser = userViewModel.currentUser
 
     val painter = rememberAsyncImagePainter(
         if(imageUri.value.isEmpty())

@@ -20,6 +20,11 @@ class UserRepository(private val userDao: UserDao) {
 
     }
 
+    //get user
+    suspend fun getUserById(email: String) : UserRow{
+      return  userDao.getUserById(email)
+    }
+
     ////Delete User
     suspend fun deleteUser(item: UserRow){
 

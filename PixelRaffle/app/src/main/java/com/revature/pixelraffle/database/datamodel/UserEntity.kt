@@ -8,7 +8,7 @@ import androidx.room.PrimaryKey
 @Entity(tableName = "USER_TABLE")
 data class UserRow(
     @PrimaryKey(autoGenerate = true)
-    @NonNull
+   // @NonNull
     val id:Int = 0,
 
 

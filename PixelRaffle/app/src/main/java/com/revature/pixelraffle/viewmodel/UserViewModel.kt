@@ -1,6 +1,9 @@
 package com.revature.pixelraffle.viewmodel
 
 import android.app.Application
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.setValue
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.viewModelScope
@@ -14,6 +17,10 @@ class UserViewModel(application: Application): AndroidViewModel(application) {
     val getAllUsersData: LiveData<List<UserRow>>
     val getUserFirstName: LiveData<UserRow>
     private val userRepository: UserRepository
+
+    //val currentUser:UserRow
+
+    var currentUser : UserRow by  mutableStateOf(UserRow(first_name=",", last_name = "",email = "", password = ""))
 
     init{
         val userDao = AppDataBase.getDatabase(application).user_Dao()
@@ -35,6 +42,14 @@ class UserViewModel(application: Application): AndroidViewModel(application) {
 
     fun getUserFirstName():LiveData<UserRow>{
         return   userRepository.getUserFirstName
+    }
+
+    fun getUserByEmail(email:String) {
+
+        viewModelScope.launch(Dispatchers.IO){
+            currentUser =  userRepository.getUserById(email)
+        }
+
     }
 }
 

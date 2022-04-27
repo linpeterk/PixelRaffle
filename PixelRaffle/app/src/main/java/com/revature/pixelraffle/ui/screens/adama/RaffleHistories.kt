@@ -57,7 +57,9 @@ fun RaffleHistories(raffleList:List<Raffle>, navController: NavController, userV
                 //TopAppBar(backgroundColor = MaterialTheme.colors.primary,
                     //title = { Text(text = "USER RAFFLE PAGE")})
                 Row(modifier = Modifier.padding(bottom = 5.dp)) {
-                    GetProfileImage(userViewModel)
+                  //  GetProfileImage(userViewModel)
+
+                    UserProfilePage()
                 }
 
             }

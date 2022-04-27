@@ -15,10 +15,11 @@ import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import com.revature.pixelraffle.ui.screens.adama.UserProfileImage
 import com.revature.pixelraffle.ui.theme.orange_2
+import com.revature.pixelraffle.viewmodel.UserViewModel
 
 
 @Composable
-fun ProfileScreen(navController: NavController){
+fun ProfileScreen(navController: NavController, userViewModel: UserViewModel){
 
     Surface(color= MaterialTheme.colors.background){
      //   Image(painter = painterResource(id = R.drawable.mnbase_02), contentDescription = "",alpha = .18f,contentScale = ContentScale.FillBounds)
@@ -62,7 +63,7 @@ fun ProfileScreen(navController: NavController){
 
                 UserProfileImage()
                 Text(
-                    text = "UserName",
+                    text = "${userViewModel.currentUser.first_name} ${userViewModel.currentUser.last_name}",
                     style= MaterialTheme.typography.h5,
                     modifier = Modifier
                         .padding(5.dp)
