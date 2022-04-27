@@ -42,8 +42,8 @@ import com.revature.pixelraffle.viewmodel.UserViewModel
 @Composable
 fun MainMenuScreen(navController: NavController,userViewModel: UserViewModel){
     val RoomID = rememberSaveable{ mutableStateOf("") }
-    val user= userViewModel.getAllUserLis().observeAsState(arrayListOf())
-    val listHolder = user.value
+    //val user= userViewModel.getAllUserLis().observeAsState(arrayListOf())
+    //val listHolder = user.value
 
     Scaffold(modifier = Modifier.fillMaxSize(), bottomBar = {BottomNavigationBar(navController)}) {
 
@@ -51,10 +51,10 @@ fun MainMenuScreen(navController: NavController,userViewModel: UserViewModel){
             Row(modifier = Modifier
                 .fillMaxWidth()
                 .offset(y = 80.dp),horizontalArrangement = Arrangement.Center) {
-                listHolder.forEach { userRow ->
-                    Text(text = "WELCOME: ${userRow.first_name} !",textAlign = TextAlign.Center,fontFamily = FontFamily.Default,fontSize = 25.sp,fontWeight = FontWeight.Bold)
 
-                }
+                    Text(text = "WELCOME: ${userViewModel.currentUser.first_name} ${userViewModel.currentUser.last_name}!",textAlign = TextAlign.Center,fontFamily = FontFamily.Default,fontSize = 25.sp,fontWeight = FontWeight.Bold)
+
+
             }
 
 
