@@ -180,4 +180,15 @@ dependencies {
     //bottomdrawer
     implementation 'de.charlex.compose:bottom-drawer-scaffold:1.0.0-rc01'
 
+
+    // Testing dependencies
+    androidTestImplementation "androidx.arch.core:core-testing:$rootProject.coreTestingVersion"
+    androidTestImplementation "androidx.test.espresso:espresso-contrib:$rootProject.espressoVersion"
+    androidTestImplementation "androidx.test.espresso:espresso-core:$rootProject.espressoVersion"
+
+    // Compose testing dependencies
+    androidTestImplementation "androidx.compose.ui:ui-test:$rootProject.composeVersion"
+    androidTestImplementation "androidx.compose.ui:ui-test-junit4:$rootProject.composeVersion"
+    debugImplementation "androidx.compose.ui:ui-test-manifest:$rootProject.composeVersion"
+
 }

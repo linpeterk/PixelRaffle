@@ -20,14 +20,14 @@ fun Logo(){
 
     Box(modifier=Modifier/*.border(2.dp,color=Color.Black)*/.fillMaxSize(),contentAlignment = Alignment.TopCenter) {
         if (isSystemInDarkTheme()){
-            Image(painter = painterResource(id = R.drawable.pixel_logob_03), contentDescription = "",alignment = Alignment.TopCenter,
+            Image(painter = painterResource(id = R.drawable.pixel_logob_03), contentDescription = "Logo",alignment = Alignment.TopCenter,
                 modifier = Modifier
                     .scale(1.2f)
                     /*.width(180.dp)*/
                     .offset(y = 48.dp)
             )
         }else{
-            Image(painter = painterResource(id = R.drawable.pixel_logoa_02), contentDescription = "",alignment = Alignment.TopCenter,
+            Image(painter = painterResource(id = R.drawable.pixel_logoa_02), contentDescription = "Logo",alignment = Alignment.TopCenter,
                 modifier = Modifier
                     .scale(1.2f)
                     /*.width(180.dp)*/
