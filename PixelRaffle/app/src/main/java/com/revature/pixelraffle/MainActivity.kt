@@ -68,7 +68,8 @@ class MainActivity : ComponentActivity() {
 
                     Navigation(navController = navController, userViewModel)
                    //RaffleHistories(raffles, navController)
-                  //  ProfileScreen(craffles,NavController(this), userViewModel)
+                    //ProfileScreen(craffles,NavController(this), userViewModel)
+
                 }
             }
         }
