@@ -7,3 +7,10 @@ data class GetBoardState(
     val boardState:Int
 
 )
+
+data class GetGiGCategory(
+
+    @SerializedName("personID")
+    val personID: Int,
+
+    )

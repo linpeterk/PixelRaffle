@@ -13,6 +13,7 @@ import com.revature.pixelraffle.ui.screens.adama.UserActivityHistories
 import com.revature.pixelraffle.ui.screens.lyle.MainMenuScreen
 import com.revature.pixelraffle.ui.screens.lyle.MainOverallScreen
 import com.revature.pixelraffle.ui.screens.lyle.RollRoom
+import com.revature.pixelraffle.ui.screens.peter.NearbyScreens
 import com.revature.pixelraffle.ui.screens.peter.ProfileScreen
 import com.revature.pixelraffle.ui.screens.peter.RoomScreen
 import com.revature.pixelraffle.ui.screens.peter.craffles
@@ -66,7 +67,7 @@ fun Navigation(navController: NavHostController, userViewModel: UserViewModel) {
             RoomScreen(navController)
         }
         composable(NavScreens.NearBy.route) {
-            //NearBy
+            NearbyScreens(vModel = userViewModel, navController = navController)
         }
 
     }

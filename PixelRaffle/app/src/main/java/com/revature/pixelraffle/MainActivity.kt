@@ -64,10 +64,11 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colors.background
                 ) {
-                    //NearbyScreens(theViewModel, navController)
+                  //  NearbyScreens(vModel = userViewModel,  navController = navController)
+
                     Navigation(navController = navController, userViewModel)
                    //RaffleHistories(raffles, navController)
-                    ProfileScreen(craffles,NavController(this), userViewModel)
+                  //  ProfileScreen(craffles,NavController(this), userViewModel)
                 }
             }
         }

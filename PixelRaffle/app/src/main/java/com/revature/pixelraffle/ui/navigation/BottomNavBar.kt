@@ -22,7 +22,7 @@ fun BottomNavigationBar(navController: NavController) {
 
     val items = listOf(
         NavScreens.MainMenu,
-        NavScreens.CreateRoom,
+        NavScreens.NearBy,
         NavScreens.RaffleHistories,
         NavScreens.Profile
     )

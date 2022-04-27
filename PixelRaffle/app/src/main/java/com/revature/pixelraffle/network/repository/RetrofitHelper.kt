@@ -12,7 +12,7 @@ object RetrofitHelper {
     private val retrofit: Retrofit
     init{
         val builder = Retrofit.Builder()
-            .baseUrl("https://private-06d7d0-instatask.apiary-mock.com/")
+            .baseUrl("https://private-8dc384-pixel7.apiary-mock.com/")
             .addConverterFactory(GsonConverterFactory.create()) // create object conver to json/gson
             .addCallAdapterFactory(CoroutineCallAdapterFactory()) //get data connect with the class
 

@@ -8,3 +8,9 @@ data class ResponseTokenTemp(
     val list:List<tempResponseType>,
 
     )
+
+data class ResponseGig(
+    @SerializedName("yourInterest")
+    val ur:List<ResponseGigType>
+
+)

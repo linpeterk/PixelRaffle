@@ -15,7 +15,9 @@ import com.google.android.gms.maps.model.CameraPosition
 import com.google.android.gms.maps.model.LatLng
 import com.google.gson.annotations.SerializedName
 import com.google.maps.android.compose.*
+import com.revature.pixelraffle.ui.screens.peter.yourInterest
 import com.revature.pixelraffle.viewmodel.TheViewModel
+import com.revature.pixelraffle.viewmodel.UserViewModel
 
 //var cameraPositionState:CameraPositionState?=null
 
@@ -42,7 +44,7 @@ var cameraPositionState:CameraPositionState =  CameraPositionState(position = Ca
 @Composable
 fun MakeGoogleMap(
     makeMarker: Boolean = false,
-    vModel: TheViewModel,
+    vModel: UserViewModel,
     mode:Int = 0,
     navController: NavController
 ) {
@@ -118,7 +120,7 @@ fun MakeGoogleMap(
 }
 
 @Composable
-fun createMarkers(vModel: TheViewModel, mode:Int, navController:NavController){
+fun createMarkers(vModel: UserViewModel, mode:Int, navController:NavController){
 
     /*mode == 1 is job board, mode==2 is skill board, display respective board's markers
     * on any list updates
@@ -131,22 +133,26 @@ fun createMarkers(vModel: TheViewModel, mode:Int, navController:NavController){
         icon= BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_AZURE)
     )
 
-    /*
+
     //NEED TO BE IMPLEMENTED
     if(mode == 1 ) {
-        var list= vModel.currentTaskList
+        var list= vModel.yourList
 
-        repeat(list.count()){ index->
+    repeat(list?.count()!!) { index ->
 
-            Marker(
-                position = LatLng(list[index].lat?: googleHQ.latitude, list[index].lng ?: googleHQ.latitude), //LatLng(list[it].lat, list[it].lng),
-                title = list[index].task_name,
-                snippet = list[index].description
-            )
+        Marker(
+            position = LatLng(
+                list[index].lat ?: googleHQ.latitude,
+                list[index].lng ?: googleHQ.latitude
+            ), //LatLng(list[it].lat, list[it].lng),
+            title = list[index].name,
+            snippet = list[index].description
+        )
+
 
         }
     }
-
+/*
     else if(mode==2) {
         var list=   vModel.currentSkillList
         Marker(

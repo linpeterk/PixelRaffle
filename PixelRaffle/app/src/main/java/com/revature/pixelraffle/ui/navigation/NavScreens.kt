@@ -26,7 +26,7 @@ sealed class NavScreens(var route: String, val icon: ImageVector, var title: Str
     //Peter
     object Profile :  NavScreens("Profile", Icons.Default.Person, "Profile")
     object Room :  NavScreens("Room", Icons.Default.Home, "Room")
-    object NearBy :  NavScreens("NearBy", Icons.Default.Home, "NearBy")
+    object NearBy :  NavScreens("NearBy", Icons.Default.Create, "NearBy")
 
 
 }
