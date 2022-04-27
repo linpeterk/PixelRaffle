@@ -33,6 +33,7 @@ import com.revature.pixelraffle.ui.screens.carlos.SketchbookScreen
 import com.revature.pixelraffle.ui.screens.carlos.rememberSketchbookController
 import com.revature.pixelraffle.ui.screens.peter.NearbyScreens
 import com.revature.pixelraffle.ui.screens.peter.ProfileScreen
+import com.revature.pixelraffle.ui.screens.peter.craffles
 
 
 import com.revature.pixelraffle.ui.theme.PixelRaffleTheme
@@ -66,7 +67,7 @@ class MainActivity : ComponentActivity() {
                     //NearbyScreens(theViewModel, navController)
                     Navigation(navController = navController, userViewModel)
                    //RaffleHistories(raffles, navController)
-                    //ProfileScreen(raffles,NavController(this), userViewModel)
+                    ProfileScreen(craffles,NavController(this), userViewModel)
                 }
             }
         }

@@ -13,19 +13,24 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.drawBehind
 import androidx.compose.ui.geometry.center
 import androidx.compose.ui.graphics.Path
+import androidx.compose.ui.text.font.FontStyle
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
+import com.revature.pixelraffle.database.datamodel.CurrentRaffle
 import com.revature.pixelraffle.database.datamodel.Raffle
 import com.revature.pixelraffle.database.datamodel.RaffleCard
 import com.revature.pixelraffle.ui.navigation.BottomNavigationBar
 import com.revature.pixelraffle.ui.screens.adama.UserProfileImage
+import com.revature.pixelraffle.ui.theme.PressStart
 import com.revature.pixelraffle.ui.theme.orange_2
 import com.revature.pixelraffle.viewmodel.UserViewModel
 
 
 @Composable
-fun ProfileScreen(raffleList:List<Raffle>,navController: NavController, userViewModel: UserViewModel){
+fun ProfileScreen(raffleList:List<CurrentRaffle>,navController: NavController, userViewModel: UserViewModel){
 
     Scaffold(bottomBar = { BottomNavigationBar(navController) },/*color= MaterialTheme.colors.background*/){
      //   Image(painter = painterResource(id = R.drawable.mnbase_02), contentDescription = "",alpha = .18f,contentScale = ContentScale.FillBounds)
@@ -78,16 +83,26 @@ fun ProfileScreen(raffleList:List<Raffle>,navController: NavController, userView
 
                 )
                 Spacer(Modifier.padding(20.dp))
-                Text(text="Email: ${userViewModel.currentUser.email}")
-                Text(text="Passoword: ${userViewModel.currentUser.password}")
+                Row(modifier = Modifier.fillMaxWidth(),horizontalArrangement = Arrangement.Center) {
+                    Text(text = "Email: ", fontWeight = FontWeight.Bold)
+                    Text(text="${userViewModel.currentUser.email}")
+                }
+                Row(modifier = Modifier.fillMaxWidth(),horizontalArrangement = Arrangement.Center) {
+                    Text(text = "Password: ", fontWeight = FontWeight.Bold)
+                    Text(text="${userViewModel.currentUser.password}")
+                }
+
+
             }
+
+
 
             //Content in middle
             Column(
                 modifier = Modifier
                     .fillMaxWidth()
                     .wrapContentSize(Alignment.Center)
-                    .offset(y=280.dp)
+                    .offset(y = 295.dp)
 
             ) {
                 LazyColumn(

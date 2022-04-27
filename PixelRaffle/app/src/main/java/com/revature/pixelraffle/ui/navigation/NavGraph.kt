@@ -15,6 +15,7 @@ import com.revature.pixelraffle.ui.screens.lyle.MainOverallScreen
 import com.revature.pixelraffle.ui.screens.lyle.RollRoom
 import com.revature.pixelraffle.ui.screens.peter.ProfileScreen
 import com.revature.pixelraffle.ui.screens.peter.RoomScreen
+import com.revature.pixelraffle.ui.screens.peter.craffles
 import com.revature.pixelraffle.viewmodel.UserViewModel
 
 @Composable
@@ -59,7 +60,7 @@ fun Navigation(navController: NavHostController, userViewModel: UserViewModel) {
         //peter
 
         composable(NavScreens.Profile.route) {
-            ProfileScreen(raffles,navController, userViewModel = userViewModel)
+            ProfileScreen(craffles,navController, userViewModel = userViewModel)
         }
         composable(NavScreens.Room.route) {
             RoomScreen(navController)
