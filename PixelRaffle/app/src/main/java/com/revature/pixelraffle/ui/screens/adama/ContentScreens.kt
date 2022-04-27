@@ -1,7 +1,9 @@
 package com.revature.pixelraffle.ui.screens.adama
 
 import android.net.Uri
+import android.text.TextUtils
 import android.util.Log
+import android.util.Patterns
 import android.widget.Toast
 import androidx.activity.compose.rememberLauncherForActivityResult
 import androidx.activity.result.contract.ActivityResultContracts
@@ -260,7 +262,13 @@ fun RegisterPage(navController:NavController, userViewModel:UserViewModel){
                     .fillMaxWidth()
                     .padding(start = 2.dp, top = 0.dp, end = 2.dp, bottom = 10.dp)
             ) {
+
+                //Email Address validation
+                var emailValidationSattus by remember{ mutableStateOf("")}
+
+                //TExtField Validations
                 var validationStatus by remember{ mutableStateOf("")}
+
                 Button( modifier= Modifier
                     .fillMaxWidth()
                     .padding(start = 40.dp, top = 0.dp, end = 40.dp, bottom = 0.dp), shape = CircleShape,
@@ -268,12 +276,24 @@ fun RegisterPage(navController:NavController, userViewModel:UserViewModel){
                         //backgroundColor = Color.White,
                         //contentColor = Color.Black),
 
-                    onClick = { validationStatus = UserValidations(firstName.value, lastName.value, email.value, password.value)
-                        if(email.value.length <10){
-                            Toast.makeText(context, "User Email should be at least 10 characters", Toast.LENGTH_LONG).show()
-                        }else if(password.value.length < 5){
-                            Toast.makeText(context, "Password should be at least 5 characters", Toast.LENGTH_LONG).show()
-                        }else {
+                    //Email Failed
+
+                    //Email Passed
+
+                    onClick = { emailValidationSattus = isValidEmail(email.value)
+
+                        validationStatus = UserValidations(firstName.value, lastName.value, email.value, password.value)
+
+                        if("$emailValidationSattus".equals("Email Failed")) {
+                            Toast.makeText(context, "Email address should be like email@domain.com", Toast.LENGTH_LONG).show()
+                        }else
+                        if(password.value.length < 5) {
+                            Toast.makeText(
+                                context,
+                                "Password should be at least 5 characters",
+                                Toast.LENGTH_LONG
+                            ).show()
+                        } else{
                             userViewModel.inserNewUser(
                                 UserRow(
                                     first_name = firstName.value,
@@ -378,8 +398,20 @@ fun RegisterPage(navController:NavController, userViewModel:UserViewModel){
 
 }
 
-//User Login Page
+//Email Validation
+private fun isValidEmail(email: String): String {
+    val EmailCheckStatus: String
+    if(!TextUtils.isEmpty(email) && Patterns.EMAIL_ADDRESS.matcher(email).matches()){
+        EmailCheckStatus = "Email Passed"
 
+    } else{
+        EmailCheckStatus = "Email Failed"
+    }
+    return EmailCheckStatus
+
+}
+
+//User Login Page
 @Composable
 fun LoginPage(navController:NavController, userViewModel: UserViewModel) {
     val context = LocalContext.current
@@ -396,6 +428,8 @@ fun LoginPage(navController:NavController, userViewModel: UserViewModel) {
 
     //Get user list
     val userList = userViewModel.getAllUsersData.observeAsState(arrayListOf())
+
+     //val emailChecking =  rememberSaveable { mutableStateOf("[a-zA-Z0-9._-]+@[a-z]+\\\\.+[a-z]+") }
 
     Surface(modifier = Modifier.fillMaxSize()) {
       //  Image(painter = painterResource(id = com.example.pixelraffle.R.drawable.mnbase_02), contentDescription = "",alpha = .25f,contentScale = ContentScale.FillBounds)
@@ -515,11 +549,16 @@ fun LoginPage(navController:NavController, userViewModel: UserViewModel) {
                 )
             }
             Spacer(modifier = Modifier.padding(10.dp))
+
+            //Email Address validation
+            var emailValidationSattus by remember{ mutableStateOf("")}
             Button( modifier= Modifier
                 .fillMaxWidth()
                 .padding(start = 40.dp, top = 0.dp, end = 40.dp, bottom = 0.dp), shape = CircleShape,
 
                 onClick = {
+                    //Valid Email Check
+                    isValidEmail(email.value)
                     if(email.value.isNullOrEmpty()){
                         Toast.makeText(context, "Email cannot be blank", Toast.LENGTH_LONG).show()
                     }else if (Password.value.isNullOrEmpty()){
@@ -529,6 +568,8 @@ fun LoginPage(navController:NavController, userViewModel: UserViewModel) {
                         navController.navigate(NavScreens.MainMenu.route){
                             popUpTo(NavScreens.MainMenu.route)
                         }
+                    } else if("$emailValidationSattus".equals("Email Failed")) {
+                        Toast.makeText(context, "Email address should be like email@domain.com", Toast.LENGTH_LONG).show()
                     }
                     else{
                         val listHolder = userList.value
