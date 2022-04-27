@@ -786,7 +786,7 @@ fun GetProfileImage(userViewModel:UserViewModel){
         val UserFirstName = getUserFirstName.value
 
         //listHolder.forEach { userRow ->
-        Text(text="${UserFirstName?.first_name}")
+        Text(text="${userViewModel.currentUser.first_name} ${userViewModel.currentUser.last_name}")
         Spacer(modifier = Modifier.padding(5.dp))
         Row(horizontalArrangement = Arrangement.Center,
             modifier = Modifier
