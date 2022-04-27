@@ -59,7 +59,7 @@ fun Navigation(navController: NavHostController, userViewModel: UserViewModel) {
         //peter
 
         composable(NavScreens.Profile.route) {
-            ProfileScreen(navController, userViewModel = userViewModel)
+            ProfileScreen(raffles,navController, userViewModel = userViewModel)
         }
         composable(NavScreens.Room.route) {
             RoomScreen(navController)

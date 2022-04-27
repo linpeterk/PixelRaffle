@@ -1,7 +1,10 @@
 package com.revature.pixelraffle.ui.screens.peter
 
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.items
 import androidx.compose.material.MaterialTheme
+import androidx.compose.material.Scaffold
 import androidx.compose.material.Surface
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
@@ -13,15 +16,18 @@ import androidx.compose.ui.graphics.Path
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
+import com.revature.pixelraffle.database.datamodel.Raffle
+import com.revature.pixelraffle.database.datamodel.RaffleCard
+import com.revature.pixelraffle.ui.navigation.BottomNavigationBar
 import com.revature.pixelraffle.ui.screens.adama.UserProfileImage
 import com.revature.pixelraffle.ui.theme.orange_2
 import com.revature.pixelraffle.viewmodel.UserViewModel
 
 
 @Composable
-fun ProfileScreen(navController: NavController, userViewModel: UserViewModel){
+fun ProfileScreen(raffleList:List<Raffle>,navController: NavController, userViewModel: UserViewModel){
 
-    Surface(color= MaterialTheme.colors.background){
+    Scaffold(bottomBar = { BottomNavigationBar(navController) },/*color= MaterialTheme.colors.background*/){
      //   Image(painter = painterResource(id = R.drawable.mnbase_02), contentDescription = "",alpha = .18f,contentScale = ContentScale.FillBounds)
         Box(
             modifier= Modifier
@@ -72,19 +78,54 @@ fun ProfileScreen(navController: NavController, userViewModel: UserViewModel){
 
                 )
                 Spacer(Modifier.padding(20.dp))
-                Text("CenterTest1")
-                Text("CenterTest2")
+                Text(text="Email: ${userViewModel.currentUser.email}")
+                Text(text="Passoword: ${userViewModel.currentUser.password}")
             }
 
             //Content in middle
             Column(
                 modifier = Modifier
-                    .fillMaxSize()
+                    .fillMaxWidth()
                     .wrapContentSize(Alignment.Center)
+                    .offset(y=280.dp)
 
             ) {
-                Text("CenterTest1")
-                Text("CenterTest2")
+                LazyColumn(
+
+                    Modifier.fillMaxWidth(),
+                    contentPadding= PaddingValues(start = 16.dp, top = 5.dp, end = 16.dp, bottom = 16.dp)
+
+                )
+                {
+
+                    item {
+
+                        Row(
+                            modifier= Modifier
+                                .fillMaxWidth()
+                                .wrapContentHeight()
+                                .padding(vertical = 0.dp),
+                            horizontalArrangement = Arrangement.Center,
+                            verticalAlignment = Alignment.CenterVertically
+
+                        ) {
+
+                            // Text(text = "RAFFLE HISTORIES",
+                            //style= MaterialTheme.typography.h5 )
+                        }
+
+                    }// end of item
+
+                    items(raffleList)
+                    { myRaffle->
+
+                        RaffleCard(myRaffle.name, myRaffle.ticketNumber,myRaffle.thedate,myRaffle.boardImageRes)
+
+                    }
+
+
+
+                }
             }
 
             //Content in Bottom

@@ -66,7 +66,7 @@ class MainActivity : ComponentActivity() {
                     //NearbyScreens(theViewModel, navController)
                     Navigation(navController = navController, userViewModel)
                    //RaffleHistories(raffles, navController)
-                 //   ProfileScreen(NavController(this), userViewModel)
+                    //ProfileScreen(raffles,NavController(this), userViewModel)
                 }
             }
         }
