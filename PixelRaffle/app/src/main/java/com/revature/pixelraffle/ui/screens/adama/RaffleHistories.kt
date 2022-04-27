@@ -21,6 +21,7 @@ import com.example.listviewcustomizedv1.ui.theme.raffles
 import com.revature.pixelraffle.R
 import com.revature.pixelraffle.database.datamodel.Raffle
 import com.revature.pixelraffle.database.datamodel.RaffleCard
+import com.revature.pixelraffle.ui.navigation.BottomNavigationBar
 import com.revature.pixelraffle.ui.theme.PixelRaffleTheme
 import com.revature.pixelraffle.viewmodel.UserViewModel
 
@@ -52,16 +53,15 @@ fun RaffleHistories(raffleList:List<Raffle>, navController: NavController, userV
 {
     Surface(modifier = Modifier.fillMaxSize()) {
         Scaffold(
+            bottomBar= { BottomNavigationBar(navController) },
 
             topBar = {
                 //TopAppBar(backgroundColor = MaterialTheme.colors.primary,
                     //title = { Text(text = "USER RAFFLE PAGE")})
                 Row(modifier = Modifier.padding(bottom = 5.dp)) {
                   GetProfileImage(userViewModel)
-
                     //UserProfilePage()
                 }
-
             }
         )
         {
