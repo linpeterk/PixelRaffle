@@ -1,5 +1,6 @@
 package com.revature.pixelraffle.ui.screens.lyle
 
+import android.widget.Toast
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.*
@@ -13,6 +14,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.scale
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.SpanStyle
 import androidx.compose.ui.text.buildAnnotatedString
@@ -41,7 +43,9 @@ import com.revature.pixelraffle.viewmodel.UserViewModel
 
 @Composable
 fun MainMenuScreen(navController: NavController,userViewModel: UserViewModel){
-    val RoomID = rememberSaveable{ mutableStateOf("") }
+    var RoomID = rememberSaveable{ mutableStateOf("") }
+    val RoomNum = "123"
+    var context = LocalContext.current
     //val user= userViewModel.getAllUserLis().observeAsState(arrayListOf())
     //val listHolder = user.value
 
@@ -77,7 +81,12 @@ fun MainMenuScreen(navController: NavController,userViewModel: UserViewModel){
                     .fillMaxWidth()
                     .offset(y = 10.dp),verticalAlignment = Alignment.CenterVertically,horizontalArrangement = Arrangement.SpaceEvenly) {
 
-                    Button(onClick = {  navController.navigate(NavScreens.Room.route) },modifier= Modifier
+                    Button(onClick = {
+                        if (RoomID.value.equals(RoomNum)){
+                            navController.navigate(NavScreens.Room.route)
+                        }else{ Toast.makeText(context,"Room does not exist...", Toast.LENGTH_LONG).show() }
+                        },
+                        modifier= Modifier
                         .padding(4.dp)
                         .width(350.dp),shape = CircleShape,
                     ) {
