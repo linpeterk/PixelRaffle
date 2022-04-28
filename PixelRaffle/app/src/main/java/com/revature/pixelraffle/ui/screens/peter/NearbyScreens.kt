@@ -128,7 +128,7 @@ fun NearbyScreens(vModel: UserViewModel,
                     .fillMaxSize()
                     .fillMaxHeight()
                     .fillMaxWidth()
-                    .padding(bottom=10.dp)
+                    .padding(bottom=30.dp)
 
                 ,
 

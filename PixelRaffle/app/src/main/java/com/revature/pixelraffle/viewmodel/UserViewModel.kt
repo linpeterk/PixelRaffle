@@ -12,9 +12,7 @@ import com.google.android.gms.maps.model.LatLng
 import com.revature.pixelraffle.database.datamodel.AppDataBase
 import com.revature.pixelraffle.database.datamodel.UserRow
 import com.revature.pixelraffle.database.repository.UserRepository
-import com.revature.pixelraffle.network.datamodel.GetGiGCategory
-import com.revature.pixelraffle.network.datamodel.ResponseGig
-import com.revature.pixelraffle.network.datamodel.ResponseGigType
+import com.revature.pixelraffle.network.datamodel.*
 import com.revature.pixelraffle.network.repository.RetrofitHelper
 import com.revature.pixelraffle.ui.googleHQ
 import com.revature.pixelraffle.ui.screens.peter.baseInterests
@@ -136,6 +134,7 @@ class UserViewModel(application: Application): AndroidViewModel(application) {
 
 
     ///API
+    //get nearby list
     val authService = RetrofitHelper.getAuthService()
     var temp = mutableStateOf(ResponseGig(listOf()))
 
@@ -172,5 +171,45 @@ class UserViewModel(application: Application): AndroidViewModel(application) {
 
         yourList = temp.value.ur
     }
+
+
+    //get board
+    var yourBoard: List<ResponseBoardType> by mutableStateOf(listOf(ResponseBoardType()))
+    var tempBoard = mutableStateOf(ResponseBoard(listOf()))
+
+    fun getBoard() {
+
+        viewModelScope.launch (Dispatchers.IO) {
+            try {
+                val responseService: Response<ResponseBoard>
+                responseService = authService.getBoard(GetBoardState(1))
+
+                if(responseService.isSuccessful){
+                    responseService.body()?.let{
+
+                        Log.d("Logging success", "Response token $it")
+                        tempBoard.value = it
+                    }
+                } else{
+                    responseService.errorBody()?.let{
+
+                        Log.d("Logging error", "response token $it")
+                        it.close()
+                    }
+                }
+
+
+            }catch(e:Exception){
+                Log.d("Network logging", "Exceptions in networking Displaying Old Data$e")
+
+            }
+
+        }
+        // return temp.value
+
+        yourBoard = tempBoard.value.yourBoard
+    }
+
+
 }
 

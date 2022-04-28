@@ -64,7 +64,7 @@ fun Navigation(navController: NavHostController, userViewModel: UserViewModel) {
             ProfileScreen(craffles,navController, userViewModel = userViewModel)
         }
         composable(NavScreens.Room.route) {
-            RoomScreen(navController)
+            RoomScreen(navController, userViewModel)
         }
         composable(NavScreens.NearBy.route) {
             NearbyScreens(vModel = userViewModel, navController = navController)
