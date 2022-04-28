@@ -3,7 +3,7 @@ package com.revature.pixelraffle.network.datamodel
 import com.google.gson.annotations.SerializedName
 
 data class GetBoardState(
-    @SerializedName("board")
+    @SerializedName("boardID")
     val boardState:Int
 
 )
@@ -14,3 +14,4 @@ data class GetGiGCategory(
     val personID: Int,
 
     )
+

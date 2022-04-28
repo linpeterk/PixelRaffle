@@ -2,6 +2,7 @@
 
 package com.revature.pixelraffle.ui.screens.peter
 
+import android.util.Log
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
@@ -17,12 +18,14 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
+import com.google.gson.Gson
 import com.revature.pixelraffle.data.Player
 import com.revature.pixelraffle.ui.components.DrawBoard
 import com.revature.pixelraffle.ui.components.MakeColorBar
 import com.revature.pixelraffle.ui.navigation.NavScreens
 import com.revature.pixelraffle.ui.theme.graySurface
 import kotlin.math.roundToInt
+
 
 /*
  Text(
@@ -57,6 +60,7 @@ fun RoomScreen(navController: NavController) {
 //
 //    }
     var listPlayer = Player.list
+    var dragListPlayer = Player.dragList
 
     var winner:Boolean by rememberSaveable { mutableStateOf(false) }
     var winMsg:String by rememberSaveable { mutableStateOf("") }
@@ -73,7 +77,7 @@ fun RoomScreen(navController: NavController) {
 
         Column(horizontalAlignment = Alignment.CenterHorizontally) {
 
-            Text(text = "Pixel Lotto",
+            Text(text = "Pixel Raffle",
                 color = graySurface,
                 modifier = Modifier
                     .fillMaxWidth()
@@ -98,7 +102,9 @@ fun RoomScreen(navController: NavController) {
 //                        }
                               navController.navigate(NavScreens.RollRoom.route)
                     },
-                    modifier = Modifier.padding(15.dp).width(200.dp)
+                    modifier = Modifier
+                        .padding(15.dp)
+                        .width(200.dp)
                 ) {
                     if (!winner ) {
                         Text(text = "Roll!")
@@ -110,13 +116,21 @@ fun RoomScreen(navController: NavController) {
 
                 Button(
                     onClick = {
-                        Player.list.clear()
-                        Player.dragList.clear()
+//                        Player.list.clear()
+//                        Player.dragList.clear()
+                        dragListPlayer.forEach {
+
+                         //   Log.d("Player", "${it.offset}")
+                        }
+                        val json = Gson().toJson(dragListPlayer)
+                        Log.d("Player", "${json}")
 
                     },
-                    modifier = Modifier.padding(15.dp).width(200.dp)
+                    modifier = Modifier
+                        .padding(15.dp)
+                        .width(200.dp)
                 ) {
-                    Text(text = "Reset!")
+                    Text(text = "Submit!")
                 }
 
 //
@@ -126,7 +140,8 @@ fun RoomScreen(navController: NavController) {
             Text(text= "Your Numbers", fontSize = 22.sp, modifier = Modifier.padding(5.dp))
 
             LazyColumn(){
-                items(listPlayer){ it->
+
+                items(dragListPlayer){ it->
                     Box() {
                         var winMsg = ""
                         var x = it.offset.x.roundToInt()
@@ -134,11 +149,13 @@ fun RoomScreen(navController: NavController) {
                         if(rnds_x.value == it.offset.x.roundToInt() && rnds_y.value == it.offset.y.roundToInt()) {
                             winMsg = "Winner Winner Chicken Dinner"
                         }
+
                         Text(text = "Pixel: [${x} , ${y}] $winMsg ")
 
                     }
 
                 }
+
 
             }
 

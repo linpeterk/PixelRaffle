@@ -64,13 +64,13 @@ fun DrawBoard(myColor: MutableState<Color>){
             .drawWithContent {
 
 
-                Player.list.forEach {
+                Player.dragList.forEach {
 //                    drawCircle(
 //                        color = it.color,
 //                        radius = 5f,
 //                    center = it.offset
 //                    )
-                    drawRect(color = it.color, topLeft= it.offset,size = Size(40.0f,40.0f)  )
+                    drawRect(color = it.color, topLeft= it.offset,size = Size(20.0f,20.0f)  )
 
 
 
