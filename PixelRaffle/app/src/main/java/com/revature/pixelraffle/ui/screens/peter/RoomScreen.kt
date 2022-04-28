@@ -174,7 +174,7 @@ Scaffold( modifier = Modifier.fillMaxSize(), bottomBar = { BottomNavigationBar(n
             Card(elevation = 2.dp) {
                 playerDropDownMenu(vModel = vModel, selectedIndex)
             }
-            Text(text = "Your Numbers", fontSize = 22.sp, modifier = Modifier.padding(5.dp))
+            //Text(text = "Your Numbers", fontSize = 22.sp, modifier = Modifier.padding(5.dp))
 
             LazyColumn() {
 
