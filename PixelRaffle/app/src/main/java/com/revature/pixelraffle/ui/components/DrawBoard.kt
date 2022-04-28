@@ -22,7 +22,7 @@ import com.revature.pixelraffle.data.Player
 import com.revature.pixelraffle.viewmodel.UserViewModel
 
 @Composable
-fun DrawBoard(myColor: MutableState<Color>, vModel:UserViewModel){
+fun DrawBoard(myColor: MutableState<Color>, vModel:UserViewModel, selectedIndex:MutableState<Int>){
 
     val theDp = with(LocalDensity.current) {
         1000.toDp()
@@ -63,38 +63,63 @@ fun DrawBoard(myColor: MutableState<Color>, vModel:UserViewModel){
 
             }
             .drawWithContent {
-                if(!vModel.yourBoard.isEmpty()){
-                    vModel.yourBoard.forEach {
-                        drawRect(color = it.color, topLeft= it.offset,size = Size(20.0f,20.0f)  )
+                if (vModel.Board.yourBoard != null && vModel.Board.yourBoard?.isEmpty() == false) {
+
+                    val currentBoard = vModel.Board.yourBoard!!
+
+                    //validate draw which players
+                    //draw everyone
+                    if (selectedIndex.value == 0) {
+                        currentBoard.forEach {
+                            Log.d("Players Test", "Players = ${it.name}")
+                            //drawRect(color = it.color, topLeft= it.offset,size = Size(20.0f,20.0f)  )
+                            it.playList?.forEach {
+                                drawRect(
+                                    color = it.color,
+                                    topLeft = it.offset,
+                                    size = Size(20.0f, 20.0f)
+                                )
+                            }
+                        }
                     }
+                    //draw individuals
+                    else {
+
+                        if (selectedIndex.value > 0) {
+                            currentBoard[selectedIndex.value-1].playList?.forEach {
+                                drawRect(
+                                    color = it.color,
+                                    topLeft = it.offset,
+                                    size = Size(20.0f, 20.0f)
+                                )
+
+                            }
+                        }
+                    }
+
                 }
 
-                Player.dragList.forEach {
-//                    drawCircle(
-//                        color = it.color,
-//                        radius = 5f,
-//                    center = it.offset
-//                    )
-                    drawRect(color = it.color, topLeft= it.offset,size = Size(20.0f,20.0f)  )
+                Player.dragList.forEach { drawRect(color = it.color, topLeft= it.offset,size = Size(20.0f,20.0f)  )}
+            } // Show points or drag by changing Player.List
+    ){
+   //   Empty card
+    }
+}
 
-
-
-                }
+//                Player.dragList.forEach {
+////                    drawCircle(
+////                        color = it.color,
+////                        radius = 5f,
+////                    center = it.offset
+////                    )
+//                    drawRect(color = it.color, topLeft= it.offset,size = Size(20.0f,20.0f)  )
+//
+//
+//
+//                }
 //                drawPoints(
 //                points = Player.list[0],
 //                pointMode = PointMode.Points,
 //                color=myColor.value,
 //                        strokeWidth = 10f
 //            )
-            } // Show points or drag by changing Player.List
-
-    )
-    {
-        Text(
-            text = "", modifier = Modifier
-            //     .background(graySurface)
-            //   .border(4.dp, Color.Red)
-        )
-
-    }
-}

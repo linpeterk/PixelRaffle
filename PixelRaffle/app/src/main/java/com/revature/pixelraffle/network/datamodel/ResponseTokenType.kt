@@ -38,6 +38,14 @@ data class ResponseGigType(
 
     )
 
+data class ResponsePlayerType(
+    @SerializedName("name")
+    var name:String = "",
+    @SerializedName("playList")
+    val playList:List<ResponseBoardType>? = null
+
+    )
+
 data class ResponseBoardType(
     @SerializedName("color")
     var color: Color = Purple200,

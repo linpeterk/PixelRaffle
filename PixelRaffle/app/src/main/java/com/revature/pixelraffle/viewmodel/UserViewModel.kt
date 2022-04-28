@@ -174,8 +174,43 @@ class UserViewModel(application: Application): AndroidViewModel(application) {
 
 
     //get board
-    var yourBoard: List<ResponseBoardType> by mutableStateOf(listOf(ResponseBoardType()))
-    var tempBoard = mutableStateOf(ResponseBoard(listOf()))
+//    var yourBoard: List<ResponseBoardType> by mutableStateOf(listOf(ResponseBoardType()))
+//    var tempBoard = mutableStateOf(ResponseBoard(listOf()))
+//
+//    fun getBoard() {
+//
+//        viewModelScope.launch (Dispatchers.IO) {
+//            try {
+//                val responseService: Response<ResponseBoard>
+//                responseService = authService.getBoard(GetBoardState(1))
+//
+//                if(responseService.isSuccessful){
+//                    responseService.body()?.let{
+//
+//                        Log.d("Logging success", "Response token $it")
+//                        tempBoard.value = it
+//                    }
+//                } else{
+//                    responseService.errorBody()?.let{
+//
+//                        Log.d("Logging error", "response token $it")
+//                        it.close()
+//                    }
+//                }
+//
+//
+//            }catch(e:Exception){
+//                Log.d("Network logging", "Exceptions in networking Displaying Old Data$e")
+//
+//            }
+//
+//        }
+//        // return temp.value
+//
+//        yourBoard = tempBoard.value.yourBoard
+//    }
+    var Board: ResponseBoard by mutableStateOf(ResponseBoard())
+    var tempBoard = mutableStateOf(ResponseBoard())
 
     fun getBoard() {
 
@@ -207,9 +242,8 @@ class UserViewModel(application: Application): AndroidViewModel(application) {
         }
         // return temp.value
 
-        yourBoard = tempBoard.value.yourBoard
+       Board = tempBoard.value
     }
-
 
 }
 

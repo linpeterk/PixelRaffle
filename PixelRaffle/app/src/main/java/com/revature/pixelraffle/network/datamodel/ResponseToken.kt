@@ -15,8 +15,14 @@ data class ResponseGig(
 
 )
 
+//data class ResponseBoard(
+//    @SerializedName("yourBoard")
+//    val yourBoard:List<ResponseBoardType>
+//
+//)
+
 data class ResponseBoard(
     @SerializedName("yourBoard")
-    val yourBoard:List<ResponseBoardType>
+    val yourBoard:List<ResponsePlayerType>? = null
 
 )

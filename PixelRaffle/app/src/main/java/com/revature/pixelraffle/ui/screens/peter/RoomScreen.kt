@@ -4,12 +4,11 @@ package com.revature.pixelraffle.ui.screens.peter
 
 import android.util.Log
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
-import androidx.compose.material.Button
-import androidx.compose.material.Scaffold
-import androidx.compose.material.Text
+import androidx.compose.material.*
 import androidx.compose.runtime.*
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.Alignment
@@ -66,7 +65,7 @@ fun RoomScreen(navController: NavController, vModel:UserViewModel) {
 //
 //    }
     vModel.getBoard()
-
+    var selectedIndex = remember { mutableStateOf(0) }
     var listPlayer = Player.list
     var dragListPlayer = Player.dragList
 
@@ -114,7 +113,7 @@ Scaffold( modifier = Modifier.fillMaxSize(), bottomBar = { BottomNavigationBar(n
                 fontSize = 30.sp
             )
 
-            DrawBoard(myColor, vModel)
+            DrawBoard(myColor, vModel, selectedIndex)
             MakeColorBar(myColor)
             Row(modifier = Modifier.fillMaxWidth(), horizontalArrangement=Arrangement.SpaceEvenly) {
                 Button(
@@ -127,7 +126,9 @@ Scaffold( modifier = Modifier.fillMaxSize(), bottomBar = { BottomNavigationBar(n
 //                                winMsg = "No Winners"
 //                            }
 //                        }
-                        navController.navigate(NavScreens.RollRoom.route)
+                        Player.list.clear()
+                        Player.dragList.clear()
+                     //   navController.navigate(NavScreens.RollRoom.route)
                     },
                     modifier = Modifier
                         .padding(15.dp)
@@ -162,7 +163,9 @@ Scaffold( modifier = Modifier.fillMaxSize(), bottomBar = { BottomNavigationBar(n
 //
 
             }
-
+            Card(elevation = 2.dp) {
+                playerDropDownMenu(vModel = vModel, selectedIndex)
+            }
             Text(text = "Your Numbers", fontSize = 22.sp, modifier = Modifier.padding(5.dp))
 
             LazyColumn() {
@@ -187,6 +190,45 @@ Scaffold( modifier = Modifier.fillMaxSize(), bottomBar = { BottomNavigationBar(n
 
         }
      }
+    }
+
+}
+
+@Composable
+fun playerDropDownMenu(vModel: UserViewModel, selectedIndex:MutableState<Int>){
+    var expanded by remember { mutableStateOf(false) }
+    val sortItems = mutableListOf<String>("All")
+    vModel.Board.yourBoard?.forEach { sortItems.add(it.name) }
+
+    Box(modifier = Modifier) {
+        Text(sortItems[selectedIndex.value],modifier = Modifier
+            .width(130.dp)
+            .padding(3.dp)
+            .clickable(onClick = { expanded = true })
+            .background(
+                Color.White
+            ),
+            textAlign = TextAlign.Center
+        )
+        DropdownMenu(
+            expanded = expanded,
+            onDismissRequest = { expanded = false },
+            modifier = Modifier.background(
+                Color.White)
+        ) {
+            sortItems.forEachIndexed { index, s ->
+                DropdownMenuItem(onClick = {
+                    selectedIndex.value = index
+                    expanded = false
+
+                    vModel.sortBy(index) //index determines which sorting methods
+
+
+                }) {
+                    Text(text = s )
+                }
+            }
+        }
     }
 
 }
