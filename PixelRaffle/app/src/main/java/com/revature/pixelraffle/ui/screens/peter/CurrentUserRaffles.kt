@@ -11,14 +11,14 @@ val craffles=listOf(
         "Office Raffle",
         "131RRR",
         "4/27/2022",
-        R.drawable.pixel_logoa_02,
+        R.drawable.pixel11,
     ),
     CurrentRaffle(
         2,
         "Birthday Raffle",
         "123RVV",
         "4/25/2022",
-        R.drawable.pixel_logoa_02,
+        R.drawable.pixel12,
     )
 
 

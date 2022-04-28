@@ -3,6 +3,7 @@
 package com.revature.pixelraffle.ui.screens.peter
 
 import android.util.Log
+import android.widget.Toast
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
@@ -14,6 +15,7 @@ import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.SpanStyle
 import androidx.compose.ui.text.buildAnnotatedString
 import androidx.compose.ui.text.font.FontWeight
@@ -64,6 +66,7 @@ fun RoomScreen(navController: NavController, vModel:UserViewModel) {
 //        Text(text = "Create Room",color = Color.White)
 //
 //    }
+    val context= LocalContext.current
     vModel.getBoard()
     var selectedIndex = remember { mutableStateOf(0) }
     var listPlayer = Player.list
@@ -126,9 +129,9 @@ Scaffold( modifier = Modifier.fillMaxSize(), bottomBar = { BottomNavigationBar(n
 //                                winMsg = "No Winners"
 //                            }
 //                        }
-                        Player.list.clear()
-                        Player.dragList.clear()
-                     //   navController.navigate(NavScreens.RollRoom.route)
+//                        Player.list.clear()
+//                        Player.dragList.clear()
+                        navController.navigate(NavScreens.RollRoom.route)
                     },
                     modifier = Modifier
                         .padding(15.dp)
@@ -156,7 +159,7 @@ Scaffold( modifier = Modifier.fillMaxSize(), bottomBar = { BottomNavigationBar(n
                         val maxLogSize = 1000
                         json.chunked(maxLogSize).forEach { Log.d("Player", it) }
 
-
+                    Toast.makeText(context, "Pixels submitted", Toast.LENGTH_LONG).show()
                     },
                     modifier = Modifier
                         .padding(15.dp)
@@ -207,7 +210,7 @@ fun logUnlimited(tag: String, string: String) {
 @Composable
 fun playerDropDownMenu(vModel: UserViewModel, selectedIndex:MutableState<Int>){
     var expanded by remember { mutableStateOf(false) }
-    val sortItems = mutableListOf<String>("All")
+    val sortItems = mutableListOf<String>("All", "You")
     vModel.Board.yourBoard?.forEach { sortItems.add(it.name) }
 
     Box(modifier = Modifier) {

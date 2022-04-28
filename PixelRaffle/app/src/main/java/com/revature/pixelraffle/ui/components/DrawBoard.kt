@@ -82,11 +82,14 @@ fun DrawBoard(myColor: MutableState<Color>, vModel:UserViewModel, selectedIndex:
                             }
                         }
                     }
-                    //draw individuals
+                    if (selectedIndex.value == 1) {
+                      //do nothing, you are drawing
+                    }
+                    //draw other individuals
                     else {
 
                         if (selectedIndex.value > 0) {
-                            currentBoard[selectedIndex.value-1].playList?.forEach {
+                            currentBoard[selectedIndex.value-2].playList?.forEach {
                                 drawRect(
                                     color = it.color,
                                     topLeft = it.offset,
