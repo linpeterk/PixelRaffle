@@ -17,6 +17,8 @@ sealed class NavScreens(var route: String, val icon: ImageVector, var title: Str
     object MainMenu :  NavScreens("MainMenu", Icons.Default.Home, "Home")
     object MainOverall :  NavScreens("MainOverall", Icons.Default.Home, "MainOverall")
     object RollRoom :  NavScreens("RollRoom", Icons.Default.Home, "RollRoom")
+    //Adama
+    object LogOut :  NavScreens("LogOut", Icons.Default.Logout, "LogOut")
 
 
     //carlos
