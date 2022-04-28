@@ -1,5 +1,6 @@
 package com.revature.pixelraffle.ui.screens.peter
 
+import android.graphics.Paint
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
@@ -93,6 +94,7 @@ fun ProfileScreen(raffleList:List<CurrentRaffle>,navController: NavController, u
                 }
 
 
+
             }
 
 
@@ -105,6 +107,7 @@ fun ProfileScreen(raffleList:List<CurrentRaffle>,navController: NavController, u
                     .offset(y = 295.dp)
 
             ) {
+                Text(text="Current Events", fontSize = 24.sp, modifier = Modifier.fillMaxWidth(),textAlign = TextAlign.Center)
                 LazyColumn(
 
                     Modifier.fillMaxWidth(),

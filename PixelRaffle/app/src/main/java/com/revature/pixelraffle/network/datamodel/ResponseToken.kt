@@ -14,3 +14,9 @@ data class ResponseGig(
     val ur:List<ResponseGigType>
 
 )
+
+data class ResponseBoard(
+    @SerializedName("yourBoard")
+    val yourBoard:List<ResponseBoardType>
+
+)

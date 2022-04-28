@@ -19,9 +19,10 @@ import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.unit.dp
 import com.revature.pixelraffle.data.OffsetColor
 import com.revature.pixelraffle.data.Player
+import com.revature.pixelraffle.viewmodel.UserViewModel
 
 @Composable
-fun DrawBoard(myColor: MutableState<Color>){
+fun DrawBoard(myColor: MutableState<Color>, vModel:UserViewModel){
 
     val theDp = with(LocalDensity.current) {
         1000.toDp()
@@ -62,7 +63,11 @@ fun DrawBoard(myColor: MutableState<Color>){
 
             }
             .drawWithContent {
-
+                if(!vModel.yourBoard.isEmpty()){
+                    vModel.yourBoard.forEach {
+                        drawRect(color = it.color, topLeft= it.offset,size = Size(20.0f,20.0f)  )
+                    }
+                }
 
                 Player.dragList.forEach {
 //                    drawCircle(
