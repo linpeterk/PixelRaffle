@@ -11,8 +11,8 @@ var rnds_y: MutableState<Int?> = mutableStateOf(null)
 
 fun  validation():Boolean{
     var winner = false
-    rnds_x.value = (0..8).random()
-    rnds_y.value = (0..8).random()
+    rnds_x.value = (0..1000).random()
+    rnds_y.value = (0..1000).random()
     Log.d("Rolling", "$rnds_x,$rnds_y")
     Player.list.forEach { it->
         if( it.offset.x.roundToInt() == rnds_x.value && it.offset.x.roundToInt() == rnds_y.value)

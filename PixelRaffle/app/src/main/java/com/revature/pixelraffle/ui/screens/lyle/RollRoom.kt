@@ -1,18 +1,26 @@
 package com.revature.pixelraffle.ui.screens.lyle
 
 import androidx.compose.foundation.layout.*
-import androidx.compose.material.Scaffold
-import androidx.compose.material.Text
+import androidx.compose.material.*
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.ArrowBack
+import androidx.compose.material.icons.filled.ArrowLeft
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.livedata.observeAsState
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.ImageBitmap
+import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import com.airbnb.lottie.compose.*
 import com.revature.pixelraffle.R
+import com.revature.pixelraffle.ui.navigation.NavScreens
+import com.revature.pixelraffle.ui.screens.peter.validation
 import com.revature.pixelraffle.viewmodel.UserViewModel
 
 
@@ -73,9 +81,16 @@ fun RollRoom(navController: NavController){
 
 //    val user= userViewModel.getAllUserLis().observeAsState(arrayListOf())
 //    val listHolder = user.value
-    val randomUsers= listOf("lyle lopez", "Adama Coulibaly", "Carlos Castellanos","Peter Lin")
+    val randomUsers= listOf("Lyle Lopez", "Adama Coulibaly", "Peter Lin","Carlos Castellanos")
 
     Scaffold(modifier = Modifier.fillMaxSize()) {
+
+
+        FloatingActionButton(onClick = {navController.navigate(NavScreens.Room.route)}, modifier = Modifier.padding(5.dp), backgroundColor = MaterialTheme.colors.primary) {
+            Icon(imageVector = Icons.Default.ArrowBack , contentDescription ="")
+        }
+
+
 
         SparklesA()
 
@@ -85,7 +100,7 @@ fun RollRoom(navController: NavController){
 
         Row(modifier = Modifier.fillMaxSize(),horizontalArrangement = Arrangement.Center,verticalAlignment = Alignment.CenterVertically) {
 
-                Text(text = "CONGRATULATIONS: \n ${randomUsers.random()}!",fontWeight = FontWeight.Bold,fontSize = 20.sp)
+                Text(text = "CONGRATULATIONS: \n  ${randomUsers.random()}!",fontWeight = FontWeight.Bold,fontSize = 20.sp)
 
 
         }
