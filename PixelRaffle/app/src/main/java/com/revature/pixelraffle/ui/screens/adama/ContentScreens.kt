@@ -568,9 +568,9 @@ fun LoginPage(navController:NavController, userViewModel: UserViewModel) {
                         navController.navigate(NavScreens.MainMenu.route){
                             popUpTo(NavScreens.MainMenu.route)
                         }
-                    } else if("$emailValidationSattus".equals("Email Failed")) {
-                        Toast.makeText(context, "Email address should be like email@domain.com", Toast.LENGTH_LONG).show()
-                    }
+                    } //else if("$emailValidationSattus".equals("Email Failed")) {
+                        //Toast.makeText(context, "Email address should be like email@domain.com", Toast.LENGTH_LONG).show()
+                    //}
                     else{
                         val listHolder = userList.value
                         listHolder.forEach { userRow ->
@@ -578,12 +578,10 @@ fun LoginPage(navController:NavController, userViewModel: UserViewModel) {
                             if(email.value.equals(userRow.email) && Password.value.equals(userRow.password)){
 
                                 userViewModel.getUserByEmail(email.value)
-                                Toast.makeText(context,"Welcome  ${userRow.first_name}", Toast.LENGTH_LONG).show()
+                                //Toast.makeText(context,"Welcome  ${userRow.first_name}", Toast.LENGTH_LONG).show()
                                 navController.navigate(NavScreens.MainMenu.route){
                                     popUpTo(NavScreens.MainMenu.route)
                                 }
-                        }else {
-                                Toast.makeText(context,"Please enter a valid Email and Password", Toast.LENGTH_LONG).show()
                         }
                         }
 

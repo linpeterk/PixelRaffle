@@ -73,6 +73,7 @@ fun RollRoom(navController: NavController){
 
 //    val user= userViewModel.getAllUserLis().observeAsState(arrayListOf())
 //    val listHolder = user.value
+    val randomUsers= listOf("lyle lopez", "Adama Coulibaly", "Carlos Castellanos","Peter Lin")
 
     Scaffold(modifier = Modifier.fillMaxSize()) {
 
@@ -84,7 +85,7 @@ fun RollRoom(navController: NavController){
 
         Row(modifier = Modifier.fillMaxSize(),horizontalArrangement = Arrangement.Center,verticalAlignment = Alignment.CenterVertically) {
 
-                Text(text = "CONGRATULATIONS:  !",fontWeight = FontWeight.Bold,fontSize = 20.sp)
+                Text(text = "CONGRATULATIONS: \n ${randomUsers.random()}!",fontWeight = FontWeight.Bold,fontSize = 20.sp)
 
 
         }
