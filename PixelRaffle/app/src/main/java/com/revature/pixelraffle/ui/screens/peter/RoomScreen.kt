@@ -150,7 +150,12 @@ Scaffold( modifier = Modifier.fillMaxSize(), bottomBar = { BottomNavigationBar(n
                             //   Log.d("Player", "${it.offset}")
                         }
                         val json = Gson().toJson(dragListPlayer)
-                        Log.d("Player", "${json}")
+                    //    Log.d("Player", "${json}")
+
+
+                        val maxLogSize = 1000
+                        json.chunked(maxLogSize).forEach { Log.d("Player", it) }
+
 
                     },
                     modifier = Modifier
@@ -192,6 +197,11 @@ Scaffold( modifier = Modifier.fillMaxSize(), bottomBar = { BottomNavigationBar(n
      }
     }
 
+}
+
+fun logUnlimited(tag: String, string: String) {
+    val maxLogSize = 1000
+    string.chunked(maxLogSize).forEach { Log.v(tag, it) }
 }
 
 @Composable
