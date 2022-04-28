@@ -76,7 +76,8 @@ fun ProfileScreen(raffleList:List<CurrentRaffle>,navController: NavController, u
                 UserProfileImage()
                 Text(
                     text = "${userViewModel.currentUser.first_name} ${userViewModel.currentUser.last_name}",
-                    style= MaterialTheme.typography.h5,
+                  //  style= MaterialTheme.typography.,
+                    fontSize = 26.sp,
                     modifier = Modifier
                         .padding(5.dp)
                         .fillMaxWidth(),
@@ -85,13 +86,10 @@ fun ProfileScreen(raffleList:List<CurrentRaffle>,navController: NavController, u
                 )
                 Spacer(Modifier.padding(20.dp))
                 Row(modifier = Modifier.fillMaxWidth(),horizontalArrangement = Arrangement.Center) {
-                    Text(text = "Email: ", fontWeight = FontWeight.Bold)
-                    Text(text="${userViewModel.currentUser.email}")
+                    Text(text = "Email: ", fontWeight = FontWeight.Bold, fontSize = 16.sp)
+                    Text(text="${userViewModel.currentUser.email}", fontSize = 16.sp)
                 }
-                Row(modifier = Modifier.fillMaxWidth(),horizontalArrangement = Arrangement.Center) {
-                    Text(text = "Password: ", fontWeight = FontWeight.Bold)
-                    Text(text="${userViewModel.currentUser.password}")
-                }
+
 
 
 
