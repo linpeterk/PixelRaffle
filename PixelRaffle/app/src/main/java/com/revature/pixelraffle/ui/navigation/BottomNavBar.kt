@@ -24,7 +24,8 @@ fun BottomNavigationBar(navController: NavController) {
         NavScreens.MainMenu,
         NavScreens.NearBy,
         NavScreens.RaffleHistories,
-        NavScreens.Profile
+        NavScreens.Profile,
+        NavScreens.LogOut
     )
 
     BottomNavigation (

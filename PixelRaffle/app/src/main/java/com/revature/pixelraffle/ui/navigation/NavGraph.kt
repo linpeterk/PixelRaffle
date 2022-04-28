@@ -33,11 +33,15 @@ fun Navigation(navController: NavHostController, userViewModel: UserViewModel) {
         }
 
         composable(NavScreens.RaffleHistories.route) {
-            //UserActivityHistories(navController)
             RaffleHistories(raffles,navController, userViewModel)
 
         }
+        composable(NavScreens.LogOut.route) {
+            LoginPage(navController, userViewModel)
 
+        }
+
+        //LogOut
         //lyles
         composable(NavScreens.MainOverall.route) {
             MainOverallScreen(navController)
